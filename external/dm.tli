@@ -1,0 +1,3064 @@
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.39.33523.0 (76e70b12).
+//
+// C:\Users\Administrator\Desktop\Project\netcraft\NKScript\cmake-build-debug-visual-studio\CMakeFiles\NKScript.dir\src\dm\dm.tli
+//
+// Wrapper implementations for Win32 type library ../external/dm.dll
+// compiler-generated file - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface Idmsoft wrapper method implementations
+//
+
+inline _bstr_t Idmsoft::Ver ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_Ver(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetPath ( _bstr_t path ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetPath(path, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::Ocr ( long x1, long y1, long x2, long y2, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_Ocr(x1, y1, x2, y2, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::FindStr ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindStr(x1, y1, x2, y2, str, color, sim, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetResultCount ( _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetResultCount(str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetResultPos ( _bstr_t str, long index, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetResultPos(str, index, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::StrStr ( _bstr_t s, _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_StrStr(s, str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SendCommand ( _bstr_t cmd ) {
+    long _result = 0;
+    HRESULT _hr = raw_SendCommand(cmd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::UseDict ( long index ) {
+    long _result = 0;
+    HRESULT _hr = raw_UseDict(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetBasePath ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetBasePath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetDictPwd ( _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDictPwd(pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::OcrInFile ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_OcrInFile(x1, y1, x2, y2, pic_name, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::Capture ( long x1, long y1, long x2, long y2, _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_Capture(x1, y1, x2, y2, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyPress ( long vk ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyPress(vk, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyDown ( long vk ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyDown(vk, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyUp ( long vk ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyUp(vk, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LeftClick ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_LeftClick(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RightClick ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_RightClick(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MiddleClick ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_MiddleClick(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LeftDoubleClick ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_LeftDoubleClick(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LeftDown ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_LeftDown(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LeftUp ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_LeftUp(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RightDown ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_RightDown(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RightUp ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_RightUp(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MoveTo ( long x, long y ) {
+    long _result = 0;
+    HRESULT _hr = raw_MoveTo(x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MoveR ( long rx, long ry ) {
+    long _result = 0;
+    HRESULT _hr = raw_MoveR(rx, ry, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetColor ( long x, long y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetColor(x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetColorBGR ( long x, long y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetColorBGR(x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::RGB2BGR ( _bstr_t rgb_color ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_RGB2BGR(rgb_color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::BGR2RGB ( _bstr_t bgr_color ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_BGR2RGB(bgr_color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::UnBindWindow ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_UnBindWindow(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CmpColor ( long x, long y, _bstr_t color, double sim ) {
+    long _result = 0;
+    HRESULT _hr = raw_CmpColor(x, y, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ClientToScreen ( long hwnd, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_ClientToScreen(hwnd, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ScreenToClient ( long hwnd, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_ScreenToClient(hwnd, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ShowScrMsg ( long x1, long y1, long x2, long y2, _bstr_t msg, _bstr_t color ) {
+    long _result = 0;
+    HRESULT _hr = raw_ShowScrMsg(x1, y1, x2, y2, msg, color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetMinRowGap ( long row_gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetMinRowGap(row_gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetMinColGap ( long col_gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetMinColGap(col_gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindColor ( long x1, long y1, long x2, long y2, _bstr_t color, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindColor(x1, y1, x2, y2, color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindColorEx ( long x1, long y1, long x2, long y2, _bstr_t color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindColorEx(x1, y1, x2, y2, color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetWordLineHeight ( long line_height ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWordLineHeight(line_height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetWordGap ( long word_gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWordGap(word_gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetRowGapNoDict ( long row_gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetRowGapNoDict(row_gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetColGapNoDict ( long col_gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetColGapNoDict(col_gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetWordLineHeightNoDict ( long line_height ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWordLineHeightNoDict(line_height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetWordGapNoDict ( long word_gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWordGapNoDict(word_gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetWordResultCount ( _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWordResultCount(str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetWordResultPos ( _bstr_t str, long index, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWordResultPos(str, index, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetWordResultStr ( _bstr_t str, long index ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetWordResultStr(str, index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetWords ( long x1, long y1, long x2, long y2, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetWords(x1, y1, x2, y2, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetWordsNoDict ( long x1, long y1, long x2, long y2, _bstr_t color ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetWordsNoDict(x1, y1, x2, y2, color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetShowErrorMsg ( long show ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetShowErrorMsg(show, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetClientSize ( long hwnd, VARIANT * width, VARIANT * height ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetClientSize(hwnd, width, height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MoveWindow ( long hwnd, long x, long y ) {
+    long _result = 0;
+    HRESULT _hr = raw_MoveWindow(hwnd, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetColorHSV ( long x, long y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetColorHSV(x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetAveRGB ( long x1, long y1, long x2, long y2 ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetAveRGB(x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetAveHSV ( long x1, long y1, long x2, long y2 ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetAveHSV(x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetForegroundWindow ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetForegroundWindow(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetForegroundFocus ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetForegroundFocus(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetMousePointWindow ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetMousePointWindow(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetPointWindow ( long x, long y ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetPointWindow(x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::EnumWindow ( long parent, _bstr_t title, _bstr_t class_name, long filter ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumWindow(parent, title, class_name, filter, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetWindowState ( long hwnd, long flag ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWindowState(hwnd, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetWindow ( long hwnd, long flag ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWindow(hwnd, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetSpecialWindow ( long flag ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetSpecialWindow(flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetWindowText ( long hwnd, _bstr_t text ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWindowText(hwnd, text, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetWindowSize ( long hwnd, long width, long height ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWindowSize(hwnd, width, height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetWindowRect ( long hwnd, VARIANT * x1, VARIANT * y1, VARIANT * x2, VARIANT * y2 ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWindowRect(hwnd, x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetWindowTitle ( long hwnd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetWindowTitle(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetWindowClass ( long hwnd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetWindowClass(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetWindowState ( long hwnd, long flag ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWindowState(hwnd, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CreateFoobarRect ( long hwnd, long x, long y, long w, long h ) {
+    long _result = 0;
+    HRESULT _hr = raw_CreateFoobarRect(hwnd, x, y, w, h, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CreateFoobarRoundRect ( long hwnd, long x, long y, long w, long h, long rw, long rh ) {
+    long _result = 0;
+    HRESULT _hr = raw_CreateFoobarRoundRect(hwnd, x, y, w, h, rw, rh, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CreateFoobarEllipse ( long hwnd, long x, long y, long w, long h ) {
+    long _result = 0;
+    HRESULT _hr = raw_CreateFoobarEllipse(hwnd, x, y, w, h, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CreateFoobarCustom ( long hwnd, long x, long y, _bstr_t pic, _bstr_t trans_color, double sim ) {
+    long _result = 0;
+    HRESULT _hr = raw_CreateFoobarCustom(hwnd, x, y, pic, trans_color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarFillRect ( long hwnd, long x1, long y1, long x2, long y2, _bstr_t color ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarFillRect(hwnd, x1, y1, x2, y2, color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarDrawText ( long hwnd, long x, long y, long w, long h, _bstr_t text, _bstr_t color, long align ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarDrawText(hwnd, x, y, w, h, text, color, align, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarDrawPic ( long hwnd, long x, long y, _bstr_t pic, _bstr_t trans_color ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarDrawPic(hwnd, x, y, pic, trans_color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarUpdate ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarUpdate(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarLock ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarLock(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarUnlock ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarUnlock(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarSetFont ( long hwnd, _bstr_t font_name, long size, long flag ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarSetFont(hwnd, font_name, size, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarTextRect ( long hwnd, long x, long y, long w, long h ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarTextRect(hwnd, x, y, w, h, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarPrintText ( long hwnd, _bstr_t text, _bstr_t color ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarPrintText(hwnd, text, color, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarClearText ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarClearText(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarTextLineGap ( long hwnd, long gap ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarTextLineGap(hwnd, gap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Play ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_Play(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqCapture ( long x1, long y1, long x2, long y2, long quality, long delay, long time ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqCapture(x1, y1, x2, y2, quality, delay, time, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqRelease ( long handle ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqRelease(handle, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FaqSend ( _bstr_t server, long handle, long request_type, long time_out ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FaqSend(server, handle, request_type, time_out, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::Beep ( long fre, long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_Beep(fre, delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarClose ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarClose(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MoveDD ( long dx, long dy ) {
+    long _result = 0;
+    HRESULT _hr = raw_MoveDD(dx, dy, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqGetSize ( long handle ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqGetSize(handle, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LoadPic ( _bstr_t pic_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_LoadPic(pic_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FreePic ( _bstr_t pic_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_FreePic(pic_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetScreenData ( long x1, long y1, long x2, long y2 ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetScreenData(x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FreeScreenData ( long handle ) {
+    long _result = 0;
+    HRESULT _hr = raw_FreeScreenData(handle, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WheelUp ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_WheelUp(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WheelDown ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_WheelDown(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetMouseDelay ( _bstr_t type, long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetMouseDelay(type, delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetKeypadDelay ( _bstr_t type, long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetKeypadDelay(type, delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetEnv ( long index, _bstr_t name ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetEnv(index, name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetEnv ( long index, _bstr_t name, _bstr_t value ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetEnv(index, name, value, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SendString ( long hwnd, _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_SendString(hwnd, str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DelEnv ( long index, _bstr_t name ) {
+    long _result = 0;
+    HRESULT _hr = raw_DelEnv(index, name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetPath ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetPath(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetDict ( long index, _bstr_t dict_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDict(index, dict_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindPic ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindPic(x1, y1, x2, y2, pic_name, delta_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindPicEx ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicEx(x1, y1, x2, y2, pic_name, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetClientSize ( long hwnd, long width, long height ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetClientSize(hwnd, width, height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline __int64 Idmsoft::ReadInt ( long hwnd, _bstr_t addr, long type ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_ReadInt(hwnd, addr, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline float Idmsoft::ReadFloat ( long hwnd, _bstr_t addr ) {
+    float _result = 0;
+    HRESULT _hr = raw_ReadFloat(hwnd, addr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline double Idmsoft::ReadDouble ( long hwnd, _bstr_t addr ) {
+    double _result = 0;
+    HRESULT _hr = raw_ReadDouble(hwnd, addr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindInt ( long hwnd, _bstr_t addr_range, __int64 int_value_min, __int64 int_value_max, long type ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindInt(hwnd, addr_range, int_value_min, int_value_max, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindFloat ( long hwnd, _bstr_t addr_range, float float_value_min, float float_value_max ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindFloat(hwnd, addr_range, float_value_min, float_value_max, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindDouble ( long hwnd, _bstr_t addr_range, double double_value_min, double double_value_max ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindDouble(hwnd, addr_range, double_value_min, double_value_max, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindString ( long hwnd, _bstr_t addr_range, _bstr_t string_value, long type ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindString(hwnd, addr_range, string_value, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline __int64 Idmsoft::GetModuleBaseAddr ( long hwnd, _bstr_t module_name ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_GetModuleBaseAddr(hwnd, module_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::MoveToEx ( long x, long y, long w, long h ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_MoveToEx(x, y, w, h, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::MatchPicName ( _bstr_t pic_name ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_MatchPicName(pic_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::AddDict ( long index, _bstr_t dict_info ) {
+    long _result = 0;
+    HRESULT _hr = raw_AddDict(index, dict_info, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnterCri ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnterCri(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LeaveCri ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_LeaveCri(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteInt ( long hwnd, _bstr_t addr, long type, __int64 v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteInt(hwnd, addr, type, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteFloat ( long hwnd, _bstr_t addr, float v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteFloat(hwnd, addr, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteDouble ( long hwnd, _bstr_t addr, double v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteDouble(hwnd, addr, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteString ( long hwnd, _bstr_t addr, long type, _bstr_t v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteString(hwnd, addr, type, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AsmAdd ( _bstr_t asm_ins ) {
+    long _result = 0;
+    HRESULT _hr = raw_AsmAdd(asm_ins, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AsmClear ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_AsmClear(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline __int64 Idmsoft::AsmCall ( long hwnd, long mode ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_AsmCall(hwnd, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindMultiColor ( long x1, long y1, long x2, long y2, _bstr_t first_color, _bstr_t offset_color, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindMultiColor(x1, y1, x2, y2, first_color, offset_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindMultiColorEx ( long x1, long y1, long x2, long y2, _bstr_t first_color, _bstr_t offset_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindMultiColorEx(x1, y1, x2, y2, first_color, offset_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::Assemble ( __int64 base_addr, long is_64bit ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_Assemble(base_addr, is_64bit, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::DisAssemble ( _bstr_t asm_code, __int64 base_addr, long is_64bit ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_DisAssemble(asm_code, base_addr, is_64bit, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetWindowTransparent ( long hwnd, long v ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetWindowTransparent(hwnd, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadData ( long hwnd, _bstr_t addr, long len ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadData(hwnd, addr, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::WriteData ( long hwnd, _bstr_t addr, _bstr_t data ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteData(hwnd, addr, data, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindData ( long hwnd, _bstr_t addr_range, _bstr_t data ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindData(hwnd, addr_range, data, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetPicPwd ( _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetPicPwd(pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Log ( _bstr_t info ) {
+    long _result = 0;
+    HRESULT _hr = raw_Log(info, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindStrE ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrE(x1, y1, x2, y2, str, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindColorE ( long x1, long y1, long x2, long y2, _bstr_t color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindColorE(x1, y1, x2, y2, color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindPicE ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicE(x1, y1, x2, y2, pic_name, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindMultiColorE ( long x1, long y1, long x2, long y2, _bstr_t first_color, _bstr_t offset_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindMultiColorE(x1, y1, x2, y2, first_color, offset_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetExactOcr ( long exact_ocr ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetExactOcr(exact_ocr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadString ( long hwnd, _bstr_t addr, long type, long len ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadString(hwnd, addr, type, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::FoobarTextPrintDir ( long hwnd, long dir ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarTextPrintDir(hwnd, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::OcrEx ( long x1, long y1, long x2, long y2, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_OcrEx(x1, y1, x2, y2, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetDisplayInput ( _bstr_t mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDisplayInput(mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetTime ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetTime(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetScreenWidth ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetScreenWidth(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetScreenHeight ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetScreenHeight(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::BindWindowEx ( long hwnd, _bstr_t display, _bstr_t mouse, _bstr_t keypad, _bstr_t public_desc, long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_BindWindowEx(hwnd, display, mouse, keypad, public_desc, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetDiskSerial ( long index ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDiskSerial(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::Md5 ( _bstr_t str ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_Md5(str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetMac ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetMac(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::ActiveInputMethod ( long hwnd, _bstr_t id ) {
+    long _result = 0;
+    HRESULT _hr = raw_ActiveInputMethod(hwnd, id, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CheckInputMethod ( long hwnd, _bstr_t id ) {
+    long _result = 0;
+    HRESULT _hr = raw_CheckInputMethod(hwnd, id, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindInputMethod ( _bstr_t id ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindInputMethod(id, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetCursorPos ( VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetCursorPos(x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::BindWindow ( long hwnd, _bstr_t display, _bstr_t mouse, _bstr_t keypad, long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_BindWindow(hwnd, display, mouse, keypad, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindWindow ( _bstr_t class_name, _bstr_t title_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindWindow(class_name, title_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetScreenDepth ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetScreenDepth(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetScreen ( long width, long height, long depth ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetScreen(width, height, depth, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ExitOs ( long type ) {
+    long _result = 0;
+    HRESULT _hr = raw_ExitOs(type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetDir ( long type ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDir(type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetOsType ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetOsType(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindWindowEx ( long parent, _bstr_t class_name, _bstr_t title_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindWindowEx(parent, class_name, title_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetExportDict ( long index, _bstr_t dict_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetExportDict(index, dict_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetCursorShape ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetCursorShape(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::DownCpu ( long type, long rate ) {
+    long _result = 0;
+    HRESULT _hr = raw_DownCpu(type, rate, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetCursorSpot ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetCursorSpot(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SendString2 ( long hwnd, _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_SendString2(hwnd, str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqPost ( _bstr_t server, long handle, long request_type, long time_out ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqPost(server, handle, request_type, time_out, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FaqFetch ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FaqFetch(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FetchWord ( long x1, long y1, long x2, long y2, _bstr_t color, _bstr_t word ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FetchWord(x1, y1, x2, y2, color, word, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::CaptureJpg ( long x1, long y1, long x2, long y2, _bstr_t file, long quality ) {
+    long _result = 0;
+    HRESULT _hr = raw_CaptureJpg(x1, y1, x2, y2, file, quality, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindStrWithFont ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, _bstr_t font_name, long font_size, long flag, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindStrWithFont(x1, y1, x2, y2, str, color, sim, font_name, font_size, flag, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindStrWithFontE ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, _bstr_t font_name, long font_size, long flag ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrWithFontE(x1, y1, x2, y2, str, color, sim, font_name, font_size, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStrWithFontEx ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, _bstr_t font_name, long font_size, long flag ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrWithFontEx(x1, y1, x2, y2, str, color, sim, font_name, font_size, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetDictInfo ( _bstr_t str, _bstr_t font_name, long font_size, long flag ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDictInfo(str, font_name, font_size, flag, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SaveDict ( long index, _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_SaveDict(index, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetWindowProcessId ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWindowProcessId(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetWindowProcessPath ( long hwnd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetWindowProcessPath(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::LockInput ( long lock ) {
+    long _result = 0;
+    HRESULT _hr = raw_LockInput(lock, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetPicSize ( _bstr_t pic_name ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetPicSize(pic_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetID ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetID(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CapturePng ( long x1, long y1, long x2, long y2, _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_CapturePng(x1, y1, x2, y2, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CaptureGif ( long x1, long y1, long x2, long y2, _bstr_t file, long delay, long time ) {
+    long _result = 0;
+    HRESULT _hr = raw_CaptureGif(x1, y1, x2, y2, file, delay, time, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ImageToBmp ( _bstr_t pic_name, _bstr_t bmp_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_ImageToBmp(pic_name, bmp_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindStrFast ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindStrFast(x1, y1, x2, y2, str, color, sim, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindStrFastEx ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrFastEx(x1, y1, x2, y2, str, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStrFastE ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrFastE(x1, y1, x2, y2, str, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::EnableDisplayDebug ( long enable_debug ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableDisplayDebug(enable_debug, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CapturePre ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_CapturePre(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RegEx ( _bstr_t code, _bstr_t Ver, _bstr_t ip ) {
+    long _result = 0;
+    HRESULT _hr = raw_RegEx(code, Ver, ip, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetMachineCode ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetMachineCode(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetClipboard ( _bstr_t data ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetClipboard(data, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetClipboard ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetClipboard(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetNowDict ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetNowDict(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Is64Bit ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_Is64Bit(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetColorNum ( long x1, long y1, long x2, long y2, _bstr_t color, double sim ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetColorNum(x1, y1, x2, y2, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::EnumWindowByProcess ( _bstr_t process_name, _bstr_t title, _bstr_t class_name, long filter ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumWindowByProcess(process_name, title, class_name, filter, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetDictCount ( long index ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetDictCount(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetLastError ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetLastError(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetNetTime ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetNetTime(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::EnableGetColorByCapture ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableGetColorByCapture(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CheckUAC ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_CheckUAC(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetUAC ( long uac ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetUAC(uac, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DisableFontSmooth ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_DisableFontSmooth(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CheckFontSmooth ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_CheckFontSmooth(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetDisplayAcceler ( long level ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDisplayAcceler(level, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindWindowByProcess ( _bstr_t process_name, _bstr_t class_name, _bstr_t title_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindWindowByProcess(process_name, class_name, title_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindWindowByProcessId ( long process_id, _bstr_t class_name, _bstr_t title_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindWindowByProcessId(process_id, class_name, title_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadIni ( _bstr_t section, _bstr_t key, _bstr_t file ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadIni(section, key, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::WriteIni ( _bstr_t section, _bstr_t key, _bstr_t v, _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteIni(section, key, v, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RunApp ( _bstr_t path, long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_RunApp(path, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::delay ( long mis ) {
+    long _result = 0;
+    HRESULT _hr = raw_delay(mis, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindWindowSuper ( _bstr_t spec1, long flag1, long type1, _bstr_t spec2, long flag2, long type2 ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindWindowSuper(spec1, flag1, type1, spec2, flag2, type2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ExcludePos ( _bstr_t all_pos, long type, long x1, long y1, long x2, long y2 ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ExcludePos(all_pos, type, x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindNearestPos ( _bstr_t all_pos, long type, long x, long y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindNearestPos(all_pos, type, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::SortPosDistance ( _bstr_t all_pos, long type, long x, long y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_SortPosDistance(all_pos, type, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::FindPicMem ( long x1, long y1, long x2, long y2, _bstr_t pic_info, _bstr_t delta_color, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindPicMem(x1, y1, x2, y2, pic_info, delta_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindPicMemEx ( long x1, long y1, long x2, long y2, _bstr_t pic_info, _bstr_t delta_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicMemEx(x1, y1, x2, y2, pic_info, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindPicMemE ( long x1, long y1, long x2, long y2, _bstr_t pic_info, _bstr_t delta_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicMemE(x1, y1, x2, y2, pic_info, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::AppendPicAddr ( _bstr_t pic_info, long addr, long size ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_AppendPicAddr(pic_info, addr, size, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::WriteFile ( _bstr_t file, _bstr_t content ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteFile(file, content, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Stop ( long id ) {
+    long _result = 0;
+    HRESULT _hr = raw_Stop(id, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetDictMem ( long index, long addr, long size ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDictMem(index, addr, size, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetNetTimeSafe ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetNetTimeSafe(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::ForceUnBindWindow ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_ForceUnBindWindow(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadIniPwd ( _bstr_t section, _bstr_t key, _bstr_t file, _bstr_t pwd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadIniPwd(section, key, file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::WriteIniPwd ( _bstr_t section, _bstr_t key, _bstr_t v, _bstr_t file, _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteIniPwd(section, key, v, file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DecodeFile ( _bstr_t file, _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_DecodeFile(file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyDownChar ( _bstr_t key_str ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyDownChar(key_str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyUpChar ( _bstr_t key_str ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyUpChar(key_str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyPressChar ( _bstr_t key_str ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyPressChar(key_str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::KeyPressStr ( _bstr_t key_str, long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_KeyPressStr(key_str, delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableKeypadPatch ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableKeypadPatch(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableKeypadSync ( long en, long time_out ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableKeypadSync(en, time_out, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableMouseSync ( long en, long time_out ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableMouseSync(en, time_out, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DmGuard ( long en, _bstr_t type ) {
+    long _result = 0;
+    HRESULT _hr = raw_DmGuard(en, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqCaptureFromFile ( long x1, long y1, long x2, long y2, _bstr_t file, long quality ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqCaptureFromFile(x1, y1, x2, y2, file, quality, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindIntEx ( long hwnd, _bstr_t addr_range, __int64 int_value_min, __int64 int_value_max, long type, long step, long multi_thread, long mode ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindIntEx(hwnd, addr_range, int_value_min, int_value_max, type, step, multi_thread, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindFloatEx ( long hwnd, _bstr_t addr_range, float float_value_min, float float_value_max, long step, long multi_thread, long mode ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindFloatEx(hwnd, addr_range, float_value_min, float_value_max, step, multi_thread, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindDoubleEx ( long hwnd, _bstr_t addr_range, double double_value_min, double double_value_max, long step, long multi_thread, long mode ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindDoubleEx(hwnd, addr_range, double_value_min, double_value_max, step, multi_thread, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStringEx ( long hwnd, _bstr_t addr_range, _bstr_t string_value, long type, long step, long multi_thread, long mode ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStringEx(hwnd, addr_range, string_value, type, step, multi_thread, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindDataEx ( long hwnd, _bstr_t addr_range, _bstr_t data, long step, long multi_thread, long mode ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindDataEx(hwnd, addr_range, data, step, multi_thread, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::EnableRealMouse ( long en, long mousedelay, long mousestep ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableRealMouse(en, mousedelay, mousestep, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableRealKeypad ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableRealKeypad(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SendStringIme ( _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_SendStringIme(str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarDrawLine ( long hwnd, long x1, long y1, long x2, long y2, _bstr_t color, long style, long width ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarDrawLine(hwnd, x1, y1, x2, y2, color, style, width, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindStrEx ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrEx(x1, y1, x2, y2, str, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::IsBind ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_IsBind(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetDisplayDelay ( long t ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDisplayDelay(t, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetDmCount ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetDmCount(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DisableScreenSave ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_DisableScreenSave(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DisablePowerSave ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_DisablePowerSave(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetMemoryHwndAsProcessId ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetMemoryHwndAsProcessId(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindShape ( long x1, long y1, long x2, long y2, _bstr_t offset_color, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindShape(x1, y1, x2, y2, offset_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindShapeE ( long x1, long y1, long x2, long y2, _bstr_t offset_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindShapeE(x1, y1, x2, y2, offset_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindShapeEx ( long x1, long y1, long x2, long y2, _bstr_t offset_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindShapeEx(x1, y1, x2, y2, offset_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStrS ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, VARIANT * x, VARIANT * y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrS(x1, y1, x2, y2, str, color, sim, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStrExS ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrExS(x1, y1, x2, y2, str, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStrFastS ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim, VARIANT * x, VARIANT * y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrFastS(x1, y1, x2, y2, str, color, sim, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindStrFastExS ( long x1, long y1, long x2, long y2, _bstr_t str, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindStrFastExS(x1, y1, x2, y2, str, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindPicS ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicS(x1, y1, x2, y2, pic_name, delta_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindPicExS ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicExS(x1, y1, x2, y2, pic_name, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::ClearDict ( long index ) {
+    long _result = 0;
+    HRESULT _hr = raw_ClearDict(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetMachineCodeNoMac ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetMachineCodeNoMac(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetClientRect ( long hwnd, VARIANT * x1, VARIANT * y1, VARIANT * x2, VARIANT * y2 ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetClientRect(hwnd, x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableFakeActive ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableFakeActive(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetScreenDataBmp ( long x1, long y1, long x2, long y2, VARIANT * data, VARIANT * size ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetScreenDataBmp(x1, y1, x2, y2, data, size, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EncodeFile ( _bstr_t file, _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_EncodeFile(file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetCursorShapeEx ( long type ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetCursorShapeEx(type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::FaqCancel ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqCancel(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::IntToData ( __int64 int_value, long type ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_IntToData(int_value, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FloatToData ( float float_value ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FloatToData(float_value, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::DoubleToData ( double double_value ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_DoubleToData(double_value, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::StringToData ( _bstr_t string_value, long type ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_StringToData(string_value, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetMemoryFindResultToFile ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetMemoryFindResultToFile(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableBind ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableBind(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetSimMode ( long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetSimMode(mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LockMouseRect ( long x1, long y1, long x2, long y2 ) {
+    long _result = 0;
+    HRESULT _hr = raw_LockMouseRect(x1, y1, x2, y2, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SendPaste ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_SendPaste(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::IsDisplayDead ( long x1, long y1, long x2, long y2, long t ) {
+    long _result = 0;
+    HRESULT _hr = raw_IsDisplayDead(x1, y1, x2, y2, t, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetKeyState ( long vk ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetKeyState(vk, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CopyFile ( _bstr_t src_file, _bstr_t dst_file, long over ) {
+    long _result = 0;
+    HRESULT _hr = raw_CopyFile(src_file, dst_file, over, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::IsFileExist ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_IsFileExist(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DeleteFile ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_DeleteFile(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MoveFile ( _bstr_t src_file, _bstr_t dst_file ) {
+    long _result = 0;
+    HRESULT _hr = raw_MoveFile(src_file, dst_file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::CreateFolder ( _bstr_t folder_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_CreateFolder(folder_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DeleteFolder ( _bstr_t folder_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_DeleteFolder(folder_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetFileLength ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetFileLength(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadFile ( _bstr_t file ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadFile(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::WaitKey ( long key_code, long time_out ) {
+    long _result = 0;
+    HRESULT _hr = raw_WaitKey(key_code, time_out, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DeleteIni ( _bstr_t section, _bstr_t key, _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_DeleteIni(section, key, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DeleteIniPwd ( _bstr_t section, _bstr_t key, _bstr_t file, _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_DeleteIniPwd(section, key, file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableSpeedDx ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableSpeedDx(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableIme ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableIme(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Reg ( _bstr_t code, _bstr_t Ver ) {
+    long _result = 0;
+    HRESULT _hr = raw_Reg(code, Ver, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::SelectFile ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_SelectFile(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::SelectDirectory ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_SelectDirectory(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::LockDisplay ( long lock ) {
+    long _result = 0;
+    HRESULT _hr = raw_LockDisplay(lock, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarSetSave ( long hwnd, _bstr_t file, long en, _bstr_t header ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarSetSave(hwnd, file, en, header, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::EnumWindowSuper ( _bstr_t spec1, long flag1, long type1, _bstr_t spec2, long flag2, long type2, long sort ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumWindowSuper(spec1, flag1, type1, spec2, flag2, type2, sort, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::DownloadFile ( _bstr_t url, _bstr_t save_file, long timeout ) {
+    long _result = 0;
+    HRESULT _hr = raw_DownloadFile(url, save_file, timeout, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableKeypadMsg ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableKeypadMsg(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableMouseMsg ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableMouseMsg(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RegNoMac ( _bstr_t code, _bstr_t Ver ) {
+    long _result = 0;
+    HRESULT _hr = raw_RegNoMac(code, Ver, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::RegExNoMac ( _bstr_t code, _bstr_t Ver, _bstr_t ip ) {
+    long _result = 0;
+    HRESULT _hr = raw_RegExNoMac(code, Ver, ip, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetEnumWindowDelay ( long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetEnumWindowDelay(delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindMulColor ( long x1, long y1, long x2, long y2, _bstr_t color, double sim ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindMulColor(x1, y1, x2, y2, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetDict ( long index, long font_index ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDict(index, font_index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetBindWindow ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetBindWindow(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarStartGif ( long hwnd, long x, long y, _bstr_t pic_name, long repeat_limit, long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarStartGif(hwnd, x, y, pic_name, repeat_limit, delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarStopGif ( long hwnd, long x, long y, _bstr_t pic_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarStopGif(hwnd, x, y, pic_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FreeProcessMemory ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_FreeProcessMemory(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadFileData ( _bstr_t file, long start_pos, long end_pos ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadFileData(file, start_pos, end_pos, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline __int64 Idmsoft::VirtualAllocEx ( long hwnd, __int64 addr, long size, long type ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_VirtualAllocEx(hwnd, addr, size, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::VirtualFreeEx ( long hwnd, __int64 addr ) {
+    long _result = 0;
+    HRESULT _hr = raw_VirtualFreeEx(hwnd, addr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetCommandLine ( long hwnd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetCommandLine(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::TerminateProcess ( long pid ) {
+    long _result = 0;
+    HRESULT _hr = raw_TerminateProcess(pid, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetNetTimeByIp ( _bstr_t ip ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetNetTimeByIp(ip, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::EnumProcess ( _bstr_t name ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumProcess(name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetProcessInfo ( long pid ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetProcessInfo(pid, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline __int64 Idmsoft::ReadIntAddr ( long hwnd, __int64 addr, long type ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_ReadIntAddr(hwnd, addr, type, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadDataAddr ( long hwnd, __int64 addr, long len ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadDataAddr(hwnd, addr, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline double Idmsoft::ReadDoubleAddr ( long hwnd, __int64 addr ) {
+    double _result = 0;
+    HRESULT _hr = raw_ReadDoubleAddr(hwnd, addr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline float Idmsoft::ReadFloatAddr ( long hwnd, __int64 addr ) {
+    float _result = 0;
+    HRESULT _hr = raw_ReadFloatAddr(hwnd, addr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ReadStringAddr ( long hwnd, __int64 addr, long type, long len ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ReadStringAddr(hwnd, addr, type, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::WriteDataAddr ( long hwnd, __int64 addr, _bstr_t data ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteDataAddr(hwnd, addr, data, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteDoubleAddr ( long hwnd, __int64 addr, double v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteDoubleAddr(hwnd, addr, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteFloatAddr ( long hwnd, __int64 addr, float v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteFloatAddr(hwnd, addr, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteIntAddr ( long hwnd, __int64 addr, long type, __int64 v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteIntAddr(hwnd, addr, type, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteStringAddr ( long hwnd, __int64 addr, long type, _bstr_t v ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteStringAddr(hwnd, addr, type, v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Delays ( long min_s, long max_s ) {
+    long _result = 0;
+    HRESULT _hr = raw_Delays(min_s, max_s, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindColorBlock ( long x1, long y1, long x2, long y2, _bstr_t color, double sim, long count, long width, long height, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindColorBlock(x1, y1, x2, y2, color, sim, count, width, height, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindColorBlockEx ( long x1, long y1, long x2, long y2, _bstr_t color, double sim, long count, long width, long height ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindColorBlockEx(x1, y1, x2, y2, color, sim, count, width, height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::OpenProcess ( long pid ) {
+    long _result = 0;
+    HRESULT _hr = raw_OpenProcess(pid, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::EnumIniSection ( _bstr_t file ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumIniSection(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::EnumIniSectionPwd ( _bstr_t file, _bstr_t pwd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumIniSectionPwd(file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::EnumIniKey ( _bstr_t section, _bstr_t file ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumIniKey(section, file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::EnumIniKeyPwd ( _bstr_t section, _bstr_t file, _bstr_t pwd ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumIniKeyPwd(section, file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SwitchBindWindow ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_SwitchBindWindow(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::InitCri ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_InitCri(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SendStringIme2 ( long hwnd, _bstr_t str, long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_SendStringIme2(hwnd, str, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::EnumWindowByProcessId ( long pid, _bstr_t title, _bstr_t class_name, long filter ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_EnumWindowByProcessId(pid, title, class_name, filter, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetDisplayInfo ( ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDisplayInfo(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::EnableFontSmooth ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableFontSmooth(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::OcrExOne ( long x1, long y1, long x2, long y2, _bstr_t color, double sim ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_OcrExOne(x1, y1, x2, y2, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetAero ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetAero(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FoobarSetTrans ( long hwnd, long trans, _bstr_t color, double sim ) {
+    long _result = 0;
+    HRESULT _hr = raw_FoobarSetTrans(hwnd, trans, color, sim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnablePicCache ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnablePicCache(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqIsPosted ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqIsPosted(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LoadPicByte ( long addr, long size, _bstr_t name ) {
+    long _result = 0;
+    HRESULT _hr = raw_LoadPicByte(addr, size, name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MiddleDown ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_MiddleDown(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::MiddleUp ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_MiddleUp(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FaqCaptureString ( _bstr_t str ) {
+    long _result = 0;
+    HRESULT _hr = raw_FaqCaptureString(str, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::VirtualProtectEx ( long hwnd, __int64 addr, long size, long type, long old_protect ) {
+    long _result = 0;
+    HRESULT _hr = raw_VirtualProtectEx(hwnd, addr, size, type, old_protect, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetMouseSpeed ( long speed ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetMouseSpeed(speed, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetMouseSpeed ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetMouseSpeed(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableMouseAccuracy ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableMouseAccuracy(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetExcludeRegion ( long type, _bstr_t info ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetExcludeRegion(type, info, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::EnableShareDict ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableShareDict(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DisableCloseDisplayAndSleep ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_DisableCloseDisplayAndSleep(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::Int64ToInt32 ( __int64 v ) {
+    long _result = 0;
+    HRESULT _hr = raw_Int64ToInt32(v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetLocale ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetLocale(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetLocale ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetLocale(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ReadDataToBin ( long hwnd, _bstr_t addr, long len ) {
+    long _result = 0;
+    HRESULT _hr = raw_ReadDataToBin(hwnd, addr, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteDataFromBin ( long hwnd, _bstr_t addr, long data, long len ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteDataFromBin(hwnd, addr, data, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ReadDataAddrToBin ( long hwnd, __int64 addr, long len ) {
+    long _result = 0;
+    HRESULT _hr = raw_ReadDataAddrToBin(hwnd, addr, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::WriteDataAddrFromBin ( long hwnd, __int64 addr, long data, long len ) {
+    long _result = 0;
+    HRESULT _hr = raw_WriteDataAddrFromBin(hwnd, addr, data, len, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetParam64ToPointer ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetParam64ToPointer(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetDPI ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetDPI(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetDisplayRefreshDelay ( long t ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetDisplayRefreshDelay(t, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::IsFolderExist ( _bstr_t folder ) {
+    long _result = 0;
+    HRESULT _hr = raw_IsFolderExist(folder, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetCpuType ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetCpuType(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::ReleaseRef ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_ReleaseRef(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetExitThread ( long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetExitThread(mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetFps ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetFps(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::VirtualQueryEx ( long hwnd, __int64 addr, long pmbi ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_VirtualQueryEx(hwnd, addr, pmbi, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline __int64 Idmsoft::AsmCallEx ( long hwnd, long mode, _bstr_t base_addr ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_AsmCallEx(hwnd, mode, base_addr, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline __int64 Idmsoft::GetRemoteApiAddress ( long hwnd, __int64 base_addr, _bstr_t fun_name ) {
+    __int64 _result = 0;
+    HRESULT _hr = raw_GetRemoteApiAddress(hwnd, base_addr, fun_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::ExecuteCmd ( _bstr_t cmd, _bstr_t current_dir, long time_out ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_ExecuteCmd(cmd, current_dir, time_out, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SpeedNormalGraphic ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_SpeedNormalGraphic(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::UnLoadDriver ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_UnLoadDriver(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetOsBuildNumber ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetOsBuildNumber(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::HackSpeed ( double rate ) {
+    long _result = 0;
+    HRESULT _hr = raw_HackSpeed(rate, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetRealPath ( _bstr_t path ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetRealPath(path, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::ShowTaskBarIcon ( long hwnd, long is_show ) {
+    long _result = 0;
+    HRESULT _hr = raw_ShowTaskBarIcon(hwnd, is_show, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AsmSetTimeout ( long time_out, long param ) {
+    long _result = 0;
+    HRESULT _hr = raw_AsmSetTimeout(time_out, param, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::DmGuardParams ( _bstr_t cmd, _bstr_t sub_cmd, _bstr_t param ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_DmGuardParams(cmd, sub_cmd, param, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetModuleSize ( long hwnd, _bstr_t module_name ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetModuleSize(hwnd, module_name, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::IsSurrpotVt ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_IsSurrpotVt(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetDiskModel ( long index ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDiskModel(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::GetDiskReversion ( long index ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetDiskReversion(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::EnableFindPicMultithread ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_EnableFindPicMultithread(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetCpuUsage ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetCpuUsage(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::GetMemoryUsage ( ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetMemoryUsage(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::Hex32 ( long v ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_Hex32(v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::Hex64 ( __int64 v ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_Hex64(v, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::GetWindowThreadId ( long hwnd ) {
+    long _result = 0;
+    HRESULT _hr = raw_GetWindowThreadId(hwnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DmGuardExtract ( _bstr_t type, _bstr_t path ) {
+    long _result = 0;
+    HRESULT _hr = raw_DmGuardExtract(type, path, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::DmGuardLoadCustom ( _bstr_t type, _bstr_t path ) {
+    long _result = 0;
+    HRESULT _hr = raw_DmGuardLoadCustom(type, path, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetShowAsmErrorMsg ( long show ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetShowAsmErrorMsg(show, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::GetSystemInfo ( _bstr_t type, long method ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_GetSystemInfo(type, method, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetFindPicMultithreadCount ( long count ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetFindPicMultithreadCount(count, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::FindPicSim ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, long sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindPicSim(x1, y1, x2, y2, pic_name, delta_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindPicSimEx ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, long sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicSimEx(x1, y1, x2, y2, pic_name, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::FindPicSimMem ( long x1, long y1, long x2, long y2, _bstr_t pic_info, _bstr_t delta_color, long sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_FindPicSimMem(x1, y1, x2, y2, pic_info, delta_color, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::FindPicSimMemEx ( long x1, long y1, long x2, long y2, _bstr_t pic_info, _bstr_t delta_color, long sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicSimMemEx(x1, y1, x2, y2, pic_info, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindPicSimE ( long x1, long y1, long x2, long y2, _bstr_t pic_name, _bstr_t delta_color, long sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicSimE(x1, y1, x2, y2, pic_name, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::FindPicSimMemE ( long x1, long y1, long x2, long y2, _bstr_t pic_info, _bstr_t delta_color, long sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_FindPicSimMemE(x1, y1, x2, y2, pic_info, delta_color, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::SetInputDm ( long input_dm, long rx, long ry ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetInputDm(input_dm, rx, ry, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetFindPicMultithreadLimit ( long limit ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetFindPicMultithreadLimit(limit, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LoadAi ( _bstr_t file ) {
+    long _result = 0;
+    HRESULT _hr = raw_LoadAi(file, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::LoadAiMemory ( long addr, long size ) {
+    long _result = 0;
+    HRESULT _hr = raw_LoadAiMemory(addr, size, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiYoloFreeModel ( long index ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloFreeModel(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiYoloSetVersion ( _bstr_t Ver ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloSetVersion(Ver, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiYoloSetModel ( long index, _bstr_t file, _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloSetModel(index, file, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiYoloSetModelMemory ( long index, long addr, long size, _bstr_t pwd ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloSetModelMemory(index, addr, size, pwd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiYoloUseModel ( long index ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloUseModel(index, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::AiYoloDetectObjects ( long x1, long y1, long x2, long y2, double prob, double iou ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_AiYoloDetectObjects(x1, y1, x2, y2, prob, iou, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::AiYoloDetectObjectsToDataBmp ( long x1, long y1, long x2, long y2, double prob, double iou, VARIANT * data, VARIANT * size, long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloDetectObjectsToDataBmp(x1, y1, x2, y2, prob, iou, data, size, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiYoloDetectObjectsToFile ( long x1, long y1, long x2, long y2, double prob, double iou, _bstr_t file, long mode ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiYoloDetectObjectsToFile(x1, y1, x2, y2, prob, iou, file, mode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::AiYoloSortsObjects ( _bstr_t objects, long height ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_AiYoloSortsObjects(objects, height, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t Idmsoft::AiYoloObjectsToString ( _bstr_t objects ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_AiYoloObjectsToString(objects, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::TerminateProcessTree ( long pid ) {
+    long _result = 0;
+    HRESULT _hr = raw_TerminateProcessTree(pid, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::AiFindPic ( long x1, long y1, long x2, long y2, _bstr_t pic_name, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiFindPic(x1, y1, x2, y2, pic_name, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::AiFindPicEx ( long x1, long y1, long x2, long y2, _bstr_t pic_name, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_AiFindPicEx(x1, y1, x2, y2, pic_name, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::AiFindPicMem ( long x1, long y1, long x2, long y2, _bstr_t pic_info, double sim, long dir, VARIANT * x, VARIANT * y ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiFindPicMem(x1, y1, x2, y2, pic_info, sim, dir, x, y, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t Idmsoft::AiFindPicMemEx ( long x1, long y1, long x2, long y2, _bstr_t pic_info, double sim, long dir ) {
+    BSTR _result = 0;
+    HRESULT _hr = raw_AiFindPicMemEx(x1, y1, x2, y2, pic_info, sim, dir, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline long Idmsoft::AiEnableFindPicWindow ( long enable ) {
+    long _result = 0;
+    HRESULT _hr = raw_AiEnableFindPicWindow(enable, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetSendStringDelay ( long delay ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetSendStringDelay(delay, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline long Idmsoft::SetAsmHwndAsProcessId ( long en ) {
+    long _result = 0;
+    HRESULT _hr = raw_SetAsmHwndAsProcessId(en, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}

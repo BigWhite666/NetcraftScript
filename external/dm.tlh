@@ -1,0 +1,3735 @@
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.39.33523.0 (76e70b12).
+//
+// C:\Users\Administrator\Desktop\Project\netcraft\NKScript\cmake-build-debug-visual-studio\CMakeFiles\NKScript.dir\src\dm\dm.tlh
+//
+// C++ source equivalent of Win32 type library ../external/dm.dll
+// compiler-generated file - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("84288aad-ba02-4ef2-85ec-3fad4d11354d"))
+/* LIBID */ __dm;
+struct /* coclass */ dmsoft;
+struct __declspec(uuid("f3f54bc2-d6d1-4a85-b943-16287ecea64c"))
+/* dual interface */ Idmsoft;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(Idmsoft, __uuidof(Idmsoft));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("26037a0e-7cbd-4fff-9c63-56f2d0770214"))
+dmsoft;
+    // [ default ] interface Idmsoft
+
+struct __declspec(uuid("f3f54bc2-d6d1-4a85-b943-16287ecea64c"))
+Idmsoft : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _bstr_t Ver ( );
+    long SetPath (
+        _bstr_t path );
+    _bstr_t Ocr (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim );
+    long FindStr (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        VARIANT * x,
+        VARIANT * y );
+    long GetResultCount (
+        _bstr_t str );
+    long GetResultPos (
+        _bstr_t str,
+        long index,
+        VARIANT * x,
+        VARIANT * y );
+    long StrStr (
+        _bstr_t s,
+        _bstr_t str );
+    long SendCommand (
+        _bstr_t cmd );
+    long UseDict (
+        long index );
+    _bstr_t GetBasePath ( );
+    long SetDictPwd (
+        _bstr_t pwd );
+    _bstr_t OcrInFile (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t color,
+        double sim );
+    long Capture (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t file );
+    long KeyPress (
+        long vk );
+    long KeyDown (
+        long vk );
+    long KeyUp (
+        long vk );
+    long LeftClick ( );
+    long RightClick ( );
+    long MiddleClick ( );
+    long LeftDoubleClick ( );
+    long LeftDown ( );
+    long LeftUp ( );
+    long RightDown ( );
+    long RightUp ( );
+    long MoveTo (
+        long x,
+        long y );
+    long MoveR (
+        long rx,
+        long ry );
+    _bstr_t GetColor (
+        long x,
+        long y );
+    _bstr_t GetColorBGR (
+        long x,
+        long y );
+    _bstr_t RGB2BGR (
+        _bstr_t rgb_color );
+    _bstr_t BGR2RGB (
+        _bstr_t bgr_color );
+    long UnBindWindow ( );
+    long CmpColor (
+        long x,
+        long y,
+        _bstr_t color,
+        double sim );
+    long ClientToScreen (
+        long hwnd,
+        VARIANT * x,
+        VARIANT * y );
+    long ScreenToClient (
+        long hwnd,
+        VARIANT * x,
+        VARIANT * y );
+    long ShowScrMsg (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t msg,
+        _bstr_t color );
+    long SetMinRowGap (
+        long row_gap );
+    long SetMinColGap (
+        long col_gap );
+    long FindColor (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindColorEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim,
+        long dir );
+    long SetWordLineHeight (
+        long line_height );
+    long SetWordGap (
+        long word_gap );
+    long SetRowGapNoDict (
+        long row_gap );
+    long SetColGapNoDict (
+        long col_gap );
+    long SetWordLineHeightNoDict (
+        long line_height );
+    long SetWordGapNoDict (
+        long word_gap );
+    long GetWordResultCount (
+        _bstr_t str );
+    long GetWordResultPos (
+        _bstr_t str,
+        long index,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t GetWordResultStr (
+        _bstr_t str,
+        long index );
+    _bstr_t GetWords (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim );
+    _bstr_t GetWordsNoDict (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color );
+    long SetShowErrorMsg (
+        long show );
+    long GetClientSize (
+        long hwnd,
+        VARIANT * width,
+        VARIANT * height );
+    long MoveWindow (
+        long hwnd,
+        long x,
+        long y );
+    _bstr_t GetColorHSV (
+        long x,
+        long y );
+    _bstr_t GetAveRGB (
+        long x1,
+        long y1,
+        long x2,
+        long y2 );
+    _bstr_t GetAveHSV (
+        long x1,
+        long y1,
+        long x2,
+        long y2 );
+    long GetForegroundWindow ( );
+    long GetForegroundFocus ( );
+    long GetMousePointWindow ( );
+    long GetPointWindow (
+        long x,
+        long y );
+    _bstr_t EnumWindow (
+        long parent,
+        _bstr_t title,
+        _bstr_t class_name,
+        long filter );
+    long GetWindowState (
+        long hwnd,
+        long flag );
+    long GetWindow (
+        long hwnd,
+        long flag );
+    long GetSpecialWindow (
+        long flag );
+    long SetWindowText (
+        long hwnd,
+        _bstr_t text );
+    long SetWindowSize (
+        long hwnd,
+        long width,
+        long height );
+    long GetWindowRect (
+        long hwnd,
+        VARIANT * x1,
+        VARIANT * y1,
+        VARIANT * x2,
+        VARIANT * y2 );
+    _bstr_t GetWindowTitle (
+        long hwnd );
+    _bstr_t GetWindowClass (
+        long hwnd );
+    long SetWindowState (
+        long hwnd,
+        long flag );
+    long CreateFoobarRect (
+        long hwnd,
+        long x,
+        long y,
+        long w,
+        long h );
+    long CreateFoobarRoundRect (
+        long hwnd,
+        long x,
+        long y,
+        long w,
+        long h,
+        long rw,
+        long rh );
+    long CreateFoobarEllipse (
+        long hwnd,
+        long x,
+        long y,
+        long w,
+        long h );
+    long CreateFoobarCustom (
+        long hwnd,
+        long x,
+        long y,
+        _bstr_t pic,
+        _bstr_t trans_color,
+        double sim );
+    long FoobarFillRect (
+        long hwnd,
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color );
+    long FoobarDrawText (
+        long hwnd,
+        long x,
+        long y,
+        long w,
+        long h,
+        _bstr_t text,
+        _bstr_t color,
+        long align );
+    long FoobarDrawPic (
+        long hwnd,
+        long x,
+        long y,
+        _bstr_t pic,
+        _bstr_t trans_color );
+    long FoobarUpdate (
+        long hwnd );
+    long FoobarLock (
+        long hwnd );
+    long FoobarUnlock (
+        long hwnd );
+    long FoobarSetFont (
+        long hwnd,
+        _bstr_t font_name,
+        long size,
+        long flag );
+    long FoobarTextRect (
+        long hwnd,
+        long x,
+        long y,
+        long w,
+        long h );
+    long FoobarPrintText (
+        long hwnd,
+        _bstr_t text,
+        _bstr_t color );
+    long FoobarClearText (
+        long hwnd );
+    long FoobarTextLineGap (
+        long hwnd,
+        long gap );
+    long Play (
+        _bstr_t file );
+    long FaqCapture (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        long quality,
+        long delay,
+        long time );
+    long FaqRelease (
+        long handle );
+    _bstr_t FaqSend (
+        _bstr_t server,
+        long handle,
+        long request_type,
+        long time_out );
+    long Beep (
+        long fre,
+        long delay );
+    long FoobarClose (
+        long hwnd );
+    long MoveDD (
+        long dx,
+        long dy );
+    long FaqGetSize (
+        long handle );
+    long LoadPic (
+        _bstr_t pic_name );
+    long FreePic (
+        _bstr_t pic_name );
+    long GetScreenData (
+        long x1,
+        long y1,
+        long x2,
+        long y2 );
+    long FreeScreenData (
+        long handle );
+    long WheelUp ( );
+    long WheelDown ( );
+    long SetMouseDelay (
+        _bstr_t type,
+        long delay );
+    long SetKeypadDelay (
+        _bstr_t type,
+        long delay );
+    _bstr_t GetEnv (
+        long index,
+        _bstr_t name );
+    long SetEnv (
+        long index,
+        _bstr_t name,
+        _bstr_t value );
+    long SendString (
+        long hwnd,
+        _bstr_t str );
+    long DelEnv (
+        long index,
+        _bstr_t name );
+    _bstr_t GetPath ( );
+    long SetDict (
+        long index,
+        _bstr_t dict_name );
+    long FindPic (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindPicEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        double sim,
+        long dir );
+    long SetClientSize (
+        long hwnd,
+        long width,
+        long height );
+    __int64 ReadInt (
+        long hwnd,
+        _bstr_t addr,
+        long type );
+    float ReadFloat (
+        long hwnd,
+        _bstr_t addr );
+    double ReadDouble (
+        long hwnd,
+        _bstr_t addr );
+    _bstr_t FindInt (
+        long hwnd,
+        _bstr_t addr_range,
+        __int64 int_value_min,
+        __int64 int_value_max,
+        long type );
+    _bstr_t FindFloat (
+        long hwnd,
+        _bstr_t addr_range,
+        float float_value_min,
+        float float_value_max );
+    _bstr_t FindDouble (
+        long hwnd,
+        _bstr_t addr_range,
+        double double_value_min,
+        double double_value_max );
+    _bstr_t FindString (
+        long hwnd,
+        _bstr_t addr_range,
+        _bstr_t string_value,
+        long type );
+    __int64 GetModuleBaseAddr (
+        long hwnd,
+        _bstr_t module_name );
+    _bstr_t MoveToEx (
+        long x,
+        long y,
+        long w,
+        long h );
+    _bstr_t MatchPicName (
+        _bstr_t pic_name );
+    long AddDict (
+        long index,
+        _bstr_t dict_info );
+    long EnterCri ( );
+    long LeaveCri ( );
+    long WriteInt (
+        long hwnd,
+        _bstr_t addr,
+        long type,
+        __int64 v );
+    long WriteFloat (
+        long hwnd,
+        _bstr_t addr,
+        float v );
+    long WriteDouble (
+        long hwnd,
+        _bstr_t addr,
+        double v );
+    long WriteString (
+        long hwnd,
+        _bstr_t addr,
+        long type,
+        _bstr_t v );
+    long AsmAdd (
+        _bstr_t asm_ins );
+    long AsmClear ( );
+    __int64 AsmCall (
+        long hwnd,
+        long mode );
+    long FindMultiColor (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t first_color,
+        _bstr_t offset_color,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindMultiColorEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t first_color,
+        _bstr_t offset_color,
+        double sim,
+        long dir );
+    _bstr_t Assemble (
+        __int64 base_addr,
+        long is_64bit );
+    _bstr_t DisAssemble (
+        _bstr_t asm_code,
+        __int64 base_addr,
+        long is_64bit );
+    long SetWindowTransparent (
+        long hwnd,
+        long v );
+    _bstr_t ReadData (
+        long hwnd,
+        _bstr_t addr,
+        long len );
+    long WriteData (
+        long hwnd,
+        _bstr_t addr,
+        _bstr_t data );
+    _bstr_t FindData (
+        long hwnd,
+        _bstr_t addr_range,
+        _bstr_t data );
+    long SetPicPwd (
+        _bstr_t pwd );
+    long Log (
+        _bstr_t info );
+    _bstr_t FindStrE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim );
+    _bstr_t FindColorE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim,
+        long dir );
+    _bstr_t FindPicE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        double sim,
+        long dir );
+    _bstr_t FindMultiColorE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t first_color,
+        _bstr_t offset_color,
+        double sim,
+        long dir );
+    long SetExactOcr (
+        long exact_ocr );
+    _bstr_t ReadString (
+        long hwnd,
+        _bstr_t addr,
+        long type,
+        long len );
+    long FoobarTextPrintDir (
+        long hwnd,
+        long dir );
+    _bstr_t OcrEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim );
+    long SetDisplayInput (
+        _bstr_t mode );
+    long GetTime ( );
+    long GetScreenWidth ( );
+    long GetScreenHeight ( );
+    long BindWindowEx (
+        long hwnd,
+        _bstr_t display,
+        _bstr_t mouse,
+        _bstr_t keypad,
+        _bstr_t public_desc,
+        long mode );
+    _bstr_t GetDiskSerial (
+        long index );
+    _bstr_t Md5 (
+        _bstr_t str );
+    _bstr_t GetMac ( );
+    long ActiveInputMethod (
+        long hwnd,
+        _bstr_t id );
+    long CheckInputMethod (
+        long hwnd,
+        _bstr_t id );
+    long FindInputMethod (
+        _bstr_t id );
+    long GetCursorPos (
+        VARIANT * x,
+        VARIANT * y );
+    long BindWindow (
+        long hwnd,
+        _bstr_t display,
+        _bstr_t mouse,
+        _bstr_t keypad,
+        long mode );
+    long FindWindow (
+        _bstr_t class_name,
+        _bstr_t title_name );
+    long GetScreenDepth ( );
+    long SetScreen (
+        long width,
+        long height,
+        long depth );
+    long ExitOs (
+        long type );
+    _bstr_t GetDir (
+        long type );
+    long GetOsType ( );
+    long FindWindowEx (
+        long parent,
+        _bstr_t class_name,
+        _bstr_t title_name );
+    long SetExportDict (
+        long index,
+        _bstr_t dict_name );
+    _bstr_t GetCursorShape ( );
+    long DownCpu (
+        long type,
+        long rate );
+    _bstr_t GetCursorSpot ( );
+    long SendString2 (
+        long hwnd,
+        _bstr_t str );
+    long FaqPost (
+        _bstr_t server,
+        long handle,
+        long request_type,
+        long time_out );
+    _bstr_t FaqFetch ( );
+    _bstr_t FetchWord (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        _bstr_t word );
+    long CaptureJpg (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t file,
+        long quality );
+    long FindStrWithFont (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        _bstr_t font_name,
+        long font_size,
+        long flag,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindStrWithFontE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        _bstr_t font_name,
+        long font_size,
+        long flag );
+    _bstr_t FindStrWithFontEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        _bstr_t font_name,
+        long font_size,
+        long flag );
+    _bstr_t GetDictInfo (
+        _bstr_t str,
+        _bstr_t font_name,
+        long font_size,
+        long flag );
+    long SaveDict (
+        long index,
+        _bstr_t file );
+    long GetWindowProcessId (
+        long hwnd );
+    _bstr_t GetWindowProcessPath (
+        long hwnd );
+    long LockInput (
+        long lock );
+    _bstr_t GetPicSize (
+        _bstr_t pic_name );
+    long GetID ( );
+    long CapturePng (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t file );
+    long CaptureGif (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t file,
+        long delay,
+        long time );
+    long ImageToBmp (
+        _bstr_t pic_name,
+        _bstr_t bmp_name );
+    long FindStrFast (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindStrFastEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim );
+    _bstr_t FindStrFastE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim );
+    long EnableDisplayDebug (
+        long enable_debug );
+    long CapturePre (
+        _bstr_t file );
+    long RegEx (
+        _bstr_t code,
+        _bstr_t Ver,
+        _bstr_t ip );
+    _bstr_t GetMachineCode ( );
+    long SetClipboard (
+        _bstr_t data );
+    _bstr_t GetClipboard ( );
+    long GetNowDict ( );
+    long Is64Bit ( );
+    long GetColorNum (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim );
+    _bstr_t EnumWindowByProcess (
+        _bstr_t process_name,
+        _bstr_t title,
+        _bstr_t class_name,
+        long filter );
+    long GetDictCount (
+        long index );
+    long GetLastError ( );
+    _bstr_t GetNetTime ( );
+    long EnableGetColorByCapture (
+        long en );
+    long CheckUAC ( );
+    long SetUAC (
+        long uac );
+    long DisableFontSmooth ( );
+    long CheckFontSmooth ( );
+    long SetDisplayAcceler (
+        long level );
+    long FindWindowByProcess (
+        _bstr_t process_name,
+        _bstr_t class_name,
+        _bstr_t title_name );
+    long FindWindowByProcessId (
+        long process_id,
+        _bstr_t class_name,
+        _bstr_t title_name );
+    _bstr_t ReadIni (
+        _bstr_t section,
+        _bstr_t key,
+        _bstr_t file );
+    long WriteIni (
+        _bstr_t section,
+        _bstr_t key,
+        _bstr_t v,
+        _bstr_t file );
+    long RunApp (
+        _bstr_t path,
+        long mode );
+    long delay (
+        long mis );
+    long FindWindowSuper (
+        _bstr_t spec1,
+        long flag1,
+        long type1,
+        _bstr_t spec2,
+        long flag2,
+        long type2 );
+    _bstr_t ExcludePos (
+        _bstr_t all_pos,
+        long type,
+        long x1,
+        long y1,
+        long x2,
+        long y2 );
+    _bstr_t FindNearestPos (
+        _bstr_t all_pos,
+        long type,
+        long x,
+        long y );
+    _bstr_t SortPosDistance (
+        _bstr_t all_pos,
+        long type,
+        long x,
+        long y );
+    long FindPicMem (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        _bstr_t delta_color,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindPicMemEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        _bstr_t delta_color,
+        double sim,
+        long dir );
+    _bstr_t FindPicMemE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        _bstr_t delta_color,
+        double sim,
+        long dir );
+    _bstr_t AppendPicAddr (
+        _bstr_t pic_info,
+        long addr,
+        long size );
+    long WriteFile (
+        _bstr_t file,
+        _bstr_t content );
+    long Stop (
+        long id );
+    long SetDictMem (
+        long index,
+        long addr,
+        long size );
+    _bstr_t GetNetTimeSafe ( );
+    long ForceUnBindWindow (
+        long hwnd );
+    _bstr_t ReadIniPwd (
+        _bstr_t section,
+        _bstr_t key,
+        _bstr_t file,
+        _bstr_t pwd );
+    long WriteIniPwd (
+        _bstr_t section,
+        _bstr_t key,
+        _bstr_t v,
+        _bstr_t file,
+        _bstr_t pwd );
+    long DecodeFile (
+        _bstr_t file,
+        _bstr_t pwd );
+    long KeyDownChar (
+        _bstr_t key_str );
+    long KeyUpChar (
+        _bstr_t key_str );
+    long KeyPressChar (
+        _bstr_t key_str );
+    long KeyPressStr (
+        _bstr_t key_str,
+        long delay );
+    long EnableKeypadPatch (
+        long en );
+    long EnableKeypadSync (
+        long en,
+        long time_out );
+    long EnableMouseSync (
+        long en,
+        long time_out );
+    long DmGuard (
+        long en,
+        _bstr_t type );
+    long FaqCaptureFromFile (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t file,
+        long quality );
+    _bstr_t FindIntEx (
+        long hwnd,
+        _bstr_t addr_range,
+        __int64 int_value_min,
+        __int64 int_value_max,
+        long type,
+        long step,
+        long multi_thread,
+        long mode );
+    _bstr_t FindFloatEx (
+        long hwnd,
+        _bstr_t addr_range,
+        float float_value_min,
+        float float_value_max,
+        long step,
+        long multi_thread,
+        long mode );
+    _bstr_t FindDoubleEx (
+        long hwnd,
+        _bstr_t addr_range,
+        double double_value_min,
+        double double_value_max,
+        long step,
+        long multi_thread,
+        long mode );
+    _bstr_t FindStringEx (
+        long hwnd,
+        _bstr_t addr_range,
+        _bstr_t string_value,
+        long type,
+        long step,
+        long multi_thread,
+        long mode );
+    _bstr_t FindDataEx (
+        long hwnd,
+        _bstr_t addr_range,
+        _bstr_t data,
+        long step,
+        long multi_thread,
+        long mode );
+    long EnableRealMouse (
+        long en,
+        long mousedelay,
+        long mousestep );
+    long EnableRealKeypad (
+        long en );
+    long SendStringIme (
+        _bstr_t str );
+    long FoobarDrawLine (
+        long hwnd,
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        long style,
+        long width );
+    _bstr_t FindStrEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim );
+    long IsBind (
+        long hwnd );
+    long SetDisplayDelay (
+        long t );
+    long GetDmCount ( );
+    long DisableScreenSave ( );
+    long DisablePowerSave ( );
+    long SetMemoryHwndAsProcessId (
+        long en );
+    long FindShape (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t offset_color,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindShapeE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t offset_color,
+        double sim,
+        long dir );
+    _bstr_t FindShapeEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t offset_color,
+        double sim,
+        long dir );
+    _bstr_t FindStrS (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindStrExS (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim );
+    _bstr_t FindStrFastS (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindStrFastExS (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t str,
+        _bstr_t color,
+        double sim );
+    _bstr_t FindPicS (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindPicExS (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        double sim,
+        long dir );
+    long ClearDict (
+        long index );
+    _bstr_t GetMachineCodeNoMac ( );
+    long GetClientRect (
+        long hwnd,
+        VARIANT * x1,
+        VARIANT * y1,
+        VARIANT * x2,
+        VARIANT * y2 );
+    long EnableFakeActive (
+        long en );
+    long GetScreenDataBmp (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        VARIANT * data,
+        VARIANT * size );
+    long EncodeFile (
+        _bstr_t file,
+        _bstr_t pwd );
+    _bstr_t GetCursorShapeEx (
+        long type );
+    long FaqCancel ( );
+    _bstr_t IntToData (
+        __int64 int_value,
+        long type );
+    _bstr_t FloatToData (
+        float float_value );
+    _bstr_t DoubleToData (
+        double double_value );
+    _bstr_t StringToData (
+        _bstr_t string_value,
+        long type );
+    long SetMemoryFindResultToFile (
+        _bstr_t file );
+    long EnableBind (
+        long en );
+    long SetSimMode (
+        long mode );
+    long LockMouseRect (
+        long x1,
+        long y1,
+        long x2,
+        long y2 );
+    long SendPaste (
+        long hwnd );
+    long IsDisplayDead (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        long t );
+    long GetKeyState (
+        long vk );
+    long CopyFile (
+        _bstr_t src_file,
+        _bstr_t dst_file,
+        long over );
+    long IsFileExist (
+        _bstr_t file );
+    long DeleteFile (
+        _bstr_t file );
+    long MoveFile (
+        _bstr_t src_file,
+        _bstr_t dst_file );
+    long CreateFolder (
+        _bstr_t folder_name );
+    long DeleteFolder (
+        _bstr_t folder_name );
+    long GetFileLength (
+        _bstr_t file );
+    _bstr_t ReadFile (
+        _bstr_t file );
+    long WaitKey (
+        long key_code,
+        long time_out );
+    long DeleteIni (
+        _bstr_t section,
+        _bstr_t key,
+        _bstr_t file );
+    long DeleteIniPwd (
+        _bstr_t section,
+        _bstr_t key,
+        _bstr_t file,
+        _bstr_t pwd );
+    long EnableSpeedDx (
+        long en );
+    long EnableIme (
+        long en );
+    long Reg (
+        _bstr_t code,
+        _bstr_t Ver );
+    _bstr_t SelectFile ( );
+    _bstr_t SelectDirectory ( );
+    long LockDisplay (
+        long lock );
+    long FoobarSetSave (
+        long hwnd,
+        _bstr_t file,
+        long en,
+        _bstr_t header );
+    _bstr_t EnumWindowSuper (
+        _bstr_t spec1,
+        long flag1,
+        long type1,
+        _bstr_t spec2,
+        long flag2,
+        long type2,
+        long sort );
+    long DownloadFile (
+        _bstr_t url,
+        _bstr_t save_file,
+        long timeout );
+    long EnableKeypadMsg (
+        long en );
+    long EnableMouseMsg (
+        long en );
+    long RegNoMac (
+        _bstr_t code,
+        _bstr_t Ver );
+    long RegExNoMac (
+        _bstr_t code,
+        _bstr_t Ver,
+        _bstr_t ip );
+    long SetEnumWindowDelay (
+        long delay );
+    long FindMulColor (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim );
+    _bstr_t GetDict (
+        long index,
+        long font_index );
+    long GetBindWindow ( );
+    long FoobarStartGif (
+        long hwnd,
+        long x,
+        long y,
+        _bstr_t pic_name,
+        long repeat_limit,
+        long delay );
+    long FoobarStopGif (
+        long hwnd,
+        long x,
+        long y,
+        _bstr_t pic_name );
+    long FreeProcessMemory (
+        long hwnd );
+    _bstr_t ReadFileData (
+        _bstr_t file,
+        long start_pos,
+        long end_pos );
+    __int64 VirtualAllocEx (
+        long hwnd,
+        __int64 addr,
+        long size,
+        long type );
+    long VirtualFreeEx (
+        long hwnd,
+        __int64 addr );
+    _bstr_t GetCommandLine (
+        long hwnd );
+    long TerminateProcess (
+        long pid );
+    _bstr_t GetNetTimeByIp (
+        _bstr_t ip );
+    _bstr_t EnumProcess (
+        _bstr_t name );
+    _bstr_t GetProcessInfo (
+        long pid );
+    __int64 ReadIntAddr (
+        long hwnd,
+        __int64 addr,
+        long type );
+    _bstr_t ReadDataAddr (
+        long hwnd,
+        __int64 addr,
+        long len );
+    double ReadDoubleAddr (
+        long hwnd,
+        __int64 addr );
+    float ReadFloatAddr (
+        long hwnd,
+        __int64 addr );
+    _bstr_t ReadStringAddr (
+        long hwnd,
+        __int64 addr,
+        long type,
+        long len );
+    long WriteDataAddr (
+        long hwnd,
+        __int64 addr,
+        _bstr_t data );
+    long WriteDoubleAddr (
+        long hwnd,
+        __int64 addr,
+        double v );
+    long WriteFloatAddr (
+        long hwnd,
+        __int64 addr,
+        float v );
+    long WriteIntAddr (
+        long hwnd,
+        __int64 addr,
+        long type,
+        __int64 v );
+    long WriteStringAddr (
+        long hwnd,
+        __int64 addr,
+        long type,
+        _bstr_t v );
+    long Delays (
+        long min_s,
+        long max_s );
+    long FindColorBlock (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim,
+        long count,
+        long width,
+        long height,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindColorBlockEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim,
+        long count,
+        long width,
+        long height );
+    long OpenProcess (
+        long pid );
+    _bstr_t EnumIniSection (
+        _bstr_t file );
+    _bstr_t EnumIniSectionPwd (
+        _bstr_t file,
+        _bstr_t pwd );
+    _bstr_t EnumIniKey (
+        _bstr_t section,
+        _bstr_t file );
+    _bstr_t EnumIniKeyPwd (
+        _bstr_t section,
+        _bstr_t file,
+        _bstr_t pwd );
+    long SwitchBindWindow (
+        long hwnd );
+    long InitCri ( );
+    long SendStringIme2 (
+        long hwnd,
+        _bstr_t str,
+        long mode );
+    _bstr_t EnumWindowByProcessId (
+        long pid,
+        _bstr_t title,
+        _bstr_t class_name,
+        long filter );
+    _bstr_t GetDisplayInfo ( );
+    long EnableFontSmooth ( );
+    _bstr_t OcrExOne (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t color,
+        double sim );
+    long SetAero (
+        long en );
+    long FoobarSetTrans (
+        long hwnd,
+        long trans,
+        _bstr_t color,
+        double sim );
+    long EnablePicCache (
+        long en );
+    long FaqIsPosted ( );
+    long LoadPicByte (
+        long addr,
+        long size,
+        _bstr_t name );
+    long MiddleDown ( );
+    long MiddleUp ( );
+    long FaqCaptureString (
+        _bstr_t str );
+    long VirtualProtectEx (
+        long hwnd,
+        __int64 addr,
+        long size,
+        long type,
+        long old_protect );
+    long SetMouseSpeed (
+        long speed );
+    long GetMouseSpeed ( );
+    long EnableMouseAccuracy (
+        long en );
+    long SetExcludeRegion (
+        long type,
+        _bstr_t info );
+    long EnableShareDict (
+        long en );
+    long DisableCloseDisplayAndSleep ( );
+    long Int64ToInt32 (
+        __int64 v );
+    long GetLocale ( );
+    long SetLocale ( );
+    long ReadDataToBin (
+        long hwnd,
+        _bstr_t addr,
+        long len );
+    long WriteDataFromBin (
+        long hwnd,
+        _bstr_t addr,
+        long data,
+        long len );
+    long ReadDataAddrToBin (
+        long hwnd,
+        __int64 addr,
+        long len );
+    long WriteDataAddrFromBin (
+        long hwnd,
+        __int64 addr,
+        long data,
+        long len );
+    long SetParam64ToPointer ( );
+    long GetDPI ( );
+    long SetDisplayRefreshDelay (
+        long t );
+    long IsFolderExist (
+        _bstr_t folder );
+    long GetCpuType ( );
+    long ReleaseRef ( );
+    long SetExitThread (
+        long mode );
+    long GetFps ( );
+    _bstr_t VirtualQueryEx (
+        long hwnd,
+        __int64 addr,
+        long pmbi );
+    __int64 AsmCallEx (
+        long hwnd,
+        long mode,
+        _bstr_t base_addr );
+    __int64 GetRemoteApiAddress (
+        long hwnd,
+        __int64 base_addr,
+        _bstr_t fun_name );
+    _bstr_t ExecuteCmd (
+        _bstr_t cmd,
+        _bstr_t current_dir,
+        long time_out );
+    long SpeedNormalGraphic (
+        long en );
+    long UnLoadDriver ( );
+    long GetOsBuildNumber ( );
+    long HackSpeed (
+        double rate );
+    _bstr_t GetRealPath (
+        _bstr_t path );
+    long ShowTaskBarIcon (
+        long hwnd,
+        long is_show );
+    long AsmSetTimeout (
+        long time_out,
+        long param );
+    _bstr_t DmGuardParams (
+        _bstr_t cmd,
+        _bstr_t sub_cmd,
+        _bstr_t param );
+    long GetModuleSize (
+        long hwnd,
+        _bstr_t module_name );
+    long IsSurrpotVt ( );
+    _bstr_t GetDiskModel (
+        long index );
+    _bstr_t GetDiskReversion (
+        long index );
+    long EnableFindPicMultithread (
+        long en );
+    long GetCpuUsage ( );
+    long GetMemoryUsage ( );
+    _bstr_t Hex32 (
+        long v );
+    _bstr_t Hex64 (
+        __int64 v );
+    long GetWindowThreadId (
+        long hwnd );
+    long DmGuardExtract (
+        _bstr_t type,
+        _bstr_t path );
+    long DmGuardLoadCustom (
+        _bstr_t type,
+        _bstr_t path );
+    long SetShowAsmErrorMsg (
+        long show );
+    _bstr_t GetSystemInfo (
+        _bstr_t type,
+        long method );
+    long SetFindPicMultithreadCount (
+        long count );
+    long FindPicSim (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        long sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindPicSimEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        long sim,
+        long dir );
+    long FindPicSimMem (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        _bstr_t delta_color,
+        long sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t FindPicSimMemEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        _bstr_t delta_color,
+        long sim,
+        long dir );
+    _bstr_t FindPicSimE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        _bstr_t delta_color,
+        long sim,
+        long dir );
+    _bstr_t FindPicSimMemE (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        _bstr_t delta_color,
+        long sim,
+        long dir );
+    long SetInputDm (
+        long input_dm,
+        long rx,
+        long ry );
+    long SetFindPicMultithreadLimit (
+        long limit );
+    long LoadAi (
+        _bstr_t file );
+    long LoadAiMemory (
+        long addr,
+        long size );
+    long AiYoloFreeModel (
+        long index );
+    long AiYoloSetVersion (
+        _bstr_t Ver );
+    long AiYoloSetModel (
+        long index,
+        _bstr_t file,
+        _bstr_t pwd );
+    long AiYoloSetModelMemory (
+        long index,
+        long addr,
+        long size,
+        _bstr_t pwd );
+    long AiYoloUseModel (
+        long index );
+    _bstr_t AiYoloDetectObjects (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        double prob,
+        double iou );
+    long AiYoloDetectObjectsToDataBmp (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        double prob,
+        double iou,
+        VARIANT * data,
+        VARIANT * size,
+        long mode );
+    long AiYoloDetectObjectsToFile (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        double prob,
+        double iou,
+        _bstr_t file,
+        long mode );
+    _bstr_t AiYoloSortsObjects (
+        _bstr_t objects,
+        long height );
+    _bstr_t AiYoloObjectsToString (
+        _bstr_t objects );
+    long TerminateProcessTree (
+        long pid );
+    long AiFindPic (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t AiFindPicEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_name,
+        double sim,
+        long dir );
+    long AiFindPicMem (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        double sim,
+        long dir,
+        VARIANT * x,
+        VARIANT * y );
+    _bstr_t AiFindPicMemEx (
+        long x1,
+        long y1,
+        long x2,
+        long y2,
+        _bstr_t pic_info,
+        double sim,
+        long dir );
+    long AiEnableFindPicWindow (
+        long enable );
+    long SetSendStringDelay (
+        long delay );
+    long SetAsmHwndAsProcessId (
+        long en );
+
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall raw_Ver (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetPath (
+        /*[in]*/ BSTR path,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Ocr (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStr (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetResultCount (
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetResultPos (
+        /*[in]*/ BSTR str,
+        /*[in]*/ long index,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_StrStr (
+        /*[in]*/ BSTR s,
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SendCommand (
+        /*[in]*/ BSTR cmd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_UseDict (
+        /*[in]*/ long index,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetBasePath (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDictPwd (
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_OcrInFile (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_Capture (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyPress (
+        /*[in]*/ long vk,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyDown (
+        /*[in]*/ long vk,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyUp (
+        /*[in]*/ long vk,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LeftClick (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RightClick (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MiddleClick (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LeftDoubleClick (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LeftDown (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LeftUp (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RightDown (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RightUp (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MoveTo (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MoveR (
+        /*[in]*/ long rx,
+        /*[in]*/ long ry,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetColor (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetColorBGR (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_RGB2BGR (
+        /*[in]*/ BSTR rgb_color,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_BGR2RGB (
+        /*[in]*/ BSTR bgr_color,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_UnBindWindow (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CmpColor (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ClientToScreen (
+        /*[in]*/ long hwnd,
+        /*[in,out]*/ VARIANT * x,
+        /*[in,out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ScreenToClient (
+        /*[in]*/ long hwnd,
+        /*[in,out]*/ VARIANT * x,
+        /*[in,out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ShowScrMsg (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR msg,
+        /*[in]*/ BSTR color,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetMinRowGap (
+        /*[in]*/ long row_gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetMinColGap (
+        /*[in]*/ long col_gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindColor (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindColorEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWordLineHeight (
+        /*[in]*/ long line_height,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWordGap (
+        /*[in]*/ long word_gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetRowGapNoDict (
+        /*[in]*/ long row_gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetColGapNoDict (
+        /*[in]*/ long col_gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWordLineHeightNoDict (
+        /*[in]*/ long line_height,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWordGapNoDict (
+        /*[in]*/ long word_gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWordResultCount (
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWordResultPos (
+        /*[in]*/ BSTR str,
+        /*[in]*/ long index,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWordResultStr (
+        /*[in]*/ BSTR str,
+        /*[in]*/ long index,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWords (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWordsNoDict (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetShowErrorMsg (
+        /*[in]*/ long show,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetClientSize (
+        /*[in]*/ long hwnd,
+        /*[out]*/ VARIANT * width,
+        /*[out]*/ VARIANT * height,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MoveWindow (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetColorHSV (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetAveRGB (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetAveHSV (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetForegroundWindow (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetForegroundFocus (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetMousePointWindow (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetPointWindow (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumWindow (
+        /*[in]*/ long parent,
+        /*[in]*/ BSTR title,
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ long filter,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowState (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindow (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetSpecialWindow (
+        /*[in]*/ long flag,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWindowText (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR text,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWindowSize (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long width,
+        /*[in]*/ long height,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowRect (
+        /*[in]*/ long hwnd,
+        /*[out]*/ VARIANT * x1,
+        /*[out]*/ VARIANT * y1,
+        /*[out]*/ VARIANT * x2,
+        /*[out]*/ VARIANT * y2,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowTitle (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowClass (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWindowState (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CreateFoobarRect (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ long w,
+        /*[in]*/ long h,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CreateFoobarRoundRect (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ long w,
+        /*[in]*/ long h,
+        /*[in]*/ long rw,
+        /*[in]*/ long rh,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CreateFoobarEllipse (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ long w,
+        /*[in]*/ long h,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CreateFoobarCustom (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ BSTR pic,
+        /*[in]*/ BSTR trans_color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarFillRect (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarDrawText (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ long w,
+        /*[in]*/ long h,
+        /*[in]*/ BSTR text,
+        /*[in]*/ BSTR color,
+        /*[in]*/ long align,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarDrawPic (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ BSTR pic,
+        /*[in]*/ BSTR trans_color,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarUpdate (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarLock (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarUnlock (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarSetFont (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR font_name,
+        /*[in]*/ long size,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarTextRect (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ long w,
+        /*[in]*/ long h,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarPrintText (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR text,
+        /*[in]*/ BSTR color,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarClearText (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarTextLineGap (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long gap,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Play (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqCapture (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ long quality,
+        /*[in]*/ long delay,
+        /*[in]*/ long time,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqRelease (
+        /*[in]*/ long handle,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqSend (
+        /*[in]*/ BSTR server,
+        /*[in]*/ long handle,
+        /*[in]*/ long request_type,
+        /*[in]*/ long time_out,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_Beep (
+        /*[in]*/ long fre,
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarClose (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MoveDD (
+        /*[in]*/ long dx,
+        /*[in]*/ long dy,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqGetSize (
+        /*[in]*/ long handle,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LoadPic (
+        /*[in]*/ BSTR pic_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FreePic (
+        /*[in]*/ BSTR pic_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetScreenData (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FreeScreenData (
+        /*[in]*/ long handle,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WheelUp (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WheelDown (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetMouseDelay (
+        /*[in]*/ BSTR type,
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetKeypadDelay (
+        /*[in]*/ BSTR type,
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetEnv (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR name,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetEnv (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR name,
+        /*[in]*/ BSTR value,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SendString (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DelEnv (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetPath (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDict (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR dict_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPic (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetClientSize (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long width,
+        /*[in]*/ long height,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadInt (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long type,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadFloat (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[out,retval]*/ float * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadDouble (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[out,retval]*/ double * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindInt (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ __int64 int_value_min,
+        /*[in]*/ __int64 int_value_max,
+        /*[in]*/ long type,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindFloat (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ float float_value_min,
+        /*[in]*/ float float_value_max,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindDouble (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ double double_value_min,
+        /*[in]*/ double double_value_max,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindString (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ BSTR string_value,
+        /*[in]*/ long type,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetModuleBaseAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR module_name,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_MoveToEx (
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ long w,
+        /*[in]*/ long h,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_MatchPicName (
+        /*[in]*/ BSTR pic_name,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AddDict (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR dict_info,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnterCri (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LeaveCri (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteInt (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long type,
+        /*[in]*/ __int64 v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteFloat (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ float v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteDouble (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ double v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteString (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long type,
+        /*[in]*/ BSTR v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AsmAdd (
+        /*[in]*/ BSTR asm_ins,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AsmClear (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AsmCall (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindMultiColor (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR first_color,
+        /*[in]*/ BSTR offset_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindMultiColorEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR first_color,
+        /*[in]*/ BSTR offset_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_Assemble (
+        /*[in]*/ __int64 base_addr,
+        /*[in]*/ long is_64bit,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_DisAssemble (
+        /*[in]*/ BSTR asm_code,
+        /*[in]*/ __int64 base_addr,
+        /*[in]*/ long is_64bit,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetWindowTransparent (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadData (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long len,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteData (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ BSTR data,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindData (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ BSTR data,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetPicPwd (
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Log (
+        /*[in]*/ BSTR info,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindColorE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindMultiColorE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR first_color,
+        /*[in]*/ BSTR offset_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetExactOcr (
+        /*[in]*/ long exact_ocr,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadString (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long type,
+        /*[in]*/ long len,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarTextPrintDir (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_OcrEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDisplayInput (
+        /*[in]*/ BSTR mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetTime (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetScreenWidth (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetScreenHeight (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_BindWindowEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR display,
+        /*[in]*/ BSTR mouse,
+        /*[in]*/ BSTR keypad,
+        /*[in]*/ BSTR public_desc,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDiskSerial (
+        /*[in]*/ long index,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_Md5 (
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetMac (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_ActiveInputMethod (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR id,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CheckInputMethod (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR id,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindInputMethod (
+        /*[in]*/ BSTR id,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCursorPos (
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_BindWindow (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR display,
+        /*[in]*/ BSTR mouse,
+        /*[in]*/ BSTR keypad,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindWindow (
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ BSTR title_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetScreenDepth (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetScreen (
+        /*[in]*/ long width,
+        /*[in]*/ long height,
+        /*[in]*/ long depth,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ExitOs (
+        /*[in]*/ long type,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDir (
+        /*[in]*/ long type,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetOsType (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindWindowEx (
+        /*[in]*/ long parent,
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ BSTR title_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetExportDict (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR dict_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCursorShape (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_DownCpu (
+        /*[in]*/ long type,
+        /*[in]*/ long rate,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCursorSpot (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SendString2 (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqPost (
+        /*[in]*/ BSTR server,
+        /*[in]*/ long handle,
+        /*[in]*/ long request_type,
+        /*[in]*/ long time_out,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqFetch (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FetchWord (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ BSTR word,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_CaptureJpg (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR file,
+        /*[in]*/ long quality,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrWithFont (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ BSTR font_name,
+        /*[in]*/ long font_size,
+        /*[in]*/ long flag,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrWithFontE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ BSTR font_name,
+        /*[in]*/ long font_size,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrWithFontEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ BSTR font_name,
+        /*[in]*/ long font_size,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDictInfo (
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR font_name,
+        /*[in]*/ long font_size,
+        /*[in]*/ long flag,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SaveDict (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowProcessId (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowProcessPath (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_LockInput (
+        /*[in]*/ long lock,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetPicSize (
+        /*[in]*/ BSTR pic_name,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetID (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CapturePng (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CaptureGif (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR file,
+        /*[in]*/ long delay,
+        /*[in]*/ long time,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ImageToBmp (
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR bmp_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrFast (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrFastEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrFastE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableDisplayDebug (
+        /*[in]*/ long enable_debug,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CapturePre (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RegEx (
+        /*[in]*/ BSTR code,
+        /*[in]*/ BSTR Ver,
+        /*[in]*/ BSTR ip,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetMachineCode (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetClipboard (
+        /*[in]*/ BSTR data,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetClipboard (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetNowDict (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Is64Bit (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetColorNum (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumWindowByProcess (
+        /*[in]*/ BSTR process_name,
+        /*[in]*/ BSTR title,
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ long filter,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDictCount (
+        /*[in]*/ long index,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetLastError (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetNetTime (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableGetColorByCapture (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CheckUAC (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetUAC (
+        /*[in]*/ long uac,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DisableFontSmooth (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CheckFontSmooth (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDisplayAcceler (
+        /*[in]*/ long level,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindWindowByProcess (
+        /*[in]*/ BSTR process_name,
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ BSTR title_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindWindowByProcessId (
+        /*[in]*/ long process_id,
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ BSTR title_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadIni (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR key,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteIni (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR key,
+        /*[in]*/ BSTR v,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RunApp (
+        /*[in]*/ BSTR path,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_delay (
+        /*[in]*/ long mis,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindWindowSuper (
+        /*[in]*/ BSTR spec1,
+        /*[in]*/ long flag1,
+        /*[in]*/ long type1,
+        /*[in]*/ BSTR spec2,
+        /*[in]*/ long flag2,
+        /*[in]*/ long type2,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ExcludePos (
+        /*[in]*/ BSTR all_pos,
+        /*[in]*/ long type,
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindNearestPos (
+        /*[in]*/ BSTR all_pos,
+        /*[in]*/ long type,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SortPosDistance (
+        /*[in]*/ BSTR all_pos,
+        /*[in]*/ long type,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicMem (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicMemEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicMemE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AppendPicAddr (
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ long addr,
+        /*[in]*/ long size,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteFile (
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR content,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Stop (
+        /*[in]*/ long id,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDictMem (
+        /*[in]*/ long index,
+        /*[in]*/ long addr,
+        /*[in]*/ long size,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetNetTimeSafe (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_ForceUnBindWindow (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadIniPwd (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR key,
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteIniPwd (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR key,
+        /*[in]*/ BSTR v,
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DecodeFile (
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyDownChar (
+        /*[in]*/ BSTR key_str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyUpChar (
+        /*[in]*/ BSTR key_str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyPressChar (
+        /*[in]*/ BSTR key_str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_KeyPressStr (
+        /*[in]*/ BSTR key_str,
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableKeypadPatch (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableKeypadSync (
+        /*[in]*/ long en,
+        /*[in]*/ long time_out,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableMouseSync (
+        /*[in]*/ long en,
+        /*[in]*/ long time_out,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DmGuard (
+        /*[in]*/ long en,
+        /*[in]*/ BSTR type,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqCaptureFromFile (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR file,
+        /*[in]*/ long quality,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindIntEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ __int64 int_value_min,
+        /*[in]*/ __int64 int_value_max,
+        /*[in]*/ long type,
+        /*[in]*/ long step,
+        /*[in]*/ long multi_thread,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindFloatEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ float float_value_min,
+        /*[in]*/ float float_value_max,
+        /*[in]*/ long step,
+        /*[in]*/ long multi_thread,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindDoubleEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ double double_value_min,
+        /*[in]*/ double double_value_max,
+        /*[in]*/ long step,
+        /*[in]*/ long multi_thread,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStringEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ BSTR string_value,
+        /*[in]*/ long type,
+        /*[in]*/ long step,
+        /*[in]*/ long multi_thread,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindDataEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr_range,
+        /*[in]*/ BSTR data,
+        /*[in]*/ long step,
+        /*[in]*/ long multi_thread,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableRealMouse (
+        /*[in]*/ long en,
+        /*[in]*/ long mousedelay,
+        /*[in]*/ long mousestep,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableRealKeypad (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SendStringIme (
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarDrawLine (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ long style,
+        /*[in]*/ long width,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_IsBind (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDisplayDelay (
+        /*[in]*/ long t,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDmCount (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DisableScreenSave (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DisablePowerSave (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetMemoryHwndAsProcessId (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindShape (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR offset_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindShapeE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR offset_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindShapeEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR offset_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrS (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrExS (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrFastS (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindStrFastExS (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR str,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicS (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicExS (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_ClearDict (
+        /*[in]*/ long index,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetMachineCodeNoMac (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetClientRect (
+        /*[in]*/ long hwnd,
+        /*[out]*/ VARIANT * x1,
+        /*[out]*/ VARIANT * y1,
+        /*[out]*/ VARIANT * x2,
+        /*[out]*/ VARIANT * y2,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableFakeActive (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetScreenDataBmp (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[out]*/ VARIANT * data,
+        /*[out]*/ VARIANT * size,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EncodeFile (
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCursorShapeEx (
+        /*[in]*/ long type,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqCancel (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_IntToData (
+        /*[in]*/ __int64 int_value,
+        /*[in]*/ long type,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FloatToData (
+        /*[in]*/ float float_value,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_DoubleToData (
+        /*[in]*/ double double_value,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_StringToData (
+        /*[in]*/ BSTR string_value,
+        /*[in]*/ long type,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetMemoryFindResultToFile (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableBind (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetSimMode (
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LockMouseRect (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SendPaste (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_IsDisplayDead (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ long t,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetKeyState (
+        /*[in]*/ long vk,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CopyFile (
+        /*[in]*/ BSTR src_file,
+        /*[in]*/ BSTR dst_file,
+        /*[in]*/ long over,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_IsFileExist (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DeleteFile (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MoveFile (
+        /*[in]*/ BSTR src_file,
+        /*[in]*/ BSTR dst_file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_CreateFolder (
+        /*[in]*/ BSTR folder_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DeleteFolder (
+        /*[in]*/ BSTR folder_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetFileLength (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadFile (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_WaitKey (
+        /*[in]*/ long key_code,
+        /*[in]*/ long time_out,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DeleteIni (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR key,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DeleteIniPwd (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR key,
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableSpeedDx (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableIme (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Reg (
+        /*[in]*/ BSTR code,
+        /*[in]*/ BSTR Ver,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SelectFile (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SelectDirectory (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_LockDisplay (
+        /*[in]*/ long lock,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarSetSave (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR file,
+        /*[in]*/ long en,
+        /*[in]*/ BSTR header,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumWindowSuper (
+        /*[in]*/ BSTR spec1,
+        /*[in]*/ long flag1,
+        /*[in]*/ long type1,
+        /*[in]*/ BSTR spec2,
+        /*[in]*/ long flag2,
+        /*[in]*/ long type2,
+        /*[in]*/ long sort,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_DownloadFile (
+        /*[in]*/ BSTR url,
+        /*[in]*/ BSTR save_file,
+        /*[in]*/ long timeout,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableKeypadMsg (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableMouseMsg (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RegNoMac (
+        /*[in]*/ BSTR code,
+        /*[in]*/ BSTR Ver,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_RegExNoMac (
+        /*[in]*/ BSTR code,
+        /*[in]*/ BSTR Ver,
+        /*[in]*/ BSTR ip,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetEnumWindowDelay (
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindMulColor (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDict (
+        /*[in]*/ long index,
+        /*[in]*/ long font_index,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetBindWindow (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarStartGif (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ long repeat_limit,
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarStopGif (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long x,
+        /*[in]*/ long y,
+        /*[in]*/ BSTR pic_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FreeProcessMemory (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadFileData (
+        /*[in]*/ BSTR file,
+        /*[in]*/ long start_pos,
+        /*[in]*/ long end_pos,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_VirtualAllocEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long size,
+        /*[in]*/ long type,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_VirtualFreeEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCommandLine (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_TerminateProcess (
+        /*[in]*/ long pid,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetNetTimeByIp (
+        /*[in]*/ BSTR ip,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumProcess (
+        /*[in]*/ BSTR name,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetProcessInfo (
+        /*[in]*/ long pid,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadIntAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long type,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadDataAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long len,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadDoubleAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[out,retval]*/ double * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadFloatAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[out,retval]*/ float * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadStringAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long type,
+        /*[in]*/ long len,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteDataAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ BSTR data,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteDoubleAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ double v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteFloatAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ float v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteIntAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long type,
+        /*[in]*/ __int64 v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteStringAddr (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long type,
+        /*[in]*/ BSTR v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Delays (
+        /*[in]*/ long min_s,
+        /*[in]*/ long max_s,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindColorBlock (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ long count,
+        /*[in]*/ long width,
+        /*[in]*/ long height,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindColorBlockEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[in]*/ long count,
+        /*[in]*/ long width,
+        /*[in]*/ long height,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_OpenProcess (
+        /*[in]*/ long pid,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumIniSection (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumIniSectionPwd (
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumIniKey (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumIniKeyPwd (
+        /*[in]*/ BSTR section,
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SwitchBindWindow (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_InitCri (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SendStringIme2 (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR str,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnumWindowByProcessId (
+        /*[in]*/ long pid,
+        /*[in]*/ BSTR title,
+        /*[in]*/ BSTR class_name,
+        /*[in]*/ long filter,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDisplayInfo (
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableFontSmooth (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_OcrExOne (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetAero (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FoobarSetTrans (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long trans,
+        /*[in]*/ BSTR color,
+        /*[in]*/ double sim,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnablePicCache (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqIsPosted (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LoadPicByte (
+        /*[in]*/ long addr,
+        /*[in]*/ long size,
+        /*[in]*/ BSTR name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MiddleDown (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_MiddleUp (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FaqCaptureString (
+        /*[in]*/ BSTR str,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_VirtualProtectEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long size,
+        /*[in]*/ long type,
+        /*[in]*/ long old_protect,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetMouseSpeed (
+        /*[in]*/ long speed,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetMouseSpeed (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableMouseAccuracy (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetExcludeRegion (
+        /*[in]*/ long type,
+        /*[in]*/ BSTR info,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableShareDict (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DisableCloseDisplayAndSleep (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Int64ToInt32 (
+        /*[in]*/ __int64 v,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetLocale (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetLocale (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadDataToBin (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long len,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteDataFromBin (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR addr,
+        /*[in]*/ long data,
+        /*[in]*/ long len,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReadDataAddrToBin (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long len,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_WriteDataAddrFromBin (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long data,
+        /*[in]*/ long len,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetParam64ToPointer (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDPI (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetDisplayRefreshDelay (
+        /*[in]*/ long t,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_IsFolderExist (
+        /*[in]*/ BSTR folder,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCpuType (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_ReleaseRef (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetExitThread (
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetFps (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_VirtualQueryEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 addr,
+        /*[in]*/ long pmbi,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AsmCallEx (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long mode,
+        /*[in]*/ BSTR base_addr,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetRemoteApiAddress (
+        /*[in]*/ long hwnd,
+        /*[in]*/ __int64 base_addr,
+        /*[in]*/ BSTR fun_name,
+        /*[out,retval]*/ __int64 * ret ) = 0;
+      virtual HRESULT __stdcall raw_ExecuteCmd (
+        /*[in]*/ BSTR cmd,
+        /*[in]*/ BSTR current_dir,
+        /*[in]*/ long time_out,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SpeedNormalGraphic (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_UnLoadDriver (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetOsBuildNumber (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_HackSpeed (
+        /*[in]*/ double rate,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetRealPath (
+        /*[in]*/ BSTR path,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_ShowTaskBarIcon (
+        /*[in]*/ long hwnd,
+        /*[in]*/ long is_show,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AsmSetTimeout (
+        /*[in]*/ long time_out,
+        /*[in]*/ long param,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DmGuardParams (
+        /*[in]*/ BSTR cmd,
+        /*[in]*/ BSTR sub_cmd,
+        /*[in]*/ BSTR param,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetModuleSize (
+        /*[in]*/ long hwnd,
+        /*[in]*/ BSTR module_name,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_IsSurrpotVt (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDiskModel (
+        /*[in]*/ long index,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetDiskReversion (
+        /*[in]*/ long index,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_EnableFindPicMultithread (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetCpuUsage (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetMemoryUsage (
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_Hex32 (
+        /*[in]*/ long v,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_Hex64 (
+        /*[in]*/ __int64 v,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetWindowThreadId (
+        /*[in]*/ long hwnd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DmGuardExtract (
+        /*[in]*/ BSTR type,
+        /*[in]*/ BSTR path,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_DmGuardLoadCustom (
+        /*[in]*/ BSTR type,
+        /*[in]*/ BSTR path,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetShowAsmErrorMsg (
+        /*[in]*/ long show,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_GetSystemInfo (
+        /*[in]*/ BSTR type,
+        /*[in]*/ long method,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetFindPicMultithreadCount (
+        /*[in]*/ long count,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicSim (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ long sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicSimEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ long sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicSimMem (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ long sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicSimMemEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ long sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicSimE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ long sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_FindPicSimMemE (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ BSTR delta_color,
+        /*[in]*/ long sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetInputDm (
+        /*[in]*/ long input_dm,
+        /*[in]*/ long rx,
+        /*[in]*/ long ry,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetFindPicMultithreadLimit (
+        /*[in]*/ long limit,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LoadAi (
+        /*[in]*/ BSTR file,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_LoadAiMemory (
+        /*[in]*/ long addr,
+        /*[in]*/ long size,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloFreeModel (
+        /*[in]*/ long index,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloSetVersion (
+        /*[in]*/ BSTR Ver,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloSetModel (
+        /*[in]*/ long index,
+        /*[in]*/ BSTR file,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloSetModelMemory (
+        /*[in]*/ long index,
+        /*[in]*/ long addr,
+        /*[in]*/ long size,
+        /*[in]*/ BSTR pwd,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloUseModel (
+        /*[in]*/ long index,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloDetectObjects (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ double prob,
+        /*[in]*/ double iou,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloDetectObjectsToDataBmp (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ double prob,
+        /*[in]*/ double iou,
+        /*[out]*/ VARIANT * data,
+        /*[out]*/ VARIANT * size,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloDetectObjectsToFile (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ double prob,
+        /*[in]*/ double iou,
+        /*[in]*/ BSTR file,
+        /*[in]*/ long mode,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloSortsObjects (
+        /*[in]*/ BSTR objects,
+        /*[in]*/ long height,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiYoloObjectsToString (
+        /*[in]*/ BSTR objects,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_TerminateProcessTree (
+        /*[in]*/ long pid,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiFindPic (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiFindPicEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_name,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiFindPicMem (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out]*/ VARIANT * x,
+        /*[out]*/ VARIANT * y,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiFindPicMemEx (
+        /*[in]*/ long x1,
+        /*[in]*/ long y1,
+        /*[in]*/ long x2,
+        /*[in]*/ long y2,
+        /*[in]*/ BSTR pic_info,
+        /*[in]*/ double sim,
+        /*[in]*/ long dir,
+        /*[out,retval]*/ BSTR * ret ) = 0;
+      virtual HRESULT __stdcall raw_AiEnableFindPicWindow (
+        /*[in]*/ long enable,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetSendStringDelay (
+        /*[in]*/ long delay,
+        /*[out,retval]*/ long * ret ) = 0;
+      virtual HRESULT __stdcall raw_SetAsmHwndAsProcessId (
+        /*[in]*/ long en,
+        /*[out,retval]*/ long * ret ) = 0;
+};
+
+//
+// Wrapper method implementations
+//
+
+// #include "C:\Users\Administrator\Desktop\Project\netcraft\NKScript\cmake-build-debug-visual-studio\CMakeFiles\NKScript.dir\src\dm\dm.tli"
+#include ".\dm.tli"
+#pragma pack(pop)

@@ -1,0 +1,1 @@
+C:\Users\Administrator\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe --build C:\Users\Administrator\Desktop\Project\netcraft\NKScript\cmake-build-debug-visual-studio --target NKScript -j 14
