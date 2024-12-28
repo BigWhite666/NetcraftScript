@@ -22,7 +22,9 @@
 #include "MemoryRead/GameOffsets.h"
 #include "Script/ChatScript.h"
 #include "Script/MapScript.h"
+#include "Script/DebugScript.h"
 #include "main.h"
+#include "Util/MessageHandler.h"
 static std::vector<HWND> g_windows;
 static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     CHAR className[256];
@@ -36,12 +38,16 @@ static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     m_mapScript = new MapScript(this);
+    m_debugScript = new DebugScript(this);
     setupUI();
     createPanels();
     refreshGameWindowsList();  // 初始化时获取一次窗口列表
 }
 
 MainWindow::~MainWindow() {
+    // 卸载消息处理器
+    MessageHandler::uninstall();
+    
     if (m_mapScript) {
         m_mapScript->stop();
     }
@@ -185,11 +191,10 @@ void MainWindow::setupUI() {
 
     connect(refreshButton, &QPushButton::clicked, this, &MainWindow::refreshGameWindowsList);
 
-    // 连接调试按钮的信号槽
+    // 修改调试按钮的连接
     connect(debugButton, &QPushButton::clicked, this, [this]() {
-        qDebug() << "调试测试按钮被点击";
-        
-        // 遍历列表获取选中的窗口
+        QList<HWND> selectedWindows;
+        // 获取选中的窗口
         for (int i = 1; i < listWidget->count(); ++i) {
             QListWidgetItem* item = listWidget->item(i);
             if (item && item->checkState() == Qt::Checked) {
@@ -199,95 +204,33 @@ void MainWindow::setupUI() {
                     if (layout) {
                         QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
                         if (handleLabel) {
-                            QString handleText = handleLabel->text();
                             bool ok;
-                            HWND gameHwnd = (HWND)handleText.toLongLong(&ok, 10);
+                            HWND hwnd = (HWND)handleLabel->text().toLongLong(&ok, 10);
                             if (ok) {
-                                qDebug() << "\n游戏窗口句柄:" << (quintptr)gameHwnd;
-                                
-                                // 遍历所有窗口，找出父窗口是游戏窗口且类名是#32770的窗口
-                                EnumWindows([](HWND hwnd, LPARAM lParam) -> BOOL {
-                                    HWND parentHwnd = GetParent(hwnd);
-                                    HWND gameHwnd = (HWND)lParam;
-                                    
-                                    if (parentHwnd == gameHwnd) {
-                                        char className[256];
-                                        GetClassNameA(hwnd, className, sizeof(className));
-                                        
-                                        if (strcmp(className, "#32770") == 0) {
-                                            char title[256];
-                                            GetWindowTextA(hwnd, title, sizeof(title));
-                                            
-                                            qDebug() << "找到登录对话框:";
-                                            qDebug() << "  窗口句柄:" << (quintptr)hwnd;
-                                            qDebug() << "  父窗口句柄:" << (quintptr)parentHwnd;
-                                            qDebug() << "  顶级窗口句柄:" << (quintptr)GetAncestor(hwnd, GA_ROOT);
-                                            qDebug() << "  窗口类名:" << className;
-                                            qDebug() << "  窗口标题:" << title;
-                                            qDebug() << "";
-                                            
-                                            // 遍历这个对话框的子窗口
-                                            EnumChildWindows(hwnd, [](HWND childHwnd, LPARAM lParam) -> BOOL {
-                                                char childClassName[256];
-                                                GetClassNameA(childHwnd, childClassName, sizeof(childClassName));
-                                                
-                                                if (strcmp(childClassName, "Internet Explorer_Server") == 0) {
-                                                    qDebug() << "找到登录界面，准备截图:";
-                                                    qDebug() << "  窗口句柄:" << (quintptr)childHwnd;
-                                                    
-                                                    // 绑定窗口
-                                                    if (DM) {
-                                                        long bindResult = DM->BindWindowEx(
-                                                            reinterpret_cast<long>(childHwnd),
-                                                            "gdi",  // 使用gdi模式截图
-                                                            "dx",
-                                                            "dx.keypad.input.lock.api",
-                                                            "",
-                                                            0
-                                                        );
-                                                        
-                                                        if (bindResult == 1) {
-                                                            qDebug() << "窗口绑定成功";
-                                                            
-                                                            // 获取窗口大小
-                                                            VARIANT width, height;
-                                                            DM->GetClientSize((long)childHwnd, &width, &height);
-                                                            
-                                                            // 生成文件名
-                                                            QString filename = QString("login_capture_%1.bmp").arg((quintptr)childHwnd);
-                                                            
-                                                            // 截图
-                                                            long ret = DM->Capture(0, 0, width.intVal, height.intVal, 
-                                                                filename.toStdWString().c_str());
-                                                            
-                                                            if (ret == 1) {
-                                                                qDebug() << "截图成功：" << filename;
-                                                            } else {
-                                                                qDebug() << "截图失败：" << filename;
-                                                            }
-                                                            
-                                                            // 解绑窗口
-                                                            DM->UnBindWindow();
-                                                        } else {
-                                                            qDebug() << "窗口绑定失败";
-                                                        }
-                                                    }
-                                                }
-                                                
-                                                return TRUE;  // 继续枚举
-                                            }, 0);
-                                        }
-                                    }
-                                    
-                                    return TRUE;  // 继续枚举
-                                }, (LPARAM)gameHwnd);
+                                selectedWindows.append(hwnd);
                             }
                         }
                     }
                 }
             }
         }
+        
+        if (selectedWindows.isEmpty()) {
+            QMessageBox::warning(this, "警告", "请选择至少一个窗口！");
+            return;
+        }
+        
+        m_debugScript->start(selectedWindows);
     });
+    
+    // 添加调试输出窗口
+    QTextEdit* debugOutput = new QTextEdit(this);
+    debugOutput->setReadOnly(true);
+    debugOutput->setMaximumHeight(150);
+    mainLayout->addWidget(debugOutput);
+    
+    // 安装消息处理器
+    MessageHandler::install(debugOutput);
 }
 
 void MainWindow::createPanels() {

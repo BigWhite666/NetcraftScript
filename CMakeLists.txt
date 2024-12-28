@@ -29,10 +29,12 @@ set(HEADER_FILES
     ${PROJECT_INCLUDE_DIR}/UI/Panels/HomePanel.h
     ${PROJECT_INCLUDE_DIR}/Script/ChatScript.h
     ${PROJECT_INCLUDE_DIR}/Script/MapScript.h
+    ${PROJECT_INCLUDE_DIR}/Script/DebugScript.h
     ${PROJECT_INCLUDE_DIR}/Util/WindowHelper.h
     ${PROJECT_INCLUDE_DIR}/UI/Panels/LoginPanel.h
     ${PROJECT_INCLUDE_DIR}/Script/LoginScript.h
     ${PROJECT_INCLUDE_DIR}/Util/InputHelper.h
+    ${PROJECT_INCLUDE_DIR}/Util/MessageHandler.h
 )
 
 # 明确列出源文件
@@ -45,10 +47,12 @@ set(SOURCE_FILES
     ${PROJECT_SRC_DIR}/MemoryRead/Memory.cpp
     ${PROJECT_SRC_DIR}/Script/ChatScript.cpp
     ${PROJECT_SRC_DIR}/Script/MapScript.cpp
+    ${PROJECT_SRC_DIR}/Script/DebugScript.cpp
     ${PROJECT_SRC_DIR}/Util/WindowHelper.cpp
     ${PROJECT_SRC_DIR}/UI/Panels/LoginPanel.cpp
     ${PROJECT_SRC_DIR}/Script/LoginScript.cpp
     ${PROJECT_SRC_DIR}/Util/InputHelper.cpp
+    ${PROJECT_SRC_DIR}/Util/MessageHandler.cpp
     ${HEADER_FILES}
 )
 

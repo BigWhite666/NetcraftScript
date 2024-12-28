@@ -15,6 +15,7 @@
 #include <vector>
 #include "Script/ChatScript.h"
 #include "Script/MapScript.h"
+#include "Script/DebugScript.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -67,6 +68,9 @@ private:
     void sendChatMessage();
 
     MapScript* m_mapScript;
+
+    // 添加 DebugScript 成员
+    DebugScript* m_debugScript;
 
 private slots:
     void initHomePanel();

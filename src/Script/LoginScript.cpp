@@ -152,22 +152,31 @@ bool LoginWorker::processAccount(const LoginAccount& account, int index) {
         Sleep(500);
 
         // 输入账号密码
-        InputHelper::moveToAndClick(277, 209);  // 账号输入框
+        InputHelper::moveToAndClick(377, 209);  // 账号输入框
         Sleep(500);
-        InputHelper::pressCtrlA();
-        Sleep(500);
+        // 清空输入框 - 使用退格键清空
+        for(int i = 0; i < 30; i++) {  // 假设最多30个字符
+            InputHelper::keyPress(VK_BACK);  // 退格键
+            Sleep(10);
+        }
         InputHelper::inputString(account.account);
         Sleep(500);
         
-        InputHelper::moveToAndClick(277, 260);  // 密码输入框
+        InputHelper::moveToAndClick(377, 260);  // 密码输入框
         Sleep(500);
-        InputHelper::pressCtrlA();
-        Sleep(500);
+        // 清空输入框
+        for(int i = 0; i < 30; i++) {
+            InputHelper::keyPress(VK_BACK);
+            Sleep(10);
+        }
         InputHelper::inputString(account.password);
         Sleep(500);
         
         InputHelper::moveToAndClick(200, 300);  // 登录按钮
-        
+
+        Sleep(500);
+        InputHelper::moveToAndClick(340, 400);  // 登录按钮
+
         // 解绑登录窗口
         WindowHelper::unbindWindow();
         
