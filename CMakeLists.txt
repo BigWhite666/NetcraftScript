@@ -24,11 +24,15 @@ set(PROJECT_EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external)
 # 明确列出头文件
 file(GLOB_RECURSE HEADER_FILES
     ${PROJECT_INCLUDE_DIR}/*.h
+    ${PROJECT_INCLUDE_DIR}/UI/Components/*.h
+    ${PROJECT_INCLUDE_DIR}/UI/Panels/*.h
 )
 
 # 明确列出源文件
 file(GLOB_RECURSE SOURCE_FILES
     ${PROJECT_SRC_DIR}/*.cpp
+    ${PROJECT_SRC_DIR}/UI/Components/*.cpp
+    ${PROJECT_SRC_DIR}/UI/Panels/*.cpp
     main.cpp
 )
 
@@ -53,6 +57,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${PROJECT_INCLUDE_DIR}/UI
     ${PROJECT_INCLUDE_DIR}/UI/Style
     ${PROJECT_INCLUDE_DIR}/UI/Panels
+    ${PROJECT_INCLUDE_DIR}/UI/Components
     ${PROJECT_INCLUDE_DIR}/Util
     ${Qt5Widgets_INCLUDE_DIRS}
     ${Qt5Core_INCLUDE_DIRS}

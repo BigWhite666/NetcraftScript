@@ -226,15 +226,6 @@ void MainWindow::setupUI() {
         
         m_debugScript->start(selectedWindows);
     });
-    
-    // 添加调试输出窗口
-    QTextEdit* debugOutput = new QTextEdit(this);
-    debugOutput->setReadOnly(true);
-    debugOutput->setMaximumHeight(150);
-    mainLayout->addWidget(debugOutput);
-    
-    // 安装消息处理器
-    MessageHandler::install(debugOutput);
 }
 
 void MainWindow::createPanels() {
@@ -267,7 +258,11 @@ void MainWindow::createPanels() {
 }
 
 void MainWindow::initHomePanel() {
-    auto layout = new QGridLayout(homePanel);
+    auto layout = new QVBoxLayout(homePanel);  // 改为垂直布局
+    
+    // 上半部分 - 状态和使用说明
+    auto upperWidget = new QWidget();
+    auto upperLayout = new QGridLayout(upperWidget);
     
     // 左侧面板 - 状态和控制
     auto leftPanel = new QWidget();
@@ -331,13 +326,29 @@ void MainWindow::initHomePanel() {
     
     rightLayout->addWidget(helpGroup);
     
-    // 将左右面板添加到主布局
-    layout->addWidget(leftPanel, 0, 0);
-    layout->addWidget(rightPanel, 0, 1);
+    // 将左右面板添加到上半部分布局
+    upperLayout->addWidget(leftPanel, 0, 0);
+    upperLayout->addWidget(rightPanel, 0, 1);
+    upperLayout->setColumnStretch(0, 1);
+    upperLayout->setColumnStretch(1, 1);
     
-    // 设置列的拉伸因子，使两个面板大小相等
-    layout->setColumnStretch(0, 1);
-    layout->setColumnStretch(1, 1);
+    // 添加上半部分到主布局
+    layout->addWidget(upperWidget);
+    
+    // 下半部分 - 日志输出
+    auto logGroup = new QGroupBox("运行日志");
+    auto logLayout = new QVBoxLayout(logGroup);
+    
+    auto logOutput = new QTextEdit();
+    logOutput->setReadOnly(true);
+    logOutput->setMaximumHeight(150);  // 限制日志窗口高度
+    logLayout->addWidget(logOutput);
+    
+    // 添加日志组到主布局
+    layout->addWidget(logGroup);
+    
+    // 安装消息处理器
+    MessageHandler::install(logOutput);
 }
 
 void MainWindow::initScriptPanel() {
