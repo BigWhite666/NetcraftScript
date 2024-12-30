@@ -16,6 +16,7 @@
 #include "Script/ChatScript.h"
 #include "Script/MapScript.h"
 #include "Script/DebugScript.h"
+#include "Script/MemoryScript.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -71,6 +72,8 @@ private:
 
     // 添加 DebugScript 成员
     DebugScript* m_debugScript;
+
+    MemoryScript* m_memoryScript;
 
 private slots:
     void initHomePanel();

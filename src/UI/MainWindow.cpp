@@ -1,7 +1,3 @@
-#include "UI/MainWindow.h"
-#include "UI/Style/StyleSheet.h"
-#include "UI/Panels/HomePanel.h"
-#include "UI/Panels/LoginPanel.h"
 #include <QLabel>
 #include <QPushButton>
 #include <QGroupBox>
@@ -18,13 +14,20 @@
 #include <QApplication>
 #include <windows.h>
 #include <vector>
+#include "main.h"
+
+#include "Util/MessageHandler.h"
 #include "dm/dmutils.h"
 #include "MemoryRead/GameOffsets.h"
 #include "Script/ChatScript.h"
 #include "Script/MapScript.h"
 #include "Script/DebugScript.h"
-#include "main.h"
-#include "Util/MessageHandler.h"
+#include "Script/MemoryScript.h"
+#include "UI/MainWindow.h"
+#include "UI/Style/StyleSheet.h"
+#include "UI/Panels/HomePanel.h"
+#include "UI/Panels/LoginPanel.h"
+#include "UI/Panels/MemoryPanel.h"
 static std::vector<HWND> g_windows;
 static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     CHAR className[256];
@@ -39,6 +42,7 @@ static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     m_mapScript = new MapScript(this);
     m_debugScript = new DebugScript(this);
+    m_memoryScript = new MemoryScript(this);
     setupUI();
     createPanels();
     refreshGameWindowsList();  // 初始化时获取一次窗口列表
@@ -234,38 +238,50 @@ void MainWindow::setupUI() {
 }
 
 void MainWindow::createPanels() {
+    // 创建标签页
+    tabWidget = new QTabWidget(this);
+    tabWidget->setStyleSheet(Style::TAB_STYLE);
+    
     // 创建各个面板
     homePanel = new QWidget();
     scriptPanel = new QWidget();
     chatPanel = new QWidget();
+    auto memoryPanel = new QWidget();  // 添加内存面板
+    auto loginPanel = new QWidget();   // 添加上号器面板
     
     // 初始化各个面板
     initHomePanel();
     initScriptPanel();
     initChatPanel();
+    MemoryPanel::initPanel(memoryPanel, m_memoryScript);  // 初始化内存面板
+    LoginPanel::initPanel(loginPanel);  // 初始化上号器面板
     
-    // 添加到标签页
+    // 添加标签页
     tabWidget->addTab(homePanel, "主页");
     tabWidget->addTab(scriptPanel, "跑图");
     tabWidget->addTab(chatPanel, "喊话");
+    tabWidget->addTab(memoryPanel, "内存功能");
+    tabWidget->addTab(loginPanel, "上号器");  // 添加上号器标签页
     
-    // 添加上号器面板
-    auto loginPanel = new QWidget();
-    LoginPanel::initPanel(loginPanel);
-    tabWidget->addTab(loginPanel, "上号器");
+    mainLayout->addWidget(tabWidget);
 }
 
 void MainWindow::initHomePanel() {
     auto layout = new QGridLayout(homePanel);
     
+    // 左侧面板 - 状态和控制
+    auto leftPanel = new QWidget();
+    auto leftLayout = new QVBoxLayout(leftPanel);
+    
     // 状态组
-    auto statusGroup = new QGroupBox("状态", homePanel);
+    auto statusGroup = new QGroupBox("状态", leftPanel);
     auto statusLayout = new QVBoxLayout(statusGroup);
     statusLayout->addWidget(new QLabel("当前状态: 未运行"));
     statusLayout->addWidget(new QLabel("运行时间: 0:00:00"));
+    leftLayout->addWidget(statusGroup);
     
     // 控制组
-    auto controlGroup = new QGroupBox("控制", homePanel);
+    auto controlGroup = new QGroupBox("控制", leftPanel);
     auto controlLayout = new QGridLayout(controlGroup);
     
     // 创建按钮并应用样式
@@ -282,9 +298,46 @@ void MainWindow::initHomePanel() {
     controlLayout->addWidget(pauseBtn, 0, 1);
     controlLayout->addWidget(stopBtn, 1, 0);
     controlLayout->addWidget(settingBtn, 1, 1);
+    leftLayout->addWidget(controlGroup);
     
-    layout->addWidget(statusGroup, 0, 0);
-    layout->addWidget(controlGroup, 0, 1);
+    // 主页右侧面板 - 使用说明
+    auto rightPanel = new QWidget();
+    auto rightLayout = new QVBoxLayout(rightPanel);
+    
+    // 使用说明组
+    auto helpGroup = new QGroupBox("使用说明", rightPanel);
+    auto helpLayout = new QVBoxLayout(helpGroup);
+    
+    // 添加使用说明
+    auto helpText = new QTextEdit();
+    helpText->setReadOnly(true);
+    helpText->setStyleSheet("QTextEdit { background-color: transparent; border: none; }");
+    helpText->setText(
+        "使用步骤：\n\n"
+        "1. 点击顶部「刷新窗口」按钮获取游戏窗口\n\n"
+        "2. 在窗口列表中勾选需要操作的窗口\n\n"
+        "3. 选择功能标签页：\n"
+        "   - 跑图：自动跑图功能\n"
+        "   - 喊话：自动喊话功能\n"
+        "   - 内存功能：各种辅助功能\n"
+        "   - 上号器：账号管理与登录\n\n"
+        "4. 在相应功能页面进行设置并启动\n\n"
+        "注意事项：\n"
+        "- 使用前请确保已选择正确的游戏窗口\n"
+        "- 此程序需要管理员权限运行\n"
+        "- 如遇问题请查看底部日志输出"
+    );
+    helpLayout->addWidget(helpText);
+    
+    rightLayout->addWidget(helpGroup);
+    
+    // 将左右面板添加到主布局
+    layout->addWidget(leftPanel, 0, 0);
+    layout->addWidget(rightPanel, 0, 1);
+    
+    // 设置列的拉伸因子，使两个面板大小相等
+    layout->setColumnStretch(0, 1);
+    layout->setColumnStretch(1, 1);
 }
 
 void MainWindow::initScriptPanel() {

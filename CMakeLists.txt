@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.28)
 project(NKScript)
 
 # 在项目定义之后立即设置 Qt 自动处理
@@ -22,51 +22,26 @@ set(PROJECT_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(PROJECT_EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external)
 
 # 明确列出头文件
-set(HEADER_FILES
-    ${PROJECT_INCLUDE_DIR}/main.h
-    ${PROJECT_INCLUDE_DIR}/UI/MainWindow.h
-    ${PROJECT_INCLUDE_DIR}/UI/Style/StyleSheet.h
-    ${PROJECT_INCLUDE_DIR}/UI/Panels/HomePanel.h
-    ${PROJECT_INCLUDE_DIR}/Script/ChatScript.h
-    ${PROJECT_INCLUDE_DIR}/Script/MapScript.h
-    ${PROJECT_INCLUDE_DIR}/Script/DebugScript.h
-    ${PROJECT_INCLUDE_DIR}/Util/WindowHelper.h
-    ${PROJECT_INCLUDE_DIR}/UI/Panels/LoginPanel.h
-    ${PROJECT_INCLUDE_DIR}/Script/LoginScript.h
-    ${PROJECT_INCLUDE_DIR}/Util/InputHelper.h
-    ${PROJECT_INCLUDE_DIR}/Util/MessageHandler.h
+file(GLOB_RECURSE HEADER_FILES
+    ${PROJECT_INCLUDE_DIR}/*.h
 )
 
 # 明确列出源文件
-set(SOURCE_FILES
+file(GLOB_RECURSE SOURCE_FILES
+    ${PROJECT_SRC_DIR}/*.cpp
     main.cpp
-    ${PROJECT_SRC_DIR}/dm/dmutils.cpp
-    ${PROJECT_SRC_DIR}/UI/MainWindow.cpp
-    ${PROJECT_SRC_DIR}/UI/Style/StyleSheet.cpp
-    ${PROJECT_SRC_DIR}/UI/Panels/HomePanel.cpp
-    ${PROJECT_SRC_DIR}/MemoryRead/Memory.cpp
-    ${PROJECT_SRC_DIR}/Script/ChatScript.cpp
-    ${PROJECT_SRC_DIR}/Script/MapScript.cpp
-    ${PROJECT_SRC_DIR}/Script/DebugScript.cpp
-    ${PROJECT_SRC_DIR}/Util/WindowHelper.cpp
-    ${PROJECT_SRC_DIR}/UI/Panels/LoginPanel.cpp
-    ${PROJECT_SRC_DIR}/Script/LoginScript.cpp
-    ${PROJECT_SRC_DIR}/Util/InputHelper.cpp
-    ${PROJECT_SRC_DIR}/Util/MessageHandler.cpp
-    ${HEADER_FILES}
 )
 
 # 在 add_executable 之前添加
 if(WIN32)
-    # 设置为 Windows 子系统并使用 mainCRTStartup 作为入口点
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 endif()
 
 # 修改 add_executable 行
 if(WIN32)
-    add_executable(${PROJECT_NAME} WIN32 ${SOURCE_FILES})
+    add_executable(${PROJECT_NAME} WIN32 ${SOURCE_FILES} ${HEADER_FILES})
 else()
-    add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+    add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 endif()
 
 # 设置包含目录
@@ -87,7 +62,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     ${Qt5Widgets_DEFINITIONS}
     -DWIN32
-    # -D_DEBUG
     -D_WINDOWS
     -D_UNICODE
     -DUNICODE
@@ -140,7 +114,7 @@ if(WIN32)
             "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/styles"
     )
 
-    # 创建并复制 imageformats 插件（可能需要）
+    # 创建并复制 imageformats 插件
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory
             $<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/imageformats
