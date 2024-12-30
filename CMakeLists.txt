@@ -33,6 +33,7 @@ file(GLOB_RECURSE SOURCE_FILES
     ${PROJECT_SRC_DIR}/*.cpp
     ${PROJECT_SRC_DIR}/UI/Components/*.cpp
     ${PROJECT_SRC_DIR}/UI/Panels/*.cpp
+    ${PROJECT_SRC_DIR}/Script/*.cpp
     main.cpp
 )
 

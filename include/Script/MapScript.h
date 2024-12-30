@@ -11,10 +11,10 @@
 // 跑图工作线程类
 class MapWorker : public QObject {
     Q_OBJECT
-    
+
 public:
     explicit MapWorker(QObject* parent = nullptr);
-    void setParams(const QString& mapName, int loopCount, const QList<HWND>& windows);
+    void setParams(float targetX, float targetY, float targetZ, int loopCount, const QList<HWND>& windows);
     void stop();
 
     void AimTarget(HWND hwnd, float targetX, float targetY, float targetZ);
@@ -28,11 +28,13 @@ signals:
     void finished();
 
 private:
-    QString m_mapName;
+    float m_targetX;
+    float m_targetY;
+    float m_targetZ;
     int m_loopCount;
     QList<HWND> m_windows;
     bool m_running;
-    
+
     // 跑图相关的私有方法
     bool enterMap(HWND hwnd);
     bool moveToNextPoint(HWND hwnd);
@@ -43,12 +45,12 @@ private:
 
 class MapScript : public QObject {
     Q_OBJECT
-    
+
 public:
     explicit MapScript(QObject* parent = nullptr);
     ~MapScript();
 
-    void start(const QString& mapName, int loopCount, const QList<HWND>& windows);
+    void start(float targetX, float targetY, float targetZ, int loopCount, const QList<HWND>& windows);
     void stop();
     bool isRunning() const { return m_thread != nullptr; }
 

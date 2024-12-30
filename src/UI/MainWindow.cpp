@@ -354,21 +354,40 @@ void MainWindow::initHomePanel() {
 void MainWindow::initScriptPanel() {
     auto layout = new QVBoxLayout(scriptPanel);
     
-    // 脚本选择组
+    // 脚本设置组
     auto scriptGroup = new QGroupBox("脚本设置", scriptPanel);
     auto scriptLayout = new QGridLayout(scriptGroup);
     
-    scriptLayout->addWidget(new QLabel("选择地图:"), 0, 0);
-    auto mapComboBox = new QComboBox();  // 保存为成员变量
-    mapComboBox->addItem("测试地图");    // 添加地图选项
-    scriptLayout->addWidget(mapComboBox, 0, 1);
+    // 添加X坐标输入框
+    scriptLayout->addWidget(new QLabel("目标X坐标:"), 0, 0);
+    auto targetXSpinBox = new QDoubleSpinBox();
+    targetXSpinBox->setRange(-999999.0, 999999.0);
+    targetXSpinBox->setDecimals(1);
+    targetXSpinBox->setValue(0.0);
+    scriptLayout->addWidget(targetXSpinBox, 0, 1);
     
-    scriptLayout->addWidget(new QLabel("循环次数:"), 1, 0);
-    auto loopSpinBox = new QSpinBox();   // 保存为成员变量
+    // 添加Y坐标输入框
+    scriptLayout->addWidget(new QLabel("目标Y坐标:"), 1, 0);
+    auto targetYSpinBox = new QDoubleSpinBox();
+    targetYSpinBox->setRange(-999999.0, 999999.0);
+    targetYSpinBox->setDecimals(1);
+    targetYSpinBox->setValue(0.0);
+    scriptLayout->addWidget(targetYSpinBox, 1, 1);
+    
+    // 添加Z坐标输入框
+    scriptLayout->addWidget(new QLabel("目标Z坐标:"), 2, 0);
+    auto targetZSpinBox = new QDoubleSpinBox();
+    targetZSpinBox->setRange(-999999.0, 999999.0);
+    targetZSpinBox->setDecimals(1);
+    targetZSpinBox->setValue(0.0);
+    scriptLayout->addWidget(targetZSpinBox, 2, 1);
+    
+    scriptLayout->addWidget(new QLabel("循环次数:"), 3, 0);
+    auto loopSpinBox = new QSpinBox();
     loopSpinBox->setMinimum(1);
     loopSpinBox->setMaximum(9999);
     loopSpinBox->setValue(1);
-    scriptLayout->addWidget(loopSpinBox, 1, 1);
+    scriptLayout->addWidget(loopSpinBox, 3, 1);
     
     // 操作按钮
     auto buttonLayout = new QHBoxLayout();
@@ -380,11 +399,10 @@ void MainWindow::initScriptPanel() {
     
     // 连接按钮点击事件
     connect(startScriptBtn, &QPushButton::clicked, this, [=]() {
-        QString mapName = mapComboBox->currentText();
-        if (mapName.isEmpty()) {
-            QMessageBox::warning(this, "警告", "请选择地图！");
-            return;
-        }
+        // 获取坐标值
+        float targetX = targetXSpinBox->value();
+        float targetY = targetYSpinBox->value();
+        float targetZ = targetZSpinBox->value();
         
         // 获取选中的窗口
         QList<HWND> selectedWindows;
@@ -416,10 +434,12 @@ void MainWindow::initScriptPanel() {
         // 开始跑图
         startScriptBtn->setEnabled(false);
         stopScriptBtn->setEnabled(true);
-        mapComboBox->setEnabled(false);
+        targetXSpinBox->setEnabled(false);
+        targetYSpinBox->setEnabled(false);
+        targetZSpinBox->setEnabled(false);
         loopSpinBox->setEnabled(false);
         
-        m_mapScript->start(mapName, loopSpinBox->value(), selectedWindows);
+        m_mapScript->start(targetX, targetY, targetZ, loopSpinBox->value(), selectedWindows);
     });
     
     connect(stopScriptBtn, &QPushButton::clicked, this, [=]() {
@@ -431,7 +451,9 @@ void MainWindow::initScriptPanel() {
             // 恢复UI状态
             startScriptBtn->setEnabled(true);
             stopScriptBtn->setEnabled(false);
-            mapComboBox->setEnabled(true);
+            targetXSpinBox->setEnabled(true);
+            targetYSpinBox->setEnabled(true);
+            targetZSpinBox->setEnabled(true);
             loopSpinBox->setEnabled(true);
         } catch (const std::exception& e) {
             qDebug() << "停止脚本时发生错误:" << e.what();
@@ -440,11 +462,11 @@ void MainWindow::initScriptPanel() {
     
     // 连接脚本信号
     connect(m_mapScript, &MapScript::messageUpdated, this, [](const QString& msg) {
-        qDebug() << msg;  // 或者更新到UI上显示
+        qDebug() << msg;
     });
     
     connect(m_mapScript, &MapScript::progressUpdated, this, [](int current, int total) {
-        qDebug() << "Progress:" << current << "/" << total;  // 或者更新到进度条
+        qDebug() << "Progress:" << current << "/" << total;
     });
     
     buttonLayout->addWidget(startScriptBtn);
