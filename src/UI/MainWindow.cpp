@@ -28,6 +28,8 @@
 #include "UI/Panels/HomePanel.h"
 #include "UI/Panels/LoginPanel.h"
 #include "UI/Panels/MemoryPanel.h"
+#include "Util/GameWindow.h"
+
 static std::vector<HWND> g_windows;
 static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     CHAR className[256];
@@ -363,7 +365,7 @@ void MainWindow::initScriptPanel() {
     auto targetXSpinBox = new QDoubleSpinBox();
     targetXSpinBox->setRange(-999999.0, 999999.0);
     targetXSpinBox->setDecimals(1);
-    targetXSpinBox->setValue(0.0);
+    targetXSpinBox->setValue(5502.0);  // 设置默认值
     scriptLayout->addWidget(targetXSpinBox, 0, 1);
     
     // 添加Y坐标输入框
@@ -371,7 +373,7 @@ void MainWindow::initScriptPanel() {
     auto targetYSpinBox = new QDoubleSpinBox();
     targetYSpinBox->setRange(-999999.0, 999999.0);
     targetYSpinBox->setDecimals(1);
-    targetYSpinBox->setValue(0.0);
+    targetYSpinBox->setValue(953.0);  // 设置默认值
     scriptLayout->addWidget(targetYSpinBox, 1, 1);
     
     // 添加Z坐标输入框
@@ -379,15 +381,8 @@ void MainWindow::initScriptPanel() {
     auto targetZSpinBox = new QDoubleSpinBox();
     targetZSpinBox->setRange(-999999.0, 999999.0);
     targetZSpinBox->setDecimals(1);
-    targetZSpinBox->setValue(0.0);
+    targetZSpinBox->setValue(2.0);  // 设置默认值
     scriptLayout->addWidget(targetZSpinBox, 2, 1);
-    
-    scriptLayout->addWidget(new QLabel("循环次数:"), 3, 0);
-    auto loopSpinBox = new QSpinBox();
-    loopSpinBox->setMinimum(1);
-    loopSpinBox->setMaximum(9999);
-    loopSpinBox->setValue(1);
-    scriptLayout->addWidget(loopSpinBox, 3, 1);
     
     // 操作按钮
     auto buttonLayout = new QHBoxLayout();
@@ -399,74 +394,17 @@ void MainWindow::initScriptPanel() {
     
     // 连接按钮点击事件
     connect(startScriptBtn, &QPushButton::clicked, this, [=]() {
-        // 获取坐标值
         float targetX = targetXSpinBox->value();
-        float targetY = targetYSpinBox->value();
+        float targetY = targetYSpinBox->value(); 
         float targetZ = targetZSpinBox->value();
         
-        // 获取选中的窗口
-        QList<HWND> selectedWindows;
-        for (int i = 1; i < listWidget->count(); ++i) {
-            QListWidgetItem* item = listWidget->item(i);
-            if (item && item->checkState() == Qt::Checked) {
-                QWidget* rowWidget = listWidget->itemWidget(item);
-                if (rowWidget) {
-                    QHBoxLayout* layout = qobject_cast<QHBoxLayout*>(rowWidget->layout());
-                    if (layout) {
-                        QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
-                        if (handleLabel) {
-                            bool ok;
-                            HWND hwnd = (HWND)handleLabel->text().toLongLong(&ok, 10);
-                            if (ok) {
-                                selectedWindows.append(hwnd);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        if (selectedWindows.isEmpty()) {
-            QMessageBox::warning(this, "警告", "请选择至少一个窗口！");
-            return;
-        }
-        
-        // 开始跑图
-        startScriptBtn->setEnabled(false);
-        stopScriptBtn->setEnabled(true);
-        targetXSpinBox->setEnabled(false);
-        targetYSpinBox->setEnabled(false);
-        targetZSpinBox->setEnabled(false);
-        loopSpinBox->setEnabled(false);
-        
-        m_mapScript->start(targetX, targetY, targetZ, loopSpinBox->value(), selectedWindows);
-    });
-    
-    connect(stopScriptBtn, &QPushButton::clicked, this, [=]() {
-        try {
-            if (m_mapScript) {
-                m_mapScript->stop();
-            }
-            
-            // 恢复UI状态
-            startScriptBtn->setEnabled(true);
-            stopScriptBtn->setEnabled(false);
-            targetXSpinBox->setEnabled(true);
-            targetYSpinBox->setEnabled(true);
-            targetZSpinBox->setEnabled(true);
-            loopSpinBox->setEnabled(true);
-        } catch (const std::exception& e) {
-            qDebug() << "停止脚本时发生错误:" << e.what();
-        }
+        // 直接调用新的 start 方法，不需要传递窗口列表
+        m_mapScript->start(targetX, targetY, targetZ);
     });
     
     // 连接脚本信号
     connect(m_mapScript, &MapScript::messageUpdated, this, [](const QString& msg) {
         qDebug() << msg;
-    });
-    
-    connect(m_mapScript, &MapScript::progressUpdated, this, [](int current, int total) {
-        qDebug() << "Progress:" << current << "/" << total;
     });
     
     buttonLayout->addWidget(startScriptBtn);
@@ -587,8 +525,25 @@ void MainWindow::addCheckableItem(const QString& text) {
 void MainWindow::onItemStateChanged(QListWidgetItem* item) {
     if (item->flags() & Qt::ItemIsUserCheckable) {
         bool checked = item->checkState() == Qt::Checked;
-        qDebug() << "Item" << item->text() << "is" << (checked ? "checked" : "unchecked");
-        // 在这里处理选中状态变化
+        
+        // 获取窗口句柄
+        QWidget* rowWidget = listWidget->itemWidget(item);
+        if (!rowWidget) return;
+        
+        QHBoxLayout* layout = qobject_cast<QHBoxLayout*>(rowWidget->layout());
+        if (!layout) return;
+        
+        QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
+        if (!handleLabel) return;
+        
+        bool ok;
+        HWND hwnd = (HWND)handleLabel->text().toLongLong(&ok, 10);
+        if (!ok) return;
+        
+        // 更新 GameWindow 结构体中的选中状态
+        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+            window->isChecked = checked;
+        }
     }
 }
 
@@ -669,25 +624,55 @@ QString MainWindow::getCharacterName(HWND hwnd) {
 }
 
 void MainWindow::refreshGameWindowsList() {
-    // 清除现有项目（保留标题行）
-    while (listWidget->count() > 1) {
-        listWidget->takeItem(1);
-    }
-
-    // 获取游戏窗口并更新计数
-    auto windows = findGameWindows();
-    updateWindowCount(windows.size());
-
-    // 添加窗口到列表
+    GameWindows::refresh();
+    listWidget->clear();
+    
+    // 添加表头
+    addTableRow("序号", "句柄", "快捷键", "角色", "状态");
+    
+    // 添加窗口数据
     int index = 1;
-    for (HWND hwnd : windows) {
+    for (const auto& window : GameWindows::windows) {
         addTableRow(
-            QString::number(index),
-            QString::number((quintptr)hwnd),
-            QString("F%1").arg(index),
-            getCharacterName(hwnd),
-            "等待中"
+            QString::number(index++),
+            QString::number((quintptr)window.hwnd),
+            window.hotkey,
+            window.role,
+            window.task
         );
-        index++;
+    }
+    
+    updateWindowCount(GameWindows::windows.size());
+}
+
+// 更新任务状态
+void MainWindow::updateTaskStatus(const QList<HWND>& windows, const QString& status) {
+    for (HWND hwnd : windows) {
+        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+            window->task = status;
+            
+            // 更新UI显示
+            for (int i = 1; i < listWidget->count(); ++i) {
+                QListWidgetItem* item = listWidget->item(i);
+                if (!item) continue;
+                
+                QWidget* rowWidget = listWidget->itemWidget(item);
+                if (!rowWidget) continue;
+                
+                QHBoxLayout* layout = qobject_cast<QHBoxLayout*>(rowWidget->layout());
+                if (!layout) continue;
+                
+                QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
+                if (!handleLabel) continue;
+                
+                if (handleLabel->text() == QString::number((quintptr)hwnd)) {
+                    QLabel* taskLabel = qobject_cast<QLabel*>(layout->itemAt(4)->widget());
+                    if (taskLabel) {
+                        taskLabel->setText(status);
+                    }
+                    break;
+                }
+            }
+        }
     }
 } 

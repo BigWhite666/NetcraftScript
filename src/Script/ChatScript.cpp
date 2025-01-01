@@ -1,5 +1,7 @@
 #include "Script/ChatScript.h"
 #include <QDebug>
+#include "Util/WindowHelper.h"
+#include "Util/GameWindow.h"
 #include "MemoryRead/Memory.h"
 #include "main.h"
 
@@ -125,7 +127,15 @@ void ChatScript::start(const QString& content, int interval, const QList<HWND>& 
         return;
     }
     
-    if (windows.isEmpty()) {
+    // 获取选中的窗口
+    QList<HWND> selectedWindows;
+    for (const auto& window : GameWindows::windows) {
+        if (window.isChecked) {
+            selectedWindows.append(window.hwnd);
+        }
+    }
+    
+    if (selectedWindows.isEmpty()) {
         emit messageUpdated("错误：没有选中任何窗口！");
         return;
     }
@@ -143,12 +153,11 @@ void ChatScript::start(const QString& content, int interval, const QList<HWND>& 
     connect(m_worker, &ChatWorker::messageUpdated, this, &ChatScript::messageUpdated);
     
     // 设置参数并启动线程
-    m_worker->setParams(content, interval, windows);
+    m_worker->setParams(content, interval, selectedWindows);
     m_thread->start();
     
     m_isRunning = true;
     emit started();
-    emit messageUpdated(QString("开始喊话，共%1个窗口").arg(windows.size()));
 }
 
 void ChatScript::stop() {

@@ -1,5 +1,7 @@
 #include "Util/WindowHelper.h"
 #include "main.h"
+#include "MemoryRead/Memory.h"
+#include "MemoryRead/GameOffsets.h"
 #include <QDebug>
 
 bool WindowHelper::checkDM() {
@@ -60,6 +62,7 @@ bool WindowHelper::bindWindow(HWND hwnd, QString& errorMsg, bool pressF1) {
 void WindowHelper::unbindWindow() {
     if (checkDM()) {
         DM->UnBindWindow();
+        DM->KeyPress(112);  // F1键
     }
 }
 
@@ -134,4 +137,32 @@ HWND WindowHelper::findLatestGameWindow() {
     WindowInfo info = { NULL, 0 };
     EnumWindows(enumLatestWindowProc, (LPARAM)&info);
     return info.hwnd;
+}
+
+QString WindowHelper::getCharacterName(HWND hwnd) {
+    DWORD pid;
+    GetWindowThreadProcessId(hwnd, &pid);
+    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+    
+    if (!handle) {
+        return "无法访问进程";
+    }
+
+    QString result;
+    char buffer[18] = {0};
+    SIZE_T bytesRead = 0;
+    
+    GameOffsets::Initialize(hwnd);
+    if (ReadProcessMemory(handle, (LPVOID)GameOffsets::Character::NAME,
+                         buffer, sizeof(buffer), &bytesRead)) {
+        result = QString::fromLocal8Bit(buffer);
+        if (result.isEmpty()) {
+            result = "未登录";
+        }
+    } else {
+        result = "未登录";
+    }
+    
+    CloseHandle(handle);
+    return result;
 } 

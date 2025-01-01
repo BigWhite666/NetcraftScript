@@ -28,10 +28,19 @@ public:
 private:
     void setupUI();
     void createPanels();
+    void initHomePanel();
+    void initScriptPanel();
+    void initChatPanel();
     void addCheckableItem(const QString& text);
+    void onItemStateChanged(QListWidgetItem* item);
     void addTableRow(const QString& index, const QString& handle, 
                     const QString& hotkey, const QString& role, 
                     const QString& task);
+    void updateWindowCount(int count);
+    std::vector<HWND> findGameWindows();
+    QString getCharacterName(HWND hwnd);
+    void refreshGameWindowsList();
+    void updateTaskStatus(const QList<HWND>& windows, const QString& status);
 
     // UI 组件
     QWidget *centralWidget;
@@ -49,12 +58,6 @@ private:
     QPushButton* debugButton;
     QLabel* windowCountLabel;
     QLabel* windowCountValue;
-
-    // 添加窗口处理函数
-    std::vector<HWND> findGameWindows();
-    void refreshGameWindowsList();
-
-    QString getCharacterName(HWND hwnd);
 
     // 喊话相关控件
     ChatScript* m_chatScript;
@@ -74,13 +77,4 @@ private:
     DebugScript* m_debugScript;
 
     MemoryScript* m_memoryScript;
-
-private slots:
-    void initHomePanel();
-    void initScriptPanel();
-    void initChatPanel();
-    void onItemStateChanged(QListWidgetItem* item);
-
-    // 添加更新窗口计数的函数
-    void updateWindowCount(int count);
 }; 

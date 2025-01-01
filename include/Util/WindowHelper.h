@@ -14,6 +14,7 @@ public:
     static void unbindWindow();
     static void centerWindow(HWND hwnd);
     static void pressF1AndCenter(HWND hwnd);
+    static QString getCharacterName(HWND hwnd);
 
 signals:
     void messageUpdated(const QString& message);
