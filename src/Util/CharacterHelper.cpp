@@ -36,12 +36,12 @@ bool CharacterHelper::aimTarget(HWND hwnd, const Vector3& target) {
     try {
         if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
             Vector3 current = getPosition(hwnd);
-            
+
             // 计算角度
             float dx = target.x - current.x;
             float dy = target.y - current.y;
             float dz = (target.z - 1) - current.z;
-            
+
             float distance = std::sqrt(dx*dx + dy*dy);
             float angleX = -(180/M_PI) * std::atan2(dx, dy);
             float angleY = -(180/M_PI) * std::atan2(dz, distance);
@@ -113,4 +113,45 @@ bool CharacterHelper::isJumping() {
 bool CharacterHelper::isCrouching() {
     if (!checkDM()) return false;
     return DM->GetKeyState('C') == 1;
-} 
+}
+
+bool CharacterHelper::isFlying() {
+    if (!checkDM()) return false;
+    
+    // 检查是否处于飞行状态
+    // 这里可能需要根据具体游戏机制来判断
+    // 暂时通过检查是否同时按住空格或C键来判断
+    return false;
+}
+
+bool CharacterHelper::doubleJump() {
+    if (!checkDM()) return false;
+    
+    // 快速双击空格
+    DM->KeyPress(VK_SPACE);
+    Sleep(50);
+    DM->KeyPress(VK_SPACE);
+    Sleep(100);  // 等待一下确保进入飞行状态
+    
+    return true;
+}
+
+bool CharacterHelper::enterFlyMode() {
+    if (!checkDM()) return false;
+    
+    if (!isFlying()) {
+        // 尝试进入飞行模式
+        return doubleJump();
+    }
+    return true;  // 已经在飞行状态
+}
+
+bool CharacterHelper::flyUp(bool start) {
+    if (!checkDM()) return false;
+    return start ? DM->KeyDown(VK_SPACE) == 1 : DM->KeyUp(VK_SPACE) == 1;
+}
+
+bool CharacterHelper::flyDown(bool start) {
+    if (!checkDM()) return false;
+    return start ? DM->KeyDown('C') == 1 : DM->KeyUp('C') == 1;
+}

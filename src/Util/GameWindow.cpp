@@ -57,13 +57,15 @@ void GameWindow::initializeAddresses() {
     // 获取基址
     int threadstack = GetThreadstackoAddress(pid);
     int msvcr120 = ListProcessModules(pid, "MSVCR120.dll");
-    
+    int netcraft = ListProcessModules(pid, "netcraft.exe");
+    int openal32 = ListProcessModules(pid, "OpenAL32.dll");
+
     // 计算实际地址
     addresses.characterName = CalculateAddress(handle, threadstack - 0x00000B6C, {0x10, 0x1F0});
     
     addresses.positionX = CalculateAddress(handle, threadstack - 0x00000B6C, {0x10, 0x448});
-    addresses.positionY = addresses.positionX + 0x4;
-    addresses.positionZ = addresses.positionX + 0x8;
+    addresses.positionY = addresses.positionX + 0x8;
+    addresses.positionZ = addresses.positionX + 0x4;
     
     addresses.moveX = CalculateAddress(handle, threadstack - 0x00000B6C, {0x10, 0x244});
     addresses.moveY = addresses.moveX + 0x4;

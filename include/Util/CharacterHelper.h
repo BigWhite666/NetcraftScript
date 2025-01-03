@@ -36,6 +36,13 @@ public:
     static bool isJumping();    // 是否在跳跃
     static bool isCrouching();  // 是否在下蹲
     
+    // 飞行相关方法
+    static bool isFlying();                  // 检查是否在飞行状态
+    static bool enterFlyMode();              // 进入飞行模式
+    static bool flyUp(bool start = true);    // 开始/停止向上飞行
+    static bool flyDown(bool start = true);  // 开始/停止向下飞行
+
 private:
     static bool checkDM();
+    static bool doubleJump();  // 快速双击空格
 }; 

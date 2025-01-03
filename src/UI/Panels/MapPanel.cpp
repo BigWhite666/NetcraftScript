@@ -2,8 +2,66 @@
 #include "Util/GameWindow.h"
 #include <QThread>
 #include <QDebug>
+#include "Util/WindowHelper.h"
+#include "main.h"
+#include <thread>
 
-void MapPanel::initPanel(QWidget* panel, MapScript* mapScript) {
+void Paotu(const GameWindow window, const Vector3 target) {
+    try {
+        QString errorMsg;
+        if (!WindowHelper::bindWindow(window.hwnd, errorMsg, true)) {
+            qDebug() << errorMsg;
+            return;
+        }
+
+        qDebug() << QString("开始移动到目标位置 (%1, %2, %3)")
+            .arg(target.x).arg(target.y).arg(target.z);
+
+        while (true) {
+            Vector3 current = CharacterHelper::getPosition(window.hwnd);
+            float distance = CharacterHelper::getDistance(current, target);
+            float heightDiff = target.z - current.z;
+
+            // 调整高度
+            if (heightDiff > 5.0f) {
+                CharacterHelper::flyDown(false);
+                CharacterHelper::flyUp(true);
+            } else if (heightDiff < -5.0f) {
+                CharacterHelper::flyUp(false);
+                CharacterHelper::flyDown(true);
+            } else {
+                CharacterHelper::flyUp(false);
+                CharacterHelper::flyDown(false);
+            }
+
+            // 移动
+            CharacterHelper::moveForward(true);
+            if (distance < 5.0f) {
+                qDebug() << "已到达目标位置";
+                break;
+            }
+
+            // 瞄准目标位置
+            if (!CharacterHelper::aimTarget(window.hwnd, target)) {
+                qDebug() << "瞄准目标失败";
+                break;
+            }
+
+            Sleep(100);
+        }
+
+        // 停止所有移动
+        CharacterHelper::moveForward(false);
+        CharacterHelper::flyUp(false);
+        CharacterHelper::flyDown(false);
+
+        WindowHelper::unbindWindow();
+    } catch (const std::exception &e) {
+        qDebug() << QString("跑图失败：%1").arg(e.what());
+    }
+}
+
+void MapPanel::initPanel(QWidget* panel) {
     auto layout = new QVBoxLayout(panel);
     
     // 脚本设置组
@@ -45,37 +103,27 @@ void MapPanel::initPanel(QWidget* panel, MapScript* mapScript) {
     // 连接按钮点击事件
     QObject::connect(startScriptBtn, &QPushButton::clicked, [=]() {
         // 获取目标坐标
-        float targetX = targetXSpinBox->value();
-        float targetY = targetYSpinBox->value();
-        float targetZ = targetZSpinBox->value();
+        float targetX = targetXSpinBox->value() * 10;
+        float targetY = targetYSpinBox->value() * 10;
+        float targetZ = targetZSpinBox->value() * 10-5;
         Vector3 target = {targetX, targetY, targetZ};
 
         // 获取选中的窗口
         for (const auto& window : GameWindows::windows) {
             if (window.isChecked && window.task == "等待中") {
-                // 为每个选中的窗口创建一个线程执行跑图任务
-                QThread* thread = QThread::create([mapScript, window, target]() {
-                    mapScript->run(window, target);
-                });
-                
-                QObject::connect(thread, &QThread::finished, thread, &QThread::deleteLater);
-                thread->start();
+                std::thread followThread(Paotu, window, target);
+                followThread.detach();
             }
         }
         
         startScriptBtn->setEnabled(false);
         stopScriptBtn->setEnabled(true);
     });
-    
+
+    //停止按钮点击事件
     QObject::connect(stopScriptBtn, &QPushButton::clicked, [=]() {
-        mapScript->stop();
         startScriptBtn->setEnabled(true);
         stopScriptBtn->setEnabled(false);
-    });
-    
-    // 连接消息更新信号
-    QObject::connect(mapScript, &MapScript::messageUpdated, [](const QString& msg) {
-        qDebug() << msg;
     });
     
     buttonLayout->addWidget(startScriptBtn);
@@ -84,4 +132,6 @@ void MapPanel::initPanel(QWidget* panel, MapScript* mapScript) {
     layout->addWidget(scriptGroup);
     layout->addLayout(buttonLayout);
     layout->addStretch();
-} 
+}
+
+#include "MapPanel.moc"

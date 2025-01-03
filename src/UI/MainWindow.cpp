@@ -19,7 +19,6 @@
 #include "Util/MessageHandler.h"
 #include "dm/dmutils.h"
 #include "Script/ChatScript.h"
-#include "Script/MapScript.h"
 #include "Script/DebugScript.h"
 #include "Script/MemoryScript.h"
 #include "UI/MainWindow.h"
@@ -42,7 +41,6 @@ static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
 }
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-    m_mapScript = new MapScript(this);
     m_debugScript = new DebugScript(this);
     m_memoryScript = new MemoryScript(this);
     setupUI();
@@ -53,10 +51,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 MainWindow::~MainWindow() {
     // 卸载消息处理器
     MessageHandler::uninstall();
-    
-    if (m_mapScript) {
-        m_mapScript->stop();
-    }
+
 }
 
 void MainWindow::setupUI() {
@@ -274,7 +269,7 @@ void MainWindow::createPanels() {
     
     // 初始化各个面板
     initHomePanel();
-    MapPanel::initPanel(scriptPanel, m_mapScript);
+    MapPanel::initPanel(scriptPanel);
     initChatPanel();
     MemoryPanel::initPanel(memoryPanel, m_memoryScript);  // 初始化内存面板
     LoginPanel::initPanel(loginPanel);  // 初始化上号器面板

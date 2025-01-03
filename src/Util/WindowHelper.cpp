@@ -42,12 +42,10 @@ bool WindowHelper::bindWindow(HWND hwnd, QString& errorMsg, bool pressF1) {
         // 计算窗口中心点
         int centerX = width.intVal / 2;
         int centerY = height.intVal / 2;
-        
-        // 移动到窗口中心
-        DM->MoveTo(centerX, centerY);
-
         // 如果需要，按F1
         if (pressF1) {
+            // 移动到窗口中心
+            DM->MoveTo(centerX, centerY);
             DM->KeyPress(112);  // F1键
             Sleep(100);
         }
@@ -61,8 +59,8 @@ bool WindowHelper::bindWindow(HWND hwnd, QString& errorMsg, bool pressF1) {
 
 void WindowHelper::unbindWindow() {
     if (checkDM()) {
-        DM->UnBindWindow();
         DM->KeyPress(112);  // F1键
+        DM->UnBindWindow();
     }
 }
 
