@@ -3,8 +3,8 @@
 #include "Util/WindowHelper.h"
 #include "main.h"
 #include "MemoryRead/Memory.h"
-#include "MemoryRead/GameOffsets.h"
 #include "dm/dmutils.h"
+#include "Util/GameWindow.h"
 
 DebugWorker::DebugWorker(QObject* parent)
     : QObject(parent)
@@ -43,18 +43,20 @@ bool DebugWorker::processWindow(HWND hwnd) {
         Sleep(1000);
         
         // 获取角色信息并显示
-        DWORD pid = GetPid(hwnd);
-        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+        GameWindow window;
+        window.hwnd = hwnd;
+        window.pid = GetWindowThreadProcessId(hwnd, NULL);
+        window.initializeAddresses();
+        
+        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window.pid);
         if (handle) {
-            GameOffsets::Initialize(hwnd);
             char buffer[18] = {0};
             SIZE_T bytesRead = 0;
             
-            if (ReadProcessMemory(handle, (LPVOID)GameOffsets::Character::NAME,
+            if (ReadProcessMemory(handle, (LPVOID)window.addresses.characterName,
                                 buffer, sizeof(buffer), &bytesRead)) {
-                std::string utf8String(buffer, bytesRead);
-                std::string nameStr = GetUtf8String(utf8String);
-                emit messageUpdated(QString("角色名称：%1").arg(QString::fromLocal8Bit(nameStr.c_str())));
+                QString name = QString::fromLocal8Bit(buffer);
+                emit messageUpdated(QString("角色名称：%1").arg(name));
             }
             
             CloseHandle(handle);

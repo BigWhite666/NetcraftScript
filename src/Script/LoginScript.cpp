@@ -6,7 +6,7 @@
 #include <QDir>
 #include "Util/WindowHelper.h"
 #include "Util/InputHelper.h"
-#include "MemoryRead/GameOffsets.h"
+#include "MemoryRead/Memory.h"
 #include "main.h"
 
 LoginWorker::LoginWorker(QObject* parent)

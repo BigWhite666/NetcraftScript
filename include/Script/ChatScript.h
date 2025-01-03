@@ -1,9 +1,9 @@
 #pragma once
-#include <QString>
 #include <QObject>
 #include <QThread>
-#include <QList>
 #include <windows.h>
+#include <QList>
+#include <QString>
 #include "dm/dmutils.h"
 
 // 创建喊话工作线程类
@@ -12,16 +12,18 @@ class ChatWorker : public QObject {
     
 public:
     explicit ChatWorker(QObject* parent = nullptr);
-    void setParams(const QString& content, int interval, const QList<HWND>& windows);
+    
+    // 修改参数顺序，与 ChatScript::start 保持一致
+    void setParams(const QList<HWND>& windows, const QString& content, int interval);
     void stop();
-
-public slots:
-    void doWork();  // 执行喊话任务
-
+    
 signals:
-    void messageUpdated(const QString& message);
     void finished();
-
+    void messageUpdated(const QString& msg);
+    
+public slots:
+    void doWork();
+    
 private:
     QString m_content;
     int m_interval;
@@ -35,16 +37,15 @@ class ChatScript : public QObject {
 public:
     explicit ChatScript(QObject* parent = nullptr);
     ~ChatScript();
-
-    void start(const QString& content, int interval, const QList<HWND>& windows);
+    
+    void start(const QList<HWND>& windows, const QString& content, int interval);
     void stop();
-    bool isRunning() const { return m_thread != nullptr; }
-
+    
 signals:
     void started();
     void stopped();
-    void messageUpdated(const QString& message);
-
+    void messageUpdated(const QString& msg);
+    
 private:
     QThread* m_thread;
     ChatWorker* m_worker;

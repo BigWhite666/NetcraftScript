@@ -18,7 +18,6 @@
 
 #include "Util/MessageHandler.h"
 #include "dm/dmutils.h"
-#include "MemoryRead/GameOffsets.h"
 #include "Script/ChatScript.h"
 #include "Script/MapScript.h"
 #include "Script/DebugScript.h"
@@ -29,6 +28,7 @@
 #include "UI/Panels/LoginPanel.h"
 #include "UI/Panels/MemoryPanel.h"
 #include "Util/GameWindow.h"
+#include "UI/Panels/MapPanel.h"
 
 static std::vector<HWND> g_windows;
 static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
@@ -132,12 +132,12 @@ void MainWindow::setupUI() {
     QWidget* headerWidget = new QWidget();
     QHBoxLayout* headerLayout = new QHBoxLayout(headerWidget);
     headerLayout->setSpacing(20);
-    headerLayout->setContentsMargins(5, 2, 5, 2);  // 减小左边距
+    headerLayout->setContentsMargins(5, 2, 5, 2);
     
     // 添加全选复选框
     QCheckBox* selectAllBox = new QCheckBox(headerWidget);
     selectAllBox->setFixedWidth(20);
-    selectAllBox->setStyleSheet(Style::CHECKBOX_STYLE);  // 应用复选框样式
+    selectAllBox->setStyleSheet(Style::CHECKBOX_STYLE);
     headerLayout->addWidget(selectAllBox);
     
     // 添加标题列，并设置字体加粗
@@ -161,10 +161,40 @@ void MainWindow::setupUI() {
     
     // 连接全选复选框的信号
     connect(selectAllBox, &QCheckBox::stateChanged, this, [this](int state) {
-        for (int i = 1; i < listWidget->count(); ++i) {  // 从1开始跳过标题行
+        Qt::CheckState checkState = static_cast<Qt::CheckState>(state);
+        
+        // 从第1行开始遍历(跳过标题行)
+        for (int i = 1; i < listWidget->count(); i++) {
             QListWidgetItem* item = listWidget->item(i);
-            if (item) {
-                item->setCheckState(static_cast<Qt::CheckState>(state));
+            if (!item) continue;
+            
+            // 确保项目可以被选中
+            item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+            item->setCheckState(checkState);
+            
+            // 更新 GameWindow 中的状态
+            QWidget* rowWidget = listWidget->itemWidget(item);
+            if (!rowWidget) continue;
+            
+            QHBoxLayout* layout = qobject_cast<QHBoxLayout*>(rowWidget->layout());
+            if (!layout) continue;
+            
+            QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
+            if (!handleLabel) continue;
+            
+            bool ok;
+            HWND hwnd = (HWND)handleLabel->text().toLongLong(&ok, 10);
+            if (!ok) continue;
+            
+            if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+                window->isChecked = (checkState == Qt::Checked);
+            }
+        }
+        
+        // 触发状态改变事件
+        for (int i = 1; i < listWidget->count(); i++) {
+            if (QListWidgetItem* item = listWidget->item(i)) {
+                onItemStateChanged(item);
             }
         }
     });
@@ -244,7 +274,7 @@ void MainWindow::createPanels() {
     
     // 初始化各个面板
     initHomePanel();
-    initScriptPanel();
+    MapPanel::initPanel(scriptPanel, m_mapScript);
     initChatPanel();
     MemoryPanel::initPanel(memoryPanel, m_memoryScript);  // 初始化内存面板
     LoginPanel::initPanel(loginPanel);  // 初始化上号器面板
@@ -353,68 +383,6 @@ void MainWindow::initHomePanel() {
     MessageHandler::install(logOutput);
 }
 
-void MainWindow::initScriptPanel() {
-    auto layout = new QVBoxLayout(scriptPanel);
-    
-    // 脚本设置组
-    auto scriptGroup = new QGroupBox("脚本设置", scriptPanel);
-    auto scriptLayout = new QGridLayout(scriptGroup);
-    
-    // 添加X坐标输入框
-    scriptLayout->addWidget(new QLabel("目标X坐标:"), 0, 0);
-    auto targetXSpinBox = new QDoubleSpinBox();
-    targetXSpinBox->setRange(-999999.0, 999999.0);
-    targetXSpinBox->setDecimals(1);
-    targetXSpinBox->setValue(5502.0);  // 设置默认值
-    scriptLayout->addWidget(targetXSpinBox, 0, 1);
-    
-    // 添加Y坐标输入框
-    scriptLayout->addWidget(new QLabel("目标Y坐标:"), 1, 0);
-    auto targetYSpinBox = new QDoubleSpinBox();
-    targetYSpinBox->setRange(-999999.0, 999999.0);
-    targetYSpinBox->setDecimals(1);
-    targetYSpinBox->setValue(953.0);  // 设置默认值
-    scriptLayout->addWidget(targetYSpinBox, 1, 1);
-    
-    // 添加Z坐标输入框
-    scriptLayout->addWidget(new QLabel("目标Z坐标:"), 2, 0);
-    auto targetZSpinBox = new QDoubleSpinBox();
-    targetZSpinBox->setRange(-999999.0, 999999.0);
-    targetZSpinBox->setDecimals(1);
-    targetZSpinBox->setValue(2.0);  // 设置默认值
-    scriptLayout->addWidget(targetZSpinBox, 2, 1);
-    
-    // 操作按钮
-    auto buttonLayout = new QHBoxLayout();
-    auto startScriptBtn = new QPushButton("开始跑图");
-    startScriptBtn->setStyleSheet(Style::BUTTON_STYLE);
-    auto stopScriptBtn = new QPushButton("停止");
-    stopScriptBtn->setStyleSheet(Style::BUTTON_STYLE);
-    stopScriptBtn->setEnabled(false);
-    
-    // 连接按钮点击事件
-    connect(startScriptBtn, &QPushButton::clicked, this, [=]() {
-        float targetX = targetXSpinBox->value();
-        float targetY = targetYSpinBox->value(); 
-        float targetZ = targetZSpinBox->value();
-        
-        // 直接调用新的 start 方法，不需要传递窗口列表
-        m_mapScript->start(targetX, targetY, targetZ);
-    });
-    
-    // 连接脚本信号
-    connect(m_mapScript, &MapScript::messageUpdated, this, [](const QString& msg) {
-        qDebug() << msg;
-    });
-    
-    buttonLayout->addWidget(startScriptBtn);
-    buttonLayout->addWidget(stopScriptBtn);
-    
-    layout->addWidget(scriptGroup);
-    layout->addLayout(buttonLayout);
-    layout->addStretch();
-}
-
 void MainWindow::initChatPanel() {
     auto layout = new QVBoxLayout(chatPanel);
     
@@ -423,11 +391,11 @@ void MainWindow::initChatPanel() {
     auto chatLayout = new QGridLayout(chatGroup);
     
     chatLayout->addWidget(new QLabel("喊话内容:"), 0, 0);
-    auto chatContentEdit = new QTextEdit();  // 保存为成员变量以便后续访问
+    auto chatContentEdit = new QTextEdit();
     chatLayout->addWidget(chatContentEdit, 0, 1);
     
     chatLayout->addWidget(new QLabel("间隔(秒):"), 1, 0);
-    auto intervalSpinBox = new QSpinBox();   // 保存为成员变量以便后续访问
+    auto intervalSpinBox = new QSpinBox();
     intervalSpinBox->setMinimum(1);
     intervalSpinBox->setMaximum(3600);
     intervalSpinBox->setValue(30);  // 默认30秒
@@ -439,7 +407,7 @@ void MainWindow::initChatPanel() {
     startChatBtn->setStyleSheet(Style::BUTTON_STYLE);
     auto stopChatBtn = new QPushButton("停止");
     stopChatBtn->setStyleSheet(Style::BUTTON_STYLE);
-    stopChatBtn->setEnabled(false);  // 初始时停止按钮不可用
+    stopChatBtn->setEnabled(false);
     
     // 创建喊话脚本实例
     m_chatScript = new ChatScript(this);
@@ -454,27 +422,9 @@ void MainWindow::initChatPanel() {
         
         // 获取选中的窗口
         QList<HWND> selectedWindows;
-        for (int i = 1; i < listWidget->count(); ++i) {  // 从1开始跳过标题行
-            QListWidgetItem* item = listWidget->item(i);
-            if (item && item->checkState() == Qt::Checked) {
-                // 从item的widget中获取句柄文本
-                QWidget* rowWidget = listWidget->itemWidget(item);
-                if (rowWidget) {
-                    QHBoxLayout* layout = qobject_cast<QHBoxLayout*>(rowWidget->layout());
-                    if (layout) {
-                        // 句柄在第二列
-                        QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
-                        if (handleLabel) {
-                            QString handleText = handleLabel->text();
-                            // 直接使用十进制转换
-                            bool ok;
-                            HWND hwnd = (HWND)handleText.toLongLong(&ok, 10);  // 使用十进制转换
-                            if (ok) {
-                                selectedWindows.append(hwnd);
-                            }
-                        }
-                    }
-                }
+        for (const auto& window : GameWindows::windows) {
+            if (window.isChecked) {
+                selectedWindows.append(window.hwnd);
             }
         }
         
@@ -483,28 +433,34 @@ void MainWindow::initChatPanel() {
             return;
         }
         
-        // 开始喊话
+        // 更新UI状态
         startChatBtn->setEnabled(false);
         stopChatBtn->setEnabled(true);
-        chatContentEdit->setEnabled(false);
-        intervalSpinBox->setEnabled(false);
         
-        m_chatScript->start(content, intervalSpinBox->value(), selectedWindows);
+        // 启动喊话脚本
+        m_chatScript->start(selectedWindows, content, intervalSpinBox->value());
+        
+        // 保存选中的窗口列表，用于更新状态
+        m_selectedWindows = selectedWindows;
     });
     
     connect(stopChatBtn, &QPushButton::clicked, this, [=]() {
         m_chatScript->stop();
-        
-        // 恢复UI状态
         startChatBtn->setEnabled(true);
         stopChatBtn->setEnabled(false);
-        chatContentEdit->setEnabled(true);
-        intervalSpinBox->setEnabled(true);
     });
     
     // 连接脚本信号
+    connect(m_chatScript, &ChatScript::started, this, [this]() {
+        updateTaskStatus(m_selectedWindows, "喊话中");
+    });
+    
+    connect(m_chatScript, &ChatScript::stopped, this, [this]() {
+        updateTaskStatus(m_selectedWindows, "等待中");
+    });
+    
     connect(m_chatScript, &ChatScript::messageUpdated, this, [](const QString& msg) {
-        qDebug() << msg;  // 或者更新到UI上显示
+        qDebug() << msg;
     });
     
     buttonLayout->addWidget(startChatBtn);
@@ -594,33 +550,22 @@ std::vector<HWND> MainWindow::findGameWindows() {
 }
 
 QString MainWindow::getCharacterName(HWND hwnd) {
-    DWORD pid = GetPid(hwnd);
-    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-    if (!handle) {
-        return "无法访问进程";
-    }
-
-    QString result;
-    char buffer[18] = {0};
-    SIZE_T bytesRead = 0;
-
-    GameOffsets::Initialize(hwnd);
-    if (ReadProcessMemory(handle, (LPVOID)GameOffsets::Character::NAME,
-                         buffer, sizeof(buffer), &bytesRead)) {
-        std::string utf8String(buffer, bytesRead);
-        std::string nameStr = GetUtf8String(utf8String);
-        result = QString::fromLocal8Bit(nameStr.c_str());
-        
-        // 设置窗口标题为角色名称
-        if (!result.isEmpty() && result != "未登录") {
-            SetWindowTextA(hwnd, nameStr.c_str());
+    if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
+        if (handle) {
+            char buffer[18] = {0};
+            SIZE_T bytesRead = 0;
+            
+            if (ReadProcessMemory(handle, (LPVOID)window->addresses.characterName,
+                                buffer, sizeof(buffer), &bytesRead)) {
+                QString name = QString::fromLocal8Bit(buffer);
+                CloseHandle(handle);
+                return name.isEmpty() ? "未登录" : name;
+            }
+            CloseHandle(handle);
         }
-    } else {
-        result = "未登录";
     }
-
-    CloseHandle(handle);
-    return result;
+    return "未登录";
 }
 
 void MainWindow::refreshGameWindowsList() {
@@ -633,11 +578,28 @@ void MainWindow::refreshGameWindowsList() {
     // 添加窗口数据
     int index = 1;
     for (const auto& window : GameWindows::windows) {
+        // 获取角色名称
+        QString roleName = window.role;
+        if (roleName.isEmpty()) {
+            HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window.pid);
+            if (handle) {
+                char buffer[18] = {0};
+                SIZE_T bytesRead = 0;
+                
+                if (ReadProcessMemory(handle, (LPVOID)window.addresses.characterName,
+                                    buffer, sizeof(buffer), &bytesRead)) {
+                    roleName = QString::fromLocal8Bit(buffer);
+                }
+                CloseHandle(handle);
+            }
+        }
+        
+        // 添加行
         addTableRow(
             QString::number(index++),
             QString::number((quintptr)window.hwnd),
             window.hotkey,
-            window.role,
+            roleName.isEmpty() ? "未登录" : roleName,
             window.task
         );
     }

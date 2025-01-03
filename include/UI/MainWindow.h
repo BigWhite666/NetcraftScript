@@ -77,4 +77,6 @@ private:
     DebugScript* m_debugScript;
 
     MemoryScript* m_memoryScript;
+
+    QList<HWND> m_selectedWindows;
 }; 

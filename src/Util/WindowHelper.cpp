@@ -1,7 +1,7 @@
 #include "Util/WindowHelper.h"
 #include "main.h"
 #include "MemoryRead/Memory.h"
-#include "MemoryRead/GameOffsets.h"
+#include "Util/GameWindow.h"
 #include <QDebug>
 
 bool WindowHelper::checkDM() {
@@ -152,8 +152,13 @@ QString WindowHelper::getCharacterName(HWND hwnd) {
     char buffer[18] = {0};
     SIZE_T bytesRead = 0;
     
-    GameOffsets::Initialize(hwnd);
-    if (ReadProcessMemory(handle, (LPVOID)GameOffsets::Character::NAME,
+    // 创建临时 GameWindow 来获取地址
+    GameWindow window;
+    window.hwnd = hwnd;
+    window.pid = pid;
+    window.initializeAddresses();
+    
+    if (ReadProcessMemory(handle, (LPVOID)window.addresses.characterName,
                          buffer, sizeof(buffer), &bytesRead)) {
         result = QString::fromLocal8Bit(buffer);
         if (result.isEmpty()) {

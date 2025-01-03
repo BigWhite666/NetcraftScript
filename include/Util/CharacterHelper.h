@@ -10,6 +10,10 @@ struct Vector3 {
     float z;
 };
 
+// 前向声明
+class GameWindow;
+class GameWindows;
+
 class CharacterHelper : public QObject {
     Q_OBJECT
     
@@ -34,5 +38,4 @@ public:
     
 private:
     static bool checkDM();
-    static bool writeAngle(HANDLE handle, DWORD_PTR angleBase, float angleX, float angleY);
 }; 

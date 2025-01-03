@@ -14,7 +14,31 @@ struct GameWindow {
     bool isChecked;      // 是否被选中
     Vector3 position;    // 当前位置
     
+    // 添加内存地址
+    struct MemoryAddresses {
+        // 角色相关地址
+        DWORD_PTR characterName;
+        
+        // 坐标相关地址
+        DWORD_PTR positionX;
+        DWORD_PTR positionY;
+        DWORD_PTR positionZ;
+        DWORD_PTR moveX;
+        DWORD_PTR moveY;
+        DWORD_PTR moveZ;
+        DWORD_PTR angleX;
+        DWORD_PTR angleY;
+        
+        MemoryAddresses() : characterName(0), 
+            positionX(0), positionY(0), positionZ(0),
+            moveX(0), moveY(0), moveZ(0),
+            angleX(0), angleY(0) {}
+    } addresses;
+    
     GameWindow() : hwnd(nullptr), pid(0), isChecked(false), position{0,0,0} {}
+    
+    // 初始化内存地址
+    void initializeAddresses();
 };
 
 // 游戏窗口管理类

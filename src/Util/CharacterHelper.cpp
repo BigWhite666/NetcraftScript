@@ -1,6 +1,6 @@
 #include "Util/CharacterHelper.h"
 #include "MemoryRead/Memory.h"
-#include "MemoryRead/GameOffsets.h"
+#include "Util/GameWindow.h"
 #include "main.h"
 #include <cmath>
 #include <QDebug>
@@ -34,27 +34,24 @@ bool CharacterHelper::crouch(bool start) {
 
 bool CharacterHelper::aimTarget(HWND hwnd, const Vector3& target) {
     try {
-        Vector3 current = getPosition(hwnd);
-        
-        // 计算角度
-        float dx = target.x - current.x;
-        float dy = target.y - current.y;
-        float dz = (target.z - 1) - current.z;
-        
-        float distance = std::sqrt(dx*dx + dy*dy);
-        float angleX = -(180/M_PI) * std::atan2(dx, dy);
-        float angleY = -(180/M_PI) * std::atan2(dz, distance);
-
-        // 获取进程信息
-        DWORD pid = GetPid(hwnd);
-        int msvcr120 = ListProcessModules(pid, "MSVCR120.dll");
-        if (msvcr120 != 0) {
-            HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+            Vector3 current = getPosition(hwnd);
+            
+            // 计算角度
+            float dx = target.x - current.x;
+            float dy = target.y - current.y;
+            float dz = (target.z - 1) - current.z;
+            
+            float distance = std::sqrt(dx*dx + dy*dy);
+            float angleX = -(180/M_PI) * std::atan2(dx, dy);
+            float angleY = -(180/M_PI) * std::atan2(dz, distance);
+            
+            HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
             if (handle) {
-                DWORD_PTR angleBase = msvcr120 + 0x000DFE1C;
-                bool result = writeAngle(handle, angleBase, angleX, angleY);
+                WriteMemory<float>(handle, window->addresses.angleX, angleX);
+                WriteMemory<float>(handle, window->addresses.angleY, angleY);
                 CloseHandle(handle);
-                return result;
+                return true;
             }
         }
         return false;
@@ -66,15 +63,13 @@ bool CharacterHelper::aimTarget(HWND hwnd, const Vector3& target) {
 
 bool CharacterHelper::setAngle(HWND hwnd, float angleX, float angleY) {
     try {
-        DWORD pid = GetPid(hwnd);
-        int msvcr120 = ListProcessModules(pid, "MSVCR120.dll");
-        if (msvcr120 != 0) {
-            HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+            HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
             if (handle) {
-                DWORD_PTR angleBase = msvcr120 + 0x000DFE1C;
-                bool result = writeAngle(handle, angleBase, angleX, angleY);
+                WriteMemory<float>(handle, window->addresses.angleX, angleX);
+                WriteMemory<float>(handle, window->addresses.angleY, angleY);
                 CloseHandle(handle);
-                return result;
+                return true;
             }
         }
         return false;
@@ -86,17 +81,15 @@ bool CharacterHelper::setAngle(HWND hwnd, float angleX, float angleY) {
 
 Vector3 CharacterHelper::getPosition(HWND hwnd) {
     Vector3 pos = {0, 0, 0};
-    DWORD pid = GetPid(hwnd);
-    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-    
-    if (handle) {
-        GameOffsets::Initialize(hwnd);
-        pos.x = ReadMemory<float>(handle, GameOffsets::Position::X);
-        pos.y = ReadMemory<float>(handle, GameOffsets::Position::Y);
-        pos.z = ReadMemory<float>(handle, GameOffsets::Position::Z);
-        CloseHandle(handle);
+    if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
+        if (handle) {
+            pos.x = ReadMemory<float>(handle, window->addresses.positionX);
+            pos.y = ReadMemory<float>(handle, window->addresses.positionY);
+            pos.z = ReadMemory<float>(handle, window->addresses.positionZ);
+            CloseHandle(handle);
+        }
     }
-    
     return pos;
 }
 
@@ -120,15 +113,4 @@ bool CharacterHelper::isJumping() {
 bool CharacterHelper::isCrouching() {
     if (!checkDM()) return false;
     return DM->GetKeyState('C') == 1;
-}
-
-bool CharacterHelper::writeAngle(HANDLE handle, DWORD_PTR angleBase, float angleX, float angleY) {
-    try {
-        WriteMemory<float>(handle, CalculateAddress(handle, angleBase, {0x19C}), angleX);
-        WriteMemory<float>(handle, CalculateAddress(handle, angleBase, {0x1A0}), angleY);
-        return true;
-    } catch (const std::exception& e) {
-        qDebug() << "写入角度失败：" << e.what();
-        return false;
-    }
 } 

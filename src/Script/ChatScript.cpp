@@ -1,19 +1,18 @@
 #include "Script/ChatScript.h"
-#include <QDebug>
 #include "Util/WindowHelper.h"
-#include "Util/GameWindow.h"
-#include "MemoryRead/Memory.h"
 #include "main.h"
+#include <QDebug>
 
+// ChatWorker 实现
 ChatWorker::ChatWorker(QObject* parent)
     : QObject(parent)
     , m_running(false) {
 }
 
-void ChatWorker::setParams(const QString& content, int interval, const QList<HWND>& windows) {
+void ChatWorker::setParams(const QList<HWND>& windows, const QString& content, int interval) {
+    m_windows = windows;
     m_content = content;
     m_interval = interval;
-    m_windows = windows;
     m_running = true;
 }
 
@@ -38,33 +37,14 @@ void ChatWorker::doWork() {
             }
             
             // 绑定窗口
-            long bindResult = DM->BindWindowEx(
-                reinterpret_cast<long>(hwnd),
-                "gdi",
-                "dx",
-                "dx.keypad.input.lock.api",
-                "",
-                0
-            );
-
-            if (bindResult != 1) {
-                emit messageUpdated(QString("句柄[%1]绑定失败").arg((quintptr)hwnd));
+            QString errorMsg;
+            if (!WindowHelper::bindWindow(hwnd, errorMsg, false)) {
+                emit messageUpdated(errorMsg);
                 continue;
             }
             
             emit messageUpdated(QString("句柄[%1]绑定成功，开始喊话").arg((quintptr)hwnd));
-            // 获取窗口大小
-            VARIANT height, width;
-            DM->GetClientSize((long)hwnd, &width, &height);
-            int centerX = width.intVal / 2;
-            int centerY = height.intVal / 2;
-
-            // 移动到窗口中心并点击
-            DM->MoveTo(centerX, centerY);
-            Sleep(100);
-            DM->KeyPress(112);  // F1
-            Sleep(1000);
-
+            
             // 开始喊话循环
             while (m_running) {
                 // 发送回车
@@ -85,11 +65,11 @@ void ChatWorker::doWork() {
                     }
                     Sleep(10);  // 每个字符之间添加短暂延迟
                 }
-
+                
                 Sleep(100);
                 DM->KeyPress(13);  // 发送消息
                 Sleep(100);
-
+                
                 emit messageUpdated(QString("句柄[%1]发送喊话：%2").arg((quintptr)hwnd).arg(m_content));
                 
                 // 等待指定间隔
@@ -99,7 +79,7 @@ void ChatWorker::doWork() {
             }
             
             // 解绑窗口
-            DM->UnBindWindow();
+            WindowHelper::unbindWindow();
         }
     } catch (const std::exception& e) {
         emit messageUpdated(QString("喊话发送失败：%1").arg(e.what()));
@@ -108,6 +88,7 @@ void ChatWorker::doWork() {
     emit finished();
 }
 
+// ChatScript 实现
 ChatScript::ChatScript(QObject* parent)
     : QObject(parent)
     , m_thread(nullptr)
@@ -116,10 +97,12 @@ ChatScript::ChatScript(QObject* parent)
 }
 
 ChatScript::~ChatScript() {
-    stop();
+    if (m_isRunning) {
+        stop();
+    }
 }
 
-void ChatScript::start(const QString& content, int interval, const QList<HWND>& windows) {
+void ChatScript::start(const QList<HWND>& windows, const QString& content, int interval) {
     if (m_isRunning) return;
     
     if (!DM) {
@@ -127,15 +110,7 @@ void ChatScript::start(const QString& content, int interval, const QList<HWND>& 
         return;
     }
     
-    // 获取选中的窗口
-    QList<HWND> selectedWindows;
-    for (const auto& window : GameWindows::windows) {
-        if (window.isChecked) {
-            selectedWindows.append(window.hwnd);
-        }
-    }
-    
-    if (selectedWindows.isEmpty()) {
+    if (windows.isEmpty()) {
         emit messageUpdated("错误：没有选中任何窗口！");
         return;
     }
@@ -153,7 +128,7 @@ void ChatScript::start(const QString& content, int interval, const QList<HWND>& 
     connect(m_worker, &ChatWorker::messageUpdated, this, &ChatScript::messageUpdated);
     
     // 设置参数并启动线程
-    m_worker->setParams(content, interval, selectedWindows);
+    m_worker->setParams(windows, content, interval);
     m_thread->start();
     
     m_isRunning = true;
@@ -161,7 +136,6 @@ void ChatScript::start(const QString& content, int interval, const QList<HWND>& 
 }
 
 void ChatScript::stop() {
-    DM->KeyPress(27);
     if (!m_isRunning) return;
     
     if (m_worker) {
@@ -178,5 +152,4 @@ void ChatScript::stop() {
     m_isRunning = false;
     
     emit stopped();
-    emit messageUpdated("喊话已停止");
 } 

@@ -15,7 +15,7 @@ void GameWindows::refresh() {
         if (IsWindow(hwnd) && IsWindowVisible(hwnd)) {
             char className[256] = {0};
             GetClassNameA(hwnd, className, sizeof(className));
-            if (strcmp(className, "D3D Window") == 0) {
+            if (strcmp(className, "CIrrDeviceWin32") == 0) {
                 hwnds->push_back(hwnd);
             }
         }
@@ -28,10 +28,11 @@ void GameWindows::refresh() {
         window.hwnd = hwnd;
         window.pid = GetPid(hwnd);
         window.role = WindowHelper::getCharacterName(hwnd);
-        window.hotkey = "";  // 默认无快捷键
+        window.hotkey = "";
         window.task = "等待中";
         window.isChecked = false;
         window.position = CharacterHelper::getPosition(hwnd);
+        window.initializeAddresses();  // 初始化内存地址
         windows.append(window);
     }
 }
@@ -47,4 +48,29 @@ GameWindow* GameWindows::findByHwnd(HWND hwnd) {
         }
     }
     return nullptr;
+}
+
+void GameWindow::initializeAddresses() {
+    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+    if (!handle) return;
+    
+    // 获取基址
+    int threadstack = GetThreadstackoAddress(pid);
+    int msvcr120 = ListProcessModules(pid, "MSVCR120.dll");
+    
+    // 计算实际地址
+    addresses.characterName = CalculateAddress(handle, threadstack - 0x00000B6C, {0x10, 0x1F0});
+    
+    addresses.positionX = CalculateAddress(handle, threadstack - 0x00000B6C, {0x10, 0x448});
+    addresses.positionY = addresses.positionX + 0x4;
+    addresses.positionZ = addresses.positionX + 0x8;
+    
+    addresses.moveX = CalculateAddress(handle, threadstack - 0x00000B6C, {0x10, 0x244});
+    addresses.moveY = addresses.moveX + 0x4;
+    addresses.moveZ = addresses.moveX + 0x8;
+    
+    addresses.angleX = CalculateAddress(handle, msvcr120 + 0x000DFE1C, {0x19C});
+    addresses.angleY = addresses.angleX + 0x4;
+    
+    CloseHandle(handle);
 } 
