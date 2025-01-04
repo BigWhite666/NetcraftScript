@@ -13,7 +13,6 @@ struct GameWindow {
     QString task;        // 当前任务状态
     bool isChecked;      // 是否被选中
     Vector3 position;    // 当前位置
-    
     // 添加内存地址
     struct MemoryAddresses {
         // 角色相关地址

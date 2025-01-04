@@ -96,9 +96,9 @@ void MapPanel::initPanel(QWidget* panel) {
     auto buttonLayout = new QHBoxLayout();
     auto startScriptBtn = new QPushButton("开始跑图");
     startScriptBtn->setStyleSheet(Style::BUTTON_STYLE);
-    auto stopScriptBtn = new QPushButton("停止");
-    stopScriptBtn->setStyleSheet(Style::BUTTON_STYLE);
-    stopScriptBtn->setEnabled(false);
+    // auto stopScriptBtn = new QPushButton("停止");
+    // stopScriptBtn->setStyleSheet(Style::BUTTON_STYLE);
+    // stopScriptBtn->setEnabled(false);
     
     // 连接按钮点击事件
     QObject::connect(startScriptBtn, &QPushButton::clicked, [=]() {
@@ -110,24 +110,20 @@ void MapPanel::initPanel(QWidget* panel) {
 
         // 获取选中的窗口
         for (const auto& window : GameWindows::windows) {
-            if (window.isChecked && window.task == "等待中") {
-                std::thread followThread(Paotu, window, target);
-                followThread.detach();
+            if (window.isChecked) {
+
             }
         }
-        
-        startScriptBtn->setEnabled(false);
-        stopScriptBtn->setEnabled(true);
     });
 
     //停止按钮点击事件
-    QObject::connect(stopScriptBtn, &QPushButton::clicked, [=]() {
-        startScriptBtn->setEnabled(true);
-        stopScriptBtn->setEnabled(false);
-    });
+    // QObject::connect(stopScriptBtn, &QPushButton::clicked, [=]() {
+    //     startScriptBtn->setEnabled(true);
+    //     stopScriptBtn->setEnabled(false);
+    // });
     
     buttonLayout->addWidget(startScriptBtn);
-    buttonLayout->addWidget(stopScriptBtn);
+    // buttonLayout->addWidget(stopScriptBtn);
     
     layout->addWidget(scriptGroup);
     layout->addLayout(buttonLayout);
