@@ -3,6 +3,7 @@
 #include <QObject>
 #include <windows.h>
 #include "dm/dmutils.h"
+#include "Util/GameWindow.h"
 
 class WindowHelper : public QObject {
     Q_OBJECT
@@ -15,6 +16,7 @@ public:
     static void centerWindow(HWND hwnd);
     static void pressF1AndCenter(HWND hwnd);
     static QString getCharacterName(HWND hwnd);
+    static void updateWindowStatus(HWND hwnd, const QString& status);
 
 signals:
     void messageUpdated(const QString& message);

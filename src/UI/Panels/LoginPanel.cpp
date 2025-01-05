@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QProcess>
 #include "main.h"
+#include "Util/WindowHelper.h"
 
 std::vector<AccountInfo> LoginPanel::accounts;
 bool LoginPanel::isLoginRunning = false;
@@ -175,6 +176,10 @@ void LoginPanel::selectGamePath(QLineEdit* pathEdit) {
     }
 }
 
+void LoginPanel::updateGameWindow(HWND hwnd, const QString& status) {
+    WindowHelper::updateWindowStatus(hwnd, status);
+}
+
 void LoginPanel::startLogin(QTableWidget* table, const QString& gamePath) {
     if (!loginScript) {
         loginScript = new LoginScript();
@@ -189,12 +194,11 @@ void LoginPanel::startLogin(QTableWidget* table, const QString& gamePath) {
             loginScript, [table](int row, const QString& status) {
                 if (row >= 0 && row < table->rowCount()) {
                     table->item(row, 2)->setText(status);
+                    
+                    // 找到对应的游戏窗口并更新状态
+                    HWND hwnd = WindowHelper::findLatestGameWindow();
+                    updateGameWindow(hwnd, status);
                 }
-            }, Qt::QueuedConnection);
-            
-        QObject::connect(loginScript, &LoginScript::stopped,
-            loginScript, []() {
-                qDebug() << "脚本已停止";
             }, Qt::QueuedConnection);
     }
     

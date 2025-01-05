@@ -9,6 +9,7 @@
 #include <QSpinBox>
 #include <vector>
 #include "Script/LoginScript.h"
+#include "Util/GameWindow.h"
 
 struct AccountInfo {
     QString account;
@@ -29,9 +30,10 @@ private:
     static void importAccounts(QTableWidget* table);
     static void exportAccounts(QTableWidget* table);
     static void selectGamePath(QLineEdit* pathEdit);
+    static void updateGameWindow(HWND hwnd, const QString& status);
     
     static std::vector<AccountInfo> accounts;
     static bool isLoginRunning;
     static LoginScript* loginScript;
-    static QString defaultGamePath;  // 添加默认游戏路径
+    static QString defaultGamePath;
 }; 

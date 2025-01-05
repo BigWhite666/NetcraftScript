@@ -138,34 +138,26 @@ HWND WindowHelper::findLatestGameWindow() {
 }
 
 QString WindowHelper::getCharacterName(HWND hwnd) {
-    DWORD pid;
-    GetWindowThreadProcessId(hwnd, &pid);
-    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
-    
-    if (!handle) {
-        return "无法访问进程";
-    }
-
-    QString result;
-    char buffer[18] = {0};
-    SIZE_T bytesRead = 0;
-    
-    // 创建临时 GameWindow 来获取地址
-    GameWindow window;
-    window.hwnd = hwnd;
-    window.pid = pid;
-    window.initializeAddresses();
-    
-    if (ReadProcessMemory(handle, (LPVOID)window.addresses.characterName,
-                         buffer, sizeof(buffer), &bytesRead)) {
-        result = QString::fromLocal8Bit(buffer);
-        if (result.isEmpty()) {
-            result = "未登录";
+    if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
+        if (handle) {
+            char buffer[18] = {0};
+            SIZE_T bytesRead = 0;
+            
+            if (ReadProcessMemory(handle, (LPVOID)window->addresses.characterName,
+                                buffer, sizeof(buffer), &bytesRead)) {
+                QString name = QString::fromLocal8Bit(buffer);
+                CloseHandle(handle);
+                return name.isEmpty() ? "未登录" : name;
+            }
+            CloseHandle(handle);
         }
-    } else {
-        result = "未登录";
     }
-    
-    CloseHandle(handle);
-    return result;
+    return "未登录";
+}
+
+void WindowHelper::updateWindowStatus(HWND hwnd, const QString& status) {
+    if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+        window->task = status;
+    }
 } 

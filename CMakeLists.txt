@@ -26,6 +26,7 @@ file(GLOB_RECURSE HEADER_FILES
     ${PROJECT_INCLUDE_DIR}/*.h
     ${PROJECT_INCLUDE_DIR}/UI/Components/*.h
     ${PROJECT_INCLUDE_DIR}/UI/Panels/*.h
+    ${PROJECT_INCLUDE_DIR}/Util/EventManager.h
 )
 
 # 明确列出源文件
@@ -34,6 +35,7 @@ file(GLOB_RECURSE SOURCE_FILES
     ${PROJECT_SRC_DIR}/UI/Components/*.cpp
     ${PROJECT_SRC_DIR}/UI/Panels/*.cpp
     ${PROJECT_SRC_DIR}/Script/*.cpp
+    ${PROJECT_SRC_DIR}/Util/*.cpp
     main.cpp
 )
 
@@ -129,4 +131,11 @@ if(WIN32)
             "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/imageformats"
     )
 endif()
+
+# 设置要进行 MOC 处理的头文件
+set(MOC_HEADERS
+    ...
+    include/Util/EventManager.h
+    ...
+)
 

@@ -2,8 +2,8 @@
 
 #include <windows.h>
 #include <QString>
-#include <QList>
-#include "Util/CharacterHelper.h"  // 引入 Vector3 定义
+#include <vector>
+#include "Util/CharacterHelper.h"
 
 struct GameWindow {
     HWND hwnd;           // 窗口句柄
@@ -13,12 +13,9 @@ struct GameWindow {
     QString task;        // 当前任务状态
     bool isChecked;      // 是否被选中
     Vector3 position;    // 当前位置
-    // 添加内存地址
+    
     struct MemoryAddresses {
-        // 角色相关地址
         DWORD_PTR characterName;
-        
-        // 坐标相关地址
         DWORD_PTR positionX;
         DWORD_PTR positionY;
         DWORD_PTR positionZ;
@@ -36,15 +33,12 @@ struct GameWindow {
     
     GameWindow() : hwnd(nullptr), pid(0), isChecked(false), position{0,0,0} {}
     
-    // 初始化内存地址
-    void initializeAddresses();
+    void initializeAddresses();  // 初始化内存地址
 };
 
-// 游戏窗口管理类
-class GameWindows {
-public:
-    static QList<GameWindow> windows;  // 存储所有游戏窗口
-    static void refresh();             // 刷新窗口列表
-    static void clear();               // 清空窗口列表
-    static GameWindow* findByHwnd(HWND hwnd);  // 通过句柄查找窗口
-}; 
+// 声明全局变量
+extern std::vector<GameWindow> g_gameWindows;
+
+// 辅助函数声明
+void refreshGameWindows();  // 刷新窗口列表
+GameWindow* findGameWindowByHwnd(HWND hwnd);  // 通过句柄查找窗口 

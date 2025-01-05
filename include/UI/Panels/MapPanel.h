@@ -2,18 +2,16 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include <QGridLayout>
 #include <QGroupBox>
 #include <QLabel>
-#include <QDoubleSpinBox>
 #include <QPushButton>
+#include <QDoubleSpinBox>
 #include "UI/Style/StyleSheet.h"
+#include "UI/MainWindow.h"
+#include "Util/GameWindow.h"
+#include "Util/CharacterHelper.h"
 
 class MapPanel {
 public:
     static void initPanel(QWidget* panel);
-    
-private:
-    static void setupMapControls(QWidget* panel);
-    static void connectSignals(QWidget* panel);
 }; 

@@ -3,46 +3,33 @@
 #include "MemoryRead/Memory.h"
 #include "main.h"
 
-QList<GameWindow> GameWindows::windows;
+// 定义全局变量
+std::vector<GameWindow> g_gameWindows;
 
-void GameWindows::refresh() {
-    clear();
+void refreshGameWindows() {
+    g_gameWindows.clear();
     
     // 枚举所有窗口
-    std::vector<HWND> gameHwnds;
     EnumWindows([](HWND hwnd, LPARAM lParam) -> BOOL {
-        auto hwnds = reinterpret_cast<std::vector<HWND>*>(lParam);
         if (IsWindow(hwnd) && IsWindowVisible(hwnd)) {
             char className[256] = {0};
             GetClassNameA(hwnd, className, sizeof(className));
             if (strcmp(className, "CIrrDeviceWin32") == 0) {
-                hwnds->push_back(hwnd);
+                GameWindow window;
+                window.hwnd = hwnd;
+                window.pid = GetPid(hwnd);
+                window.role = WindowHelper::getCharacterName(hwnd);
+                window.position = CharacterHelper::getPosition(hwnd);
+                window.initializeAddresses();
+                g_gameWindows.push_back(window);
             }
         }
         return TRUE;
-    }, reinterpret_cast<LPARAM>(&gameHwnds));
-    
-    // 添加到窗口列表
-    for (HWND hwnd : gameHwnds) {
-        GameWindow window;
-        window.hwnd = hwnd;
-        window.pid = GetPid(hwnd);
-        window.role = WindowHelper::getCharacterName(hwnd);
-        window.hotkey = "";
-        window.task = "等待中";
-        window.isChecked = false;
-        window.position = CharacterHelper::getPosition(hwnd);
-        window.initializeAddresses();  // 初始化内存地址
-        windows.append(window);
-    }
+    }, 0);
 }
 
-void GameWindows::clear() {
-    windows.clear();
-}
-
-GameWindow* GameWindows::findByHwnd(HWND hwnd) {
-    for (auto& window : windows) {
+GameWindow* findGameWindowByHwnd(HWND hwnd) {
+    for (auto& window : g_gameWindows) {
         if (window.hwnd == hwnd) {
             return &window;
         }

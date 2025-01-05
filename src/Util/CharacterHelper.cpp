@@ -34,7 +34,7 @@ bool CharacterHelper::crouch(bool start) {
 
 bool CharacterHelper::aimTarget(HWND hwnd, const Vector3& target) {
     try {
-        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+        if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
             Vector3 current = getPosition(hwnd);
 
             // 计算角度
@@ -63,7 +63,7 @@ bool CharacterHelper::aimTarget(HWND hwnd, const Vector3& target) {
 
 bool CharacterHelper::setAngle(HWND hwnd, float angleX, float angleY) {
     try {
-        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+        if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
             HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
             if (handle) {
                 WriteMemory<float>(handle, window->addresses.angleX, angleX);
@@ -81,7 +81,7 @@ bool CharacterHelper::setAngle(HWND hwnd, float angleX, float angleY) {
 
 Vector3 CharacterHelper::getPosition(HWND hwnd) {
     Vector3 pos = {0, 0, 0};
-    if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+    if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
         HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
         if (handle) {
             pos.x = ReadMemory<float>(handle, window->addresses.positionX);

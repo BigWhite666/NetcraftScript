@@ -15,6 +15,8 @@
 #include <windows.h>
 #include <vector>
 #include "main.h"
+#include "Util/GameWindow.h"
+#include "Util/WindowHelper.h"
 
 #include "Util/MessageHandler.h"
 #include "dm/dmutils.h"
@@ -29,40 +31,47 @@
 #include "Util/GameWindow.h"
 #include "UI/Panels/MapPanel.h"
 
+// 用于存储游戏窗口句柄的全局变量
 static std::vector<HWND> g_windows;
+
+// 枚举窗口回调函数，用于查找游戏窗口
 static BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     CHAR className[256];
     GetClassNameA(hwnd, className, sizeof(className));
     
+    // 查找游戏窗口(通过类名识别)
     if (strcmp(className, "CIrrDeviceWin32") == 0) {
         g_windows.push_back(hwnd);
     }
     return TRUE;
 }
 
+// 主窗口构造函数
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+    // 创建调试和内存脚本实例
     m_debugScript = new DebugScript(this);
     m_memoryScript = new MemoryScript(this);
+    
+    // 初始化界面
     setupUI();
     createPanels();
     refreshGameWindowsList();  // 初始化时获取一次窗口列表
 }
 
+// 主窗口析构函数
 MainWindow::~MainWindow() {
     // 卸载消息处理器
     MessageHandler::uninstall();
-
 }
 
+// 设置主界面UI
 void MainWindow::setupUI() {
     // 设置窗口基本属性
     setWindowTitle("NKScript");
     resize(800, 600);
     
-    // 设置全局样式
+    // 设置全局样式和调色板
     qApp->setStyle("Fusion");
-    
-    // 设置调色板
     QPalette palette;
     palette.setColor(QPalette::Window, QColor(240, 245, 250));      // #F0F5FA
     palette.setColor(QPalette::WindowText, QColor(51, 51, 51));     // #333333
@@ -77,33 +86,31 @@ void MainWindow::setupUI() {
     // 应用全局样式
     qApp->setStyleSheet(Style::MAIN_STYLE);
     
-    // 创建中央部件
+    // 创建中央部件和主布局
     centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
-    
-    // 创建主布局
     mainLayout = new QVBoxLayout(centralWidget);
     
     // 创建顶部控制栏
     QHBoxLayout* topBarLayout = new QHBoxLayout();
     
-    // 初始化成员变量
+    // 添加刷新按钮
     refreshButton = new QPushButton("刷新窗口", this);
     refreshButton->setFixedWidth(100);
     refreshButton->setStyleSheet(Style::BUTTON_STYLE);
     topBarLayout->addWidget(refreshButton);
     
-    // 添加调试测试按钮
+    // 添加调试按钮
     debugButton = new QPushButton("调试测试", this);
     debugButton->setFixedWidth(100);
     debugButton->setStyleSheet(Style::BUTTON_STYLE);
     topBarLayout->addWidget(debugButton);
     
+    // 添加窗口计数标签
     windowCountLabel = new QLabel("窗口个数:", this);
-    topBarLayout->addWidget(windowCountLabel);
-    
     windowCountValue = new QLabel("2", this);
     windowCountValue->setFixedWidth(30);
+    topBarLayout->addWidget(windowCountLabel);
     topBarLayout->addWidget(windowCountValue);
     
     // 添加弹性空间
@@ -158,7 +165,7 @@ void MainWindow::setupUI() {
     connect(selectAllBox, &QCheckBox::stateChanged, this, [this](int state) {
         Qt::CheckState checkState = static_cast<Qt::CheckState>(state);
         
-        // 从第1行开始遍历(跳过标题行)
+        // 遍历所有窗口项(跳过标题行)
         for (int i = 1; i < listWidget->count(); i++) {
             QListWidgetItem* item = listWidget->item(i);
             if (!item) continue;
@@ -181,8 +188,17 @@ void MainWindow::setupUI() {
             HWND hwnd = (HWND)handleLabel->text().toLongLong(&ok, 10);
             if (!ok) continue;
             
-            if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+            if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
                 window->isChecked = (checkState == Qt::Checked);
+                
+                // 更新选中窗口列表
+                if (checkState == Qt::Checked) {
+                    if (!m_selectedWindows.contains(hwnd)) {
+                        m_selectedWindows.append(hwnd);
+                    }
+                } else {
+                    m_selectedWindows.removeOne(hwnd);
+                }
             }
         }
         
@@ -255,6 +271,7 @@ void MainWindow::setupUI() {
     });
 }
 
+// 创建功能面板
 void MainWindow::createPanels() {
     // 创建标签页
     tabWidget = new QTabWidget(this);
@@ -416,12 +433,7 @@ void MainWindow::initChatPanel() {
         }
         
         // 获取选中的窗口
-        QList<HWND> selectedWindows;
-        for (const auto& window : GameWindows::windows) {
-            if (window.isChecked) {
-                selectedWindows.append(window.hwnd);
-            }
-        }
+        QList<HWND> selectedWindows = getSelectedWindows();
         
         if (selectedWindows.isEmpty()) {
             QMessageBox::warning(this, "警告", "请选择至少一个窗口！");
@@ -491,9 +503,14 @@ void MainWindow::onItemStateChanged(QListWidgetItem* item) {
         HWND hwnd = (HWND)handleLabel->text().toLongLong(&ok, 10);
         if (!ok) return;
         
-        // 更新 GameWindow 结构体中的选中状态
-        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+        // 更新全局游戏窗口列表中的选中状态
+        if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
             window->isChecked = checked;
+            if (checked) {
+                m_selectedWindows.append(hwnd);
+            } else {
+                m_selectedWindows.removeOne(hwnd);
+            }
         }
     }
 }
@@ -538,14 +555,8 @@ void MainWindow::updateWindowCount(int count) {
     windowCountValue->setText(QString::number(count));
 }
 
-std::vector<HWND> MainWindow::findGameWindows() {
-    g_windows.clear();
-    EnumWindows(EnumWindowsProc, 0);
-    return g_windows;
-}
-
 QString MainWindow::getCharacterName(HWND hwnd) {
-    if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+    if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
         HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
         if (handle) {
             char buffer[18] = {0};
@@ -564,7 +575,7 @@ QString MainWindow::getCharacterName(HWND hwnd) {
 }
 
 void MainWindow::refreshGameWindowsList() {
-    GameWindows::refresh();
+    refreshGameWindows();  // 刷新全局窗口列表
     listWidget->clear();
     
     // 添加表头
@@ -572,40 +583,23 @@ void MainWindow::refreshGameWindowsList() {
     
     // 添加窗口数据
     int index = 1;
-    for (const auto& window : GameWindows::windows) {
-        // 获取角色名称
-        QString roleName = window.role;
-        if (roleName.isEmpty()) {
-            HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window.pid);
-            if (handle) {
-                char buffer[18] = {0};
-                SIZE_T bytesRead = 0;
-                
-                if (ReadProcessMemory(handle, (LPVOID)window.addresses.characterName,
-                                    buffer, sizeof(buffer), &bytesRead)) {
-                    roleName = QString::fromLocal8Bit(buffer);
-                }
-                CloseHandle(handle);
-            }
-        }
-        
-        // 添加行
+    for (const auto& window : g_gameWindows) {  // 使用全局变量
         addTableRow(
             QString::number(index++),
             QString::number((quintptr)window.hwnd),
             window.hotkey,
-            roleName.isEmpty() ? "未登录" : roleName,
+            window.role.isEmpty() ? "未登录" : window.role,
             window.task
         );
     }
     
-    updateWindowCount(GameWindows::windows.size());
+    updateWindowCount(g_gameWindows.size());
 }
 
 // 更新任务状态
 void MainWindow::updateTaskStatus(const QList<HWND>& windows, const QString& status) {
     for (HWND hwnd : windows) {
-        if (GameWindow* window = GameWindows::findByHwnd(hwnd)) {
+        if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
             window->task = status;
             
             // 更新UI显示
@@ -631,5 +625,73 @@ void MainWindow::updateTaskStatus(const QList<HWND>& windows, const QString& sta
                 }
             }
         }
+    }
+}
+
+// 获取选中的窗口列表
+QList<HWND> MainWindow::getSelectedWindows() {
+    QList<HWND> selectedWindows;
+    for (const auto& window : g_gameWindows) {  // 使用全局变量
+        if (window.isChecked) {
+            selectedWindows.append(window.hwnd);
+        }
+    }
+    return selectedWindows;
+}
+
+// 在需要使用选中窗口的地方
+void MainWindow::startChat() {
+    if (!m_chatScript) return;
+    
+    // 获取选中的窗口
+    QList<HWND> selectedWindows = getSelectedWindows();
+    if (selectedWindows.isEmpty()) {
+        QMessageBox::warning(this, "错误", "请先选择要操作的窗口！");
+        return;
+    }
+    
+    // 启动喊话脚本
+    m_chatScript->start(selectedWindows, chatContentEdit->toPlainText(), intervalSpinBox->value() * 1000);
+}
+
+// 更新单个窗口的属性
+void MainWindow::updateGameWindow(HWND hwnd, const std::function<void(GameWindow*)>& updater) {
+    if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+        // 更新 GameWindow 属性
+        updater(window);
+        
+        // 更新UI显示
+        for (int i = 1; i < listWidget->count(); ++i) {
+            QListWidgetItem* item = listWidget->item(i);
+            if (!item) continue;
+            
+            QWidget* rowWidget = listWidget->itemWidget(item);
+            if (!rowWidget) continue;
+            
+            QHBoxLayout* layout = qobject_cast<QHBoxLayout*>(rowWidget->layout());
+            if (!layout) continue;
+            
+            QLabel* handleLabel = qobject_cast<QLabel*>(layout->itemAt(1)->widget());
+            if (!handleLabel) continue;
+            
+            if (handleLabel->text() == QString::number((quintptr)hwnd)) {
+                // 更新UI中的各个字段
+                QLabel* hotkeyLabel = qobject_cast<QLabel*>(layout->itemAt(2)->widget());
+                QLabel* roleLabel = qobject_cast<QLabel*>(layout->itemAt(3)->widget());
+                QLabel* taskLabel = qobject_cast<QLabel*>(layout->itemAt(4)->widget());
+                
+                if (hotkeyLabel) hotkeyLabel->setText(window->hotkey);
+                if (roleLabel) roleLabel->setText(window->role.isEmpty() ? "未登录" : window->role);
+                if (taskLabel) taskLabel->setText(window->task);
+                break;
+            }
+        }
+    }
+}
+
+// 批量更新窗口属性
+void MainWindow::updateGameWindows(const QList<HWND>& windows, const std::function<void(GameWindow*)>& updater) {
+    for (HWND hwnd : windows) {
+        updateGameWindow(hwnd, updater);
     }
 } 

@@ -16,6 +16,7 @@
 #include "Script/ChatScript.h"
 #include "Script/DebugScript.h"
 #include "Script/MemoryScript.h"
+#include "Util/GameWindow.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -23,6 +24,8 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void updateGameWindow(HWND hwnd, const std::function<void(GameWindow*)>& updater);
+    void updateGameWindows(const QList<HWND>& windows, const std::function<void(GameWindow*)>& updater);
 
 private:
     void setupUI();
@@ -36,10 +39,11 @@ private:
                     const QString& hotkey, const QString& role, 
                     const QString& task);
     void updateWindowCount(int count);
-    std::vector<HWND> findGameWindows();
     QString getCharacterName(HWND hwnd);
     void refreshGameWindowsList();
     void updateTaskStatus(const QList<HWND>& windows, const QString& status);
+    QList<HWND> getSelectedWindows();
+    void startChat();
 
     // UI 组件
     QWidget *centralWidget;
@@ -65,15 +69,8 @@ private:
     QPushButton* startChatBtn;
     QPushButton* stopChatBtn;
 
-    // 喊话相关函数
-    void startChat();
-    void stopChat();
-    void sendChatMessage();
-
-
     // 添加 DebugScript 成员
     DebugScript* m_debugScript;
-
     MemoryScript* m_memoryScript;
 
     QList<HWND> m_selectedWindows;

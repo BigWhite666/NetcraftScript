@@ -43,23 +43,9 @@ bool DebugWorker::processWindow(HWND hwnd) {
         Sleep(1000);
         
         // 获取角色信息并显示
-        GameWindow window;
-        window.hwnd = hwnd;
-        window.pid = GetWindowThreadProcessId(hwnd, NULL);
-        window.initializeAddresses();
-        
-        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window.pid);
-        if (handle) {
-            char buffer[18] = {0};
-            SIZE_T bytesRead = 0;
-            
-            if (ReadProcessMemory(handle, (LPVOID)window.addresses.characterName,
-                                buffer, sizeof(buffer), &bytesRead)) {
-                QString name = QString::fromLocal8Bit(buffer);
-                emit messageUpdated(QString("角色名称：%1").arg(name));
-            }
-            
-            CloseHandle(handle);
+        if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+            window->task = "调试中";
+            emit messageUpdated(QString("角色名称：%1").arg(window->role));
         }
         
         // 解绑窗口

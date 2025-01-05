@@ -50,7 +50,35 @@ void MemoryWorker::setMiningInterval(bool enabled) {
 }
 
 void MemoryWorker::processWindow(HWND hwnd) {
-    //功能实现
+    if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+        HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, window->pid);
+        if (!handle) {
+            emit messageUpdated(QString("无法访问进程[%1]").arg((quintptr)hwnd));
+            return;
+        }
+        
+        try {
+            // 更新窗口状态
+            window->task = "内存功能执行中";
+            
+            // 执行内存功能
+            if (m_miningEnabled) {
+                // 实现秒矿功能
+            }
+            
+            if (m_breathingEnabled) {
+                // 实现水下呼吸功能
+            }
+            
+            // ... 其他功能实现 ...
+            
+            CloseHandle(handle);
+            
+        } catch (const std::exception& e) {
+            emit messageUpdated(QString("内存操作失败：%1").arg(e.what()));
+            CloseHandle(handle);
+        }
+    }
 }
 
 void MemoryWorker::doWork() {
@@ -76,6 +104,13 @@ void MemoryWorker::doWork() {
         }
     } catch (const std::exception& e) {
         emit messageUpdated(QString("内存功能执行失败：%1").arg(e.what()));
+    }
+    
+    // 恢复窗口状态
+    for (HWND hwnd : m_windows) {
+        if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+            window->task = "等待中";
+        }
     }
     
     emit finished();

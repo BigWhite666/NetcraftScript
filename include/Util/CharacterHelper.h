@@ -10,10 +10,6 @@ struct Vector3 {
     float z;
 };
 
-// 前向声明
-class GameWindow;
-class GameWindows;
-
 class CharacterHelper : public QObject {
     Q_OBJECT
     

@@ -109,9 +109,29 @@ void MapPanel::initPanel(QWidget* panel) {
         Vector3 target = {targetX, targetY, targetZ};
 
         // 获取选中的窗口
-        for (const auto& window : GameWindows::windows) {
+        QList<HWND> updatedWindows;
+        for (const auto& window : g_gameWindows) {
             if (window.isChecked) {
+                updatedWindows.append(window.hwnd);
+            }
+        }
 
+        // 找到主窗口并更新状态
+        if (!updatedWindows.isEmpty()) {
+            QWidget* mainWindow = panel->window();
+            if (auto* mainWin = qobject_cast<MainWindow*>(mainWindow)) {
+                // 使用新的通用更新方法
+                mainWin->updateGameWindows(updatedWindows, [](GameWindow* window) {
+                    window->task = "跑图中";
+                });
+            }
+        }
+
+        // 启动跑图线程
+        for (const auto& hwnd : updatedWindows) {
+            if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+                std::thread followThread(Paotu, *window, target);
+                followThread.detach();
             }
         }
     });
@@ -129,5 +149,3 @@ void MapPanel::initPanel(QWidget* panel) {
     layout->addLayout(buttonLayout);
     layout->addStretch();
 }
-
-#include "MapPanel.moc"

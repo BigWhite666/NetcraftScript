@@ -36,6 +36,11 @@ void ChatWorker::doWork() {
                 continue;
             }
             
+            // 更新窗口状态
+            if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
+                window->task = "喊话中";
+            }
+            
             // 绑定窗口
             QString errorMsg;
             if (!WindowHelper::bindWindow(hwnd, errorMsg, false)) {
