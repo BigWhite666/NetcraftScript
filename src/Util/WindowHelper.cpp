@@ -158,6 +158,6 @@ QString WindowHelper::getCharacterName(HWND hwnd) {
 
 void WindowHelper::updateWindowStatus(HWND hwnd, const QString& status) {
     if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
-        window->task = status;
+        window->task.Taskname = status;
     }
-} 
+}

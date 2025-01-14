@@ -59,7 +59,7 @@ void MemoryWorker::processWindow(HWND hwnd) {
         
         try {
             // 更新窗口状态
-            window->task = "内存功能执行中";
+            window->task.Taskname = "内存功能执行中";
             
             // 执行内存功能
             if (m_miningEnabled) {
@@ -109,7 +109,7 @@ void MemoryWorker::doWork() {
     // 恢复窗口状态
     for (HWND hwnd : m_windows) {
         if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
-            window->task = "等待中";
+            window->task.Taskname = "等待中";
         }
     }
     

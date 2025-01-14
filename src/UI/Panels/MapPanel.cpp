@@ -122,7 +122,7 @@ void MapPanel::initPanel(QWidget* panel) {
             if (auto* mainWin = qobject_cast<MainWindow*>(mainWindow)) {
                 // 使用新的通用更新方法
                 mainWin->updateGameWindows(updatedWindows, [](GameWindow* window) {
-                    window->task = "跑图中";
+                    window->task.Taskname = "跑图中";
                 });
             }
         }

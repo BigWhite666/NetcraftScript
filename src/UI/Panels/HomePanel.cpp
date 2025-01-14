@@ -45,7 +45,7 @@ void HomePanel::updateWindowList(QListWidget* list) {
         QString text = QString("窗口句柄: %1 | 角色: %2 | 状态: %3")
             .arg((quintptr)window.hwnd)
             .arg(window.role.isEmpty() ? "未登录" : window.role)
-            .arg(window.task);
+            .arg(window.task.Taskname);
         
         auto item = new QListWidgetItem(text);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);

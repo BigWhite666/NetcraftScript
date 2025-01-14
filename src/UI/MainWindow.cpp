@@ -589,7 +589,7 @@ void MainWindow::refreshGameWindowsList() {
             QString::number((quintptr)window.hwnd),
             window.hotkey,
             window.role.isEmpty() ? "未登录" : window.role,
-            window.task
+            window.task.Taskname
         );
     }
     
@@ -600,7 +600,7 @@ void MainWindow::refreshGameWindowsList() {
 void MainWindow::updateTaskStatus(const QList<HWND>& windows, const QString& status) {
     for (HWND hwnd : windows) {
         if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
-            window->task = status;
+            window->task.Taskname = status;
             
             // 更新UI显示
             for (int i = 1; i < listWidget->count(); ++i) {
@@ -682,7 +682,7 @@ void MainWindow::updateGameWindow(HWND hwnd, const std::function<void(GameWindow
                 
                 if (hotkeyLabel) hotkeyLabel->setText(window->hotkey);
                 if (roleLabel) roleLabel->setText(window->role.isEmpty() ? "未登录" : window->role);
-                if (taskLabel) taskLabel->setText(window->task);
+                if (taskLabel) taskLabel->setText(window->task.Taskname);
                 break;
             }
         }

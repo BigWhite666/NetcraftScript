@@ -9,6 +9,7 @@
 Idmsoft* DM = nullptr;
 
 int main(int argc, char *argv[]) {
+
     // 初始化大漠插件
     DM = initialDMAndRegVIP();
     if (!DM) {

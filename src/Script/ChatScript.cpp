@@ -38,7 +38,7 @@ void ChatWorker::doWork() {
             
             // 更新窗口状态
             if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
-                window->task = "喊话中";
+                window->task.Taskname = "喊话中";
             }
             
             // 绑定窗口

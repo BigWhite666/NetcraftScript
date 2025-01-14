@@ -44,7 +44,7 @@ bool DebugWorker::processWindow(HWND hwnd) {
         
         // 获取角色信息并显示
         if (GameWindow* window = findGameWindowByHwnd(hwnd)) {
-            window->task = "调试中";
+            window->task.Taskname = "调试中";
             emit messageUpdated(QString("角色名称：%1").arg(window->role));
         }
         
